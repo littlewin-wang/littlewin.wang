@@ -2,19 +2,22 @@
   <div class="index">
     <div class="index-left">
       <IndexLink class="index-link"></IndexLink>
+      <div class="index-nav">
+        <IndexSelect></IndexSelect>
+      </div>
     </div>
     <div class="index-right">456</div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import IndexLink from '~/components/common/link.vue'
+import IndexSelect from '~/components/common/select.vue'
 
 export default {
   components: {
-    Logo,
-    IndexLink
+    IndexLink,
+    IndexSelect
   }
 }
 </script>
@@ -24,16 +27,19 @@ export default {
   display: flex;
   height: 100%;
   .index-left {
-    flex: 1 auto;
+    flex: 0 50%;
     height: 100%;
+    display: flex;
     .index-link {
-      display: inline-block;
-      width: 40px;
+      flex: 0 40px;
       height: 100%;
+    }
+    .index-nav {
+      flex: 1 auto;
     }
   }
   .index-right {
-    flex: 1 auto;
+    flex: 0 50%;
   }
 }
 </style>

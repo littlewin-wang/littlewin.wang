@@ -33,9 +33,12 @@ export default {
   position: relative;
 
   .line {
+    position: absolute;
     width: 3px;
-    height: 100%;
-    margin: 0 auto;
+    height: 96%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #eee
   }
 
@@ -49,7 +52,26 @@ export default {
       text-align: center;
       line-height: 2.5rem;
       i {
-        color: #747474
+        color: #747474;
+        cursor: pointer;
+      }
+      .icon-github {
+        &:hover {
+          color: #000
+        }
+      }
+
+      .icon-mail,
+      .icon-twitter {
+        &:hover {
+          color: #09c
+        }
+      }
+
+      .icon-weibo {
+        &:hover {
+          color: #f66
+        }
       }
     }
   }

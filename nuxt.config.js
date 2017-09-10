@@ -35,6 +35,8 @@ module.exports = {
       }
     }
   },
+  plugins: [
+  ],
   css: [
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]
