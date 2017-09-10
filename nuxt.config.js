@@ -34,5 +34,8 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  css: [
+    { src: '~assets/sass/app.scss', lang: 'sass' }
+  ]
 }
