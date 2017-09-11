@@ -5,6 +5,7 @@
       <div class="index-nav">
         <IndexSelect></IndexSelect>
         <IndexSearch></IndexSearch>
+        <Rotator></Rotator>
       </div>
     </div>
     <div class="index-right">456</div>
@@ -15,12 +16,14 @@
 import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
 import IndexSearch from '~/components/common/search.vue'
+import Rotator from '~/components/common/rotator.vue'
 
 export default {
   components: {
     IndexLink,
     IndexSelect,
-    IndexSearch
+    IndexSearch,
+    Rotator
   }
 }
 </script>

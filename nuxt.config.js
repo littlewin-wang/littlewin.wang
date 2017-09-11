@@ -38,6 +38,7 @@ module.exports = {
   plugins: [
   ],
   css: [
+    { src: '~assets/css/animate.css', lang: 'css' },
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]
 }
