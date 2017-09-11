@@ -4,6 +4,7 @@
       <IndexLink class="index-link"></IndexLink>
       <div class="index-nav">
         <IndexSelect></IndexSelect>
+        <IndexSearch></IndexSearch>
       </div>
     </div>
     <div class="index-right">456</div>
@@ -13,11 +14,13 @@
 <script>
 import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
+import IndexSearch from '~/components/common/search.vue'
 
 export default {
   components: {
     IndexLink,
-    IndexSelect
+    IndexSelect,
+    IndexSearch
   }
 }
 </script>
