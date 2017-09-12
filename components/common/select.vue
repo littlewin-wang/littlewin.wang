@@ -1,5 +1,5 @@
 <template>
-  <div class="select-container">
+  <div class="select">
     <div class="select-content" @click="handleOpen">
       <span>{{value ? value : placeholder}}</span>
       <i class="iconfont" :class="classObject">
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.select-container {
+.select {
   max-width: 120px;
 
   .select-content {
@@ -95,7 +95,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       &:hover {
-        background: #f2f2f2;
+        background: #cff;
       }
       &.active {
         color: #fff;

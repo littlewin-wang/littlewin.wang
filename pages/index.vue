@@ -5,7 +5,7 @@
       <div class="index-nav">
         <IndexSelect></IndexSelect>
         <IndexSearch></IndexSearch>
-        <Rotator :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Grid></Grid>
       </div>
     </div>
     <div class="index-right">456</div>
@@ -16,34 +16,20 @@
 import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
 import IndexSearch from '~/components/common/search.vue'
-import Rotator from '~/components/common/rotator.vue'
+import Grid from '~/components/rotator/grid.vue'
 
 export default {
   components: {
     IndexLink,
     IndexSelect,
     IndexSearch,
-    Rotator
+    Grid
   },
   data () {
     return {
-      index: 0,
-      images: [
-        {
-          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg',
-          label: '1'
-        },
-        {
-          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-8/29213923.jpg',
-          label: '2'
-        }
-      ]
     }
   },
   methods: {
-    changeUrl () {
-      this.index = this.index === 0 ? 1 : 0
-    }
   }
 }
 </script>

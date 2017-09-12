@@ -1,6 +1,6 @@
 <template>
   <div id="demo">
-    <transition mode="out-in" :enter-active-class="'animated ' + enterClass" :leave-active-class="'animated ' + leaveClss">
+    <transition :mode="animation.mode" :enter-active-class="'animated ' + animation.enterClass" :leave-active-class="'animated ' + animation.leaveClass">
       <img :key="title" :src="imgUrl" @click="handleClick">
     </transition>
   </div>
@@ -10,13 +10,14 @@
 export default {
   props: {
     imgUrl: String,
-    title: String
+    title: String,
+    animation: Object
   },
   data () {
     return {
-      docState: 'saved',
-      enterClass: 'flipInX',
-      leaveClss: 'flipOutX'
+      mode: '',
+      enterClass: 'rollIn',
+      leaveClss: 'rollOut'
     }
   },
   computed: {
@@ -36,7 +37,13 @@ export default {
 </script>
 
 <style>
+#demo {
+  position: relative;
+}
+
 #demo img {
+  position: absolute;
+  left: 0;
   display: block;
   height: 80px;
   width: 80px;

@@ -1,6 +1,6 @@
 <template>
   <div class="search" :class="searchClass">
-    <input type="search" autofocus v-model="value" class="search-box" :placeholder="placeholder" v-if="isOpen" />
+    <input type="search" autofocus v-model="value" class="search-box" :placeholder="placeholder" v-if="isOpen" @blur="handleBlur" />
     <span class="search-button" @click="handleClick">
       <i class="iconfont" :class="iconClass"></i>
     </span>
@@ -42,14 +42,20 @@ export default {
           this.isOpen = false
         }
       }
+    },
+    handleBlur () {
+      if (this.value) {
+        this.isOpen = true
+      } else {
+        this.isOpen = false
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$search-bg-color: #242628;
-$icon-color: #00FEDE;
+$icon-color: #6cf;
 $transition: all .5s ease;
 
 .search {
@@ -64,7 +70,7 @@ $transition: all .5s ease;
     width: 2px;
     height: 100%;
     position: relative;
-    background-color: #00FEDE;
+    background-color: #6cf;
     transition: $transition;
   }
   &.open {
