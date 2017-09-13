@@ -2,7 +2,7 @@
   <div class="grid">
     <div class="row">
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['1-1']].url" :title="images[indexTest['1-1']].label" @change="changeUrl"></Rotator>
       </div>
       <div class="col">
         <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
@@ -46,6 +46,9 @@ export default {
   data () {
     return {
       index: 0,
+      indexTest: {
+        '1-1': 3
+      },
       images: [
         {
           url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg',
@@ -146,7 +149,7 @@ export default {
   },
   methods: {
     changeUrl () {
-      this.index = this.index === 0 ? 1 : 0
+      this.$set(this.indexTest, '1-1', this.indexTest['1-1'] === 3 ? 1 : 3)
     }
   },
   mounted () {
