@@ -2,35 +2,35 @@
   <div class="grid">
     <div class="row">
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['1-1']].url" :title="images[indexTest['1-1']].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['0']].url" :title="images[indexTest['0']].label" @change="changeUrl"></Rotator>
       </div>
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['1']].url" :title="images[indexTest['1']].label" @change="changeUrl"></Rotator>
       </div>
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
-      </div>
-      <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
-      </div>
-      <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['2']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['3']].url" :title="images[indexTest['3']].label" @change="changeUrl"></Rotator>
       </div>
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['4']].url" :title="images[indexTest['4']].label" @change="changeUrl"></Rotator>
       </div>
       <div class="col">
-        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[index].url" :title="images[index].label" @change="changeUrl"></Rotator>
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['5']].url" :title="images[indexTest['5']].label" @change="changeUrl"></Rotator>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['6']].url" :title="images[indexTest['6']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['7']].url" :title="images[indexTest['7']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['8']].url" :title="images[indexTest['8']].label" @change="changeUrl"></Rotator>
       </div>
     </div>
   </div>
@@ -47,7 +47,15 @@ export default {
     return {
       index: 0,
       indexTest: {
-        '1-1': 3
+        '0': 0,
+        '1': 1,
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+        '7': 7,
+        '8': 8
       },
       images: [
         {
@@ -149,13 +157,18 @@ export default {
   },
   methods: {
     changeUrl () {
-      this.$set(this.indexTest, '1-1', this.indexTest['1-1'] === 3 ? 1 : 3)
+      let randomFrom = Math.floor(Math.random() * 9)
+      let randomTo = Math.floor(Math.random() * 3)
+      let restArray = this.images.filter(item => {
+        return !Object.values(this.indexTest).includes(item)
+      })
+      this.$set(this.indexTest, randomFrom, 9 + randomTo)
     }
   },
   mounted () {
     setInterval(() => {
       this.changeUrl()
-    }, 2000)
+    }, 1000)
   }
 }
 </script>
