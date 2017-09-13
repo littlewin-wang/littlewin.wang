@@ -59,6 +59,10 @@ export default {
       },
       images: [
         {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-12-22/96450860-file_1482369398392_5c90.jpg',
+          label: '0'
+        },
+        {
           url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg',
           label: '1'
         },
@@ -100,10 +104,6 @@ export default {
         {
           url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg',
           label: '11'
-        },
-        {
-          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-12-22/96450860-file_1482369398392_5c90.jpg',
-          label: '12'
         }
       ],
       animations: [
@@ -158,11 +158,11 @@ export default {
   methods: {
     changeUrl () {
       let randomFrom = Math.floor(Math.random() * 9)
-      let randomTo = Math.floor(Math.random() * 3)
       let restArray = this.images.filter(item => {
-        return !Object.values(this.indexTest).includes(item)
+        return !Object.values(this.indexTest).includes(Number(item.label))
       })
-      this.$set(this.indexTest, randomFrom, 9 + randomTo)
+      console.log(restArray)
+      this.$set(this.indexTest, randomFrom, Number(restArray[Math.floor(Math.random() * restArray.length)].label))
     }
   },
   mounted () {
