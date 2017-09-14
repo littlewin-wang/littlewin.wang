@@ -37,6 +37,7 @@ export default {
   position: relative;
   border-radius: 5px;
   background-color: hsla(0, 0%, 100%, .6);
+  box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
   .article-info {
     background: #fff;
     width: 80%;
