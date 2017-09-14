@@ -8,7 +8,9 @@
         <Grid></Grid>
       </div>
     </div>
-    <div class="index-right">456</div>
+    <div class="index-right">
+      <ArticleCard></ArticleCard>
+    </div>
   </div>
 </template>
 
@@ -17,13 +19,15 @@ import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
 import IndexSearch from '~/components/common/search.vue'
 import Grid from '~/components/rotator/grid.vue'
+import ArticleCard from '~/components/article/card.vue'
 
 export default {
   components: {
     IndexLink,
     IndexSelect,
     IndexSearch,
-    Grid
+    Grid,
+    ArticleCard
   },
   data () {
     return {
