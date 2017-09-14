@@ -44,8 +44,9 @@ export default {
     position: absolute;
     right: 0;
     bottom: 0;
-    padding: 20px;
-    box-shadow: -3px -2px 5px #777;
+    padding: 10px 20px;
+    border-top-left-radius: 5px;
+    box-shadow: -2px -2px 4px #ccc;
     .article-meta {
       margin: 10px 0;
       height: 20px;
