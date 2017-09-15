@@ -40,7 +40,6 @@ export default {
 
 <style lang="scss" scoped>
 .article-card {
-  width: 240px;
   position: relative;
   border-radius: 5px;
   .article-thumb {
@@ -112,6 +111,7 @@ export default {
     }
   }
   &:hover {
+    background-color: hsla(0, 0%, 77%, .4);
     .article-thumb {
       .background {
         opacity: 1;
