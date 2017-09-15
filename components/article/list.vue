@@ -1,7 +1,7 @@
 <template>
   <div class="article-list">
     <waterfall :line-gap="200" :watch="items">
-      <waterfall-slot v-for="(item, index) in items" :width="item.width" :height="item.height" :order="index" :key="item.id">
+      <waterfall-slot v-for="(item, index) in items" :width="item.width" :height="item.height" :order="index" :key="item.id" move-class="item-move">
         <div class="article-item">
           <Card></Card>
         </div>
@@ -73,6 +73,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.item-move {
+  transition: all .5s cubic-bezier(.55, 0, .1, 1);
+  -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
+}
+
 .article-item {
   padding: 1rem
 }
