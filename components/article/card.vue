@@ -17,9 +17,9 @@
       <div class="article-title">
         应该是展望
       </div>
-      <div class="article-desc">
+      <p class="article-desc">
         > 生存压力以外的理想主义到底是不是耍流氓\n> 脱离知识分子的气韵来黑知识分子的虚伪外表是不是耍流氓\n> 抛弃雅俗共赏的勇气勾勒出一个不完整的人性思考轴是不是耍流氓
-      </div>
+      </p>
       <div class="article-meta">
         <i class="iconfont icon-time">
         </i>{{new Date().toLocaleDateString()}}&nbsp&nbsp&nbsp&nbsp
@@ -106,7 +106,7 @@ export default {
       font-weight: bold;
     }
     .article-desc {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 300;
       color: #777;
     }
