@@ -9,7 +9,9 @@
       </div>
     </div>
     <div class="index-right">
-      <ArticleCard></ArticleCard>
+      <no-ssr placeholder="Loading...">
+        <ArticleList></ArticleList>
+      </no-ssr>
     </div>
   </div>
 </template>
@@ -19,7 +21,7 @@ import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
 import IndexSearch from '~/components/common/search.vue'
 import Grid from '~/components/rotator/grid.vue'
-import ArticleCard from '~/components/article/card.vue'
+import ArticleList from '~/components/article/list.vue'
 
 export default {
   components: {
@@ -27,7 +29,7 @@ export default {
     IndexSelect,
     IndexSearch,
     Grid,
-    ArticleCard
+    ArticleList
   },
   data () {
     return {

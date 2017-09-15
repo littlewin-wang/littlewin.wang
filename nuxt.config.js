@@ -33,9 +33,13 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: [
+      'vue-waterfall'
+    ]
   },
   plugins: [
+    { src: '~plugins/vue-waterfall', ssr: false }
   ],
   css: [
     { src: '~assets/css/animate.css', lang: 'css' },
