@@ -9,9 +9,7 @@
       </div>
     </div>
     <div class="index-right">
-      <no-ssr placeholder="Loading...">
-        <ArticleList></ArticleList>
-      </no-ssr>
+      <ArticleList></ArticleList>
     </div>
   </div>
 </template>
