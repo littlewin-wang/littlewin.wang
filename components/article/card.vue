@@ -10,7 +10,7 @@
     </div>
     <div class="article-info">
       <div class="article-meta">
-        <i class="iconfont icon-category">
+        <i class="iconfont icon-tag">
         </i>
         前端
       </div>
@@ -21,12 +21,18 @@
         > 生存压力以外的理想主义到底是不是耍流氓\n> 脱离知识分子的气韵来黑知识分子的虚伪外表是不是耍流氓\n> 抛弃雅俗共赏的勇气勾勒出一个不完整的人性思考轴是不是耍流氓
       </p>
       <div class="article-meta">
-        <i class="iconfont icon-time">
-        </i>{{new Date().toLocaleDateString()}}&nbsp&nbsp&nbsp&nbsp
-        <i class="iconfont icon-love">
-        </i>9&nbsp&nbsp&nbsp&nbsp
-        <i class="iconfont icon-comment">
-        </i>4
+        <span class="meta-item">
+          <i class="iconfont icon-time">
+          </i>{{new Date().toLocaleDateString()}}
+        </span>
+        <span class="meta-item">
+          <i class="iconfont icon-love">
+          </i>9
+        </span>
+        <span class="meta-item">
+          <i class="iconfont icon-comment">
+          </i>4
+        </span>
       </div>
     </div>
   </div>
@@ -94,6 +100,9 @@ export default {
       line-height: 16px;
       font-size: 14px;
       color: #777;
+      .meta-item {
+        margin: 0 4px;
+      }
       i {
         font-size: 14px;
         margin-right: 4px;
