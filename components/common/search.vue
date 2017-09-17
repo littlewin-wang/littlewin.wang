@@ -61,6 +61,7 @@ $transition: all .5s ease;
 .search {
   width: 40px;
   height: 30px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
   transition: $transition;
@@ -68,16 +69,18 @@ $transition: all .5s ease;
     content: '';
     display: block;
     width: 2px;
-    height: 100%;
+    height: 20px;
     position: relative;
+    top: 5px;
     background-color: #6cf;
     transition: $transition;
   }
   &.open {
     width: 160px;
     &:before {
-      height: 100%;
+      height: 20px;
       left: 10px;
+      top: 5px;
       position: absolute;
     }
   }

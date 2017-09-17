@@ -1,24 +1,27 @@
 <template>
   <div id="app" v-cloak>
     <Background></Background>
-    <div class="container">
-      <div class="main">
-        <div class="content">
-          <nuxt/>
+    <LHeader></LHeader>
+    <!--<div class="container">
+        <div class="main">
+          <div class="content">
+            <nuxt/>
+          </div>
         </div>
       </div>
-    </div>
-    <LFooter></LFooter>
+      <LFooter></LFooter>-->
   </div>
 </template>
 
 <script>
 import Background from '~/components/layout/background'
+import LHeader from '~/components/layout/header'
 import LFooter from '~/components/layout/footer'
 
 export default {
   components: {
     Background,
+    LHeader,
     LFooter
   }
 }

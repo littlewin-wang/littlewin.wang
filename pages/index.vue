@@ -5,7 +5,6 @@
       <div class="index-nav">
         <IndexSelect></IndexSelect>
         <IndexSearch></IndexSearch>
-        <Grid></Grid>
       </div>
     </div>
     <div class="index-right">

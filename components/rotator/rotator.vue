@@ -1,5 +1,5 @@
 <template>
-  <div id="demo">
+  <div id="rotator">
     <transition :mode="animation.mode" :enter-active-class="'animated ' + animation.enterClass" :leave-active-class="'animated ' + animation.leaveClass">
       <img :key="title" :src="imgUrl" @click="handleClick">
     </transition>
@@ -37,11 +37,11 @@ export default {
 </script>
 
 <style>
-#demo {
+#rotator {
   position: relative;
 }
 
-#demo img {
+#rotator img {
   position: absolute;
   left: 0;
   display: block;
