@@ -2,14 +2,14 @@
   <div id="app" v-cloak>
     <Background></Background>
     <LHeader></LHeader>
-    <!--<div class="container">
-        <div class="main">
-          <div class="content">
-            <nuxt/>
-          </div>
+    <div class="container">
+      <div class="main">
+        <div class="content">
+          <nuxt/>
         </div>
       </div>
-      <LFooter></LFooter>-->
+    </div>
+    <LFooter></LFooter>
   </div>
 </template>
 
@@ -30,16 +30,16 @@ export default {
 
 <style lang="scss" scoped>
 #app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   &[v-cloak] {
     color: transparent;
     -webkit-text-fill-color: transparent;
   }
 
   .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin-top: -52px;
+    flex: 1;
     .main {
       position: relative;
       margin-top: 52px;

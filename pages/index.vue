@@ -1,14 +1,10 @@
 <template>
   <div class="index">
     <div class="index-left">
-      <IndexLink class="index-link"></IndexLink>
-      <div class="index-nav">
-        <IndexSelect></IndexSelect>
-        <IndexSearch></IndexSearch>
-      </div>
+
     </div>
     <div class="index-right">
-      <ArticleList></ArticleList>
+
     </div>
   </div>
 </template>
