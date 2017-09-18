@@ -3,10 +3,8 @@
     <Background></Background>
     <LHeader></LHeader>
     <div class="container">
-      <div class="main">
-        <div class="content">
-          <nuxt/>
-        </div>
+      <div class="content">
+        <nuxt/>
       </div>
     </div>
     <LFooter></LFooter>
@@ -40,18 +38,11 @@ export default {
 
   .container {
     flex: 1;
-    .main {
-      position: relative;
-      margin-top: 52px;
-      flex: 1 0 800px;
-      .content {
-        position: absolute;
-        top: calc(52px+10%);
-        left: 5%;
-        right: 5%;
-        bottom: 10%;
-        background: #fff;
-      }
+    position: relative;
+    .content {
+      max-width: 980px;
+      height: 100%;
+      margin: 0 auto;
     }
   }
 }

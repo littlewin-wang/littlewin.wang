@@ -21,7 +21,7 @@ export default {
   top: 0;
   left: 0;
   z-index: -1;
-  background-color: #f8f8f8;
+  background-color: #f6f6f6;
 
   .background-circle {
     position: absolute;
@@ -36,7 +36,7 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #f8f8f8;
+      background: #f6f6f6;
     }
   }
 }

@@ -150,6 +150,7 @@ header {
         float: right;
         @include small {
           padding-top: 10px;
+          padding-left: 0;
           margin-bottom: 20px;
           float: left;
           text-align: center;

@@ -14,6 +14,23 @@ body {
   bottom: 0;
 }
 
+a {
+  color: #48494d;
+  text-decoration: none;
+  transition: all .3s ease;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: #00A7EB;
+  }
+}
+
+menu, ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .bg-white {
   background-color: #fff
 }
