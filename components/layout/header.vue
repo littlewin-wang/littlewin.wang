@@ -3,12 +3,7 @@
     <header class="bg-white">
       <div class="header-container" :class="{'open-nav': isOpen}">
         <div class="header-logo">
-          <div class="logo">
-            <img src="http://7xpot0.com1.z0.glb.clouddn.com/17-9-17/58691829.jpg" alt="琪中有不凡">
-          </div>
-          <div class="title">
-            <img src="http://7xpot0.com1.z0.glb.clouddn.com/17-9-17/40516074.jpg" alt="琪中有不凡">
-          </div>
+          <img src="http://7xpot0.com1.z0.glb.clouddn.com/17-9-18/3162926.jpg" alt="琪中有不凡">
         </div>
         <div class="mobile-toggle" @click="handleOpen">
           <span></span>
@@ -81,27 +76,14 @@ header {
     position: relative;
 
     .header-logo {
-      height: 60%;
-      width: 60px;
+      width: 150px;
       position: absolute;
-      top: 20%;
+      top: 0;
       left: 30px;
       overflow: hidden;
       cursor: pointer;
-      .logo {
-        height: 60%;
-        img {
-          width: 100%;
-          height: 100%;
-          vertical-align: top;
-        }
-      }
-      .title {
-        height: 40%;
-        line-height: 16px;
+      img {
         vertical-align: middle;
-        text-align: center;
-        font-size: 14px;
       }
     }
 
