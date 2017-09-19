@@ -39,7 +39,8 @@ module.exports = {
     ]
   },
   plugins: [
-    { src: '~plugins/vue-waterfall', ssr: false }
+    { src: '~plugins/vue-waterfall', ssr: false },
+    { src: '~/plugins/swiper.js', ssr: false }
   ],
   css: [
     { src: '~assets/css/animate.css', lang: 'css' },

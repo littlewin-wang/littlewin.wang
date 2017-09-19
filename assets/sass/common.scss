@@ -4,6 +4,9 @@ html{
 
 body {
   min-height: 100%;
+  color: #8d8d8d;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 #__nuxt {
@@ -21,8 +24,17 @@ a {
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    color: #00A7EB;
+    color: #1abc9c;
   }
+}
+
+p {
+  color: #8d8d8d;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 28px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 menu, ul, ol {

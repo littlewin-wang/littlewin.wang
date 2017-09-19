@@ -1,43 +1,44 @@
 <template>
   <div class="article-card">
     <div class="container">
-      <div class="img">
-        <a href="">
-          <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg" alt="">
-        </a>
+      <div class="date">
+        <div class="detail">
+          <span class="date-day">04</span>
+          <span class="date-month">Oct</span>
+        </div>
       </div>
       <div class="content">
         <h2>
           <a href="">应该是展望</a>
         </h2>
-        <div class="text">
+        <p class="excerpt">
           > 生存压力以外的理想主义到底是不是耍流氓\n> 脱离知识分子的气韵来黑知识分子的虚伪外表是不是耍流氓\n> 抛弃雅俗共赏的勇气勾勒出一个不完整的人性思考轴是不是耍流氓
-        </div>
+        </p>
         <div class="info">
-          <ul>
-            <li class="post-author">
-              <div class="avatar">
-                <img src="http://cdn.v2ex.com/gravatar/afa39accf8700cbbe7b13e1d01aa5b17?s=96&d=mm&r=g" alt="">
-              </div>
+          <div class="left">
+            <span class="tag">
+              <i class="iconfont icon-tag"></i>
+              <a href="">前端</a>
+            </span>
+            <span class="author">
+              <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg" alt="">
               <a href="">Littlewin</a>
-            </li>
-            <li>
-              <i class="iconfont icon-tag">
-              </i>前端
-            </li>
-            <li>
-              <i class="iconfont icon-time">
-              </i>{{new Date().toLocaleDateString()}}
-            </li>
-            <li>
-              <i class="iconfont icon-comment">
-              </i>4
-            </li>
-            <li>
-              <i class="iconfont icon-love">
-              </i>9
-            </li>
-          </ul>
+            </span>
+          </div>
+          <div class="right">
+            <span class="tag">
+              <i class="iconfont icon-view"></i>
+              <a href="">122</a>
+            </span>
+            <span class="tag">
+              <i class="iconfont icon-love"></i>
+              <a href="">122</a>
+            </span>
+            <span class="tag">
+              <i class="iconfont icon-comment"></i>
+              <a href="">22</a>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -53,77 +54,67 @@ export default {
 
 <style lang="scss" scoped>
 .article-card {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 25px;
-  background: #FFF;
-  box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1);
-  transition: all 0.6s ease;
+  display: inline-block;
+  margin: 0 0 40px 0;
   .container {
     display: flex;
-    overflow: hidden;
-    padding: 23px 20px;
-    .img {
-      flex: 0 0 240px;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: auto;
+    .date {
+      flex: 0 0 70px;
+      .detail {
+        padding: 0 20px;
+        border-right: 1px solid #ebebeb;
+        .date-day {
+          font-size: 21px;
+          font-weight: 600;
+          color: #303030;
+          padding-bottom: 5px;
+        }
+        .date-day,
+        .date-month {
+          display: block;
+        }
       }
     }
     .content {
       flex: 1;
-      margin-left: 20px;
+      padding: 0 35px 0 20px;
       h2 {
-        position: relative;
-        margin: 0 0 20px 0;
-        font-size: 22px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-      .text {
-        font-size: 14px;
-        line-height: 1.6;
+        margin: 0;
+        font-family: Raleway;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         margin-bottom: 20px;
-        color: #566573;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
       .info {
-        li.post-author {
-          padding-left: 30px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: #222222;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #ebebeb;
+        span {
+          margin: 0 4px;
         }
-        li {
-          font-size: 12px;
-          letter-spacing: .2px;
-          padding: 0;
-          margin: 0 10px 0 0;
-          color: #748594;
+        i {
+          color: #8d8d8d;
+          font-size: 14px;
+          margin-right: 2px;
+        }
+        .author {
           position: relative;
-          line-height: 1.5;
-          display: inline-block;
-          .avatar {
+          padding-left: 22px;
+          img {
             position: absolute;
+            width: 20px;
+            height: 20px;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            img {
-              border: 1px solid #e5e5e5;
-              border-radius: 50%;
-              padding: 1px;
-              width: 25px;
-              height: 25px;
-            }
-          }
-          a {
-            color: #748594;
-          }
-          i {
-            font-size: 12px;
-            letter-spacing: -.2px;
-            color: #748594;
-            line-height: 1.5;
-            margin-right: 4px;
+            border-radius: 50%;
           }
         }
       }

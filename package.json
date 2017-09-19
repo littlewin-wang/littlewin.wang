@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "nuxt": "^1.0.0-rc8",
+    "vue-awesome-swiper": "^2.6.4",
     "vue-waterfall": "^1.0.6"
   },
   "devDependencies": {
