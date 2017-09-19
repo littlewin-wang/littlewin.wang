@@ -55,7 +55,12 @@ export default {
 <style lang="scss" scoped>
 .article-card {
   display: inline-block;
-  margin: 0 0 40px 0;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: hsla(0, 0%, 100%, .6);
+  &:hover {
+    background-color: hsla(0, 0%, 77%, .4);
+  }
   .container {
     display: flex;
     .date {

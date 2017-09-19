@@ -24,23 +24,35 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
-    extend (config, ctx) {
-      if (ctx.dev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
+    // extend (config, ctx) {
+    //   if (ctx.dev && ctx.isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // },
+    extend (webpackConfig, { isDev, isClient, isServer }) {
     },
     vendor: [
-      'vue-waterfall'
-    ]
+      'vue-waterfall',
+      'particles.js'
+    ],
+    babel: {
+      presets: ['es2015', 'stage-2'],
+      plugins: [
+        'transform-async-to-generator',
+        'transform-runtime'
+      ],
+      comments: true
+    }
   },
   plugins: [
     { src: '~plugins/vue-waterfall', ssr: false },
-    { src: '~/plugins/swiper.js', ssr: false }
+    { src: '~plugins/swiper.js', ssr: false },
+    { src: '~plugins/particles.js', ssr: false }
   ],
   css: [
     { src: '~assets/css/animate.css', lang: 'css' },
