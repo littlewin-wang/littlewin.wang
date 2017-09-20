@@ -1,9 +1,11 @@
 <template>
   <div class="index">
     <div>
+      <Carrousel></Carrousel>
+    </div>
+    <div>
       <ArticleCard></ArticleCard>
     </div>
-
     <div>
       <ArticleCard></ArticleCard>
     </div>
@@ -20,6 +22,7 @@ import IndexSearch from '~/components/common/search.vue'
 import Grid from '~/components/rotator/grid.vue'
 import ArticleList from '~/components/article/list.vue'
 import ArticleCard from '~/components/article/card.vue'
+import Carrousel from '~/components/article/carrousel.vue'
 
 export default {
   components: {
@@ -28,7 +31,8 @@ export default {
     IndexSearch,
     Grid,
     ArticleList,
-    ArticleCard
+    ArticleCard,
+    Carrousel
   },
   data () {
     return {

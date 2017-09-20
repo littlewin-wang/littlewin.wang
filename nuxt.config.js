@@ -55,6 +55,7 @@ module.exports = {
     { src: '~plugins/particles.js', ssr: false }
   ],
   css: [
+    'swiper/dist/css/swiper.css',
     { src: '~assets/css/animate.css', lang: 'css' },
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]
