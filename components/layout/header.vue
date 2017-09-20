@@ -3,7 +3,7 @@
     <header class="bg-white">
       <div class="header-container" :class="{'open-nav': isOpen}">
         <div class="header-logo">
-          <img src="http://7xpot0.com1.z0.glb.clouddn.com/17-9-18/3162926.jpg" alt="琪中有不凡">
+          <h3>LITTLEWIN</h3>
         </div>
         <div class="mobile-toggle" @click="handleOpen">
           <span></span>
@@ -62,13 +62,15 @@ export default {
 }
 
 header {
+  position: fixed;
   display: block;
   width: 100%;
   height: 70px;
   line-height: 70px;
   padding: 0;
   text-align: right;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+  background-color: hsla(0, 0%, 100%, .6);
+  z-index: 999;
   .header-container {
     max-width: 980px;
     height: 100%;
@@ -76,14 +78,21 @@ header {
     position: relative;
 
     .header-logo {
-      width: 150px;
       position: absolute;
       top: 0;
       left: 30px;
-      overflow: hidden;
       cursor: pointer;
-      img {
-        vertical-align: middle;
+      h3 {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        &:after {
+          position: absolute;
+          content: ".WANG";
+          font-size: 16px;
+          top: -8px;
+          left: 100%;
+        }
       }
     }
 

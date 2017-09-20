@@ -91,15 +91,15 @@ export default {
         font-weight: 400;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
       }
       .info {
         display: flex;
         justify-content: space-between;
         font-size: 14px;
         color: #222222;
-        margin-top: 30px;
-        padding-top: 15px;
+        margin-top: 1rem;
+        padding-top: .5rem;
         border-top: 1px solid #ebebeb;
         span {
           margin: 0 4px;
