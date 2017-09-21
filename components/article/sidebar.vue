@@ -1,6 +1,9 @@
 <template>
   <div class="article-sidear">
-    <h5>热门文章</h5>
+    <h5 class="title">
+      <i class="iconfont icon-menu"></i>
+      热门文章
+    </h5>
     <div class="container">
       <ul>
         <li>
@@ -29,10 +32,22 @@ export default {
 
 <style lang="scss" scoped>
 .article-sidear {
-  padding: 1rem;
   background-color: hsla(0, 0%, 100%, .6);
-
+  .title {
+    margin: 0;
+    padding-left: 1rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 14px;
+    font-weight: 400;
+    color: #48494d;
+    border-bottom: 1px dashed #eee;
+    i {
+      font-size: 14px;
+    }
+  }
   .container {
+    padding: 1rem;
     .post {
       display: flex;
       &:hover {
