@@ -16,10 +16,7 @@
               <a href="#" @click="handleOpen">首页</a>
             </li>
             <li>
-              <a href="#" @click="handleOpen">分类</a>
-            </li>
-            <li>
-              <a href="#" @click="handleOpen">标签</a>
+              <a href="#" @click="handleOpen">极简</a>
             </li>
             <li>
               <a href="#" @click="handleOpen">关于</a>

@@ -1,11 +1,21 @@
 <template>
   <footer>
     <div class="footer-content">
-      <span>© 2016 - 2017 ❤ Littlewin. </span>
-      <span>
-        <a href="#">介绍</a>
-        <a href="#">RSS</a>
-      </span>
+      <div>
+        <span>© 2016 - 2017 ❤ Littlewin. </span>
+        <span>
+          <a href="#">SITEMAP</a>
+        </span>
+      </div>
+      <div>
+        <span>
+          Powered on by
+          <a href="#">Nuxt.js</a> &
+          <a href="#">Koa.js</a>
+        </span>
+      </div>
+
+    </div>
     </div>
   </footer>
 </template>
@@ -20,6 +30,7 @@ export default {
 footer {
   border-top: none;
   margin-bottom: 0;
+  background-color: hsla(0, 0%, 100%, .6);
   .footer-content {
     font-size: .9em;
     text-transform: uppercase;
