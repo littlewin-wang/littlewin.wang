@@ -1,25 +1,82 @@
 <template>
-  <div class="article-sidear">
-    <h5 class="title">
-      <i class="iconfont icon-menu"></i>
-      热门文章
-    </h5>
-    <div class="container">
-      <ul>
-        <li>
-          <div class="post">
-            <div class="thumb">
-              <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
+  <div class="article-sidebar">
+    <div class="article-sidebar-box">
+      <h5 class="title">
+        <i class="iconfont icon-menu"></i>
+        热门文章
+      </h5>
+      <div class="container">
+        <ul>
+          <li>
+            <div class="post">
+              <div class="thumb">
+                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
+              </div>
+              <div class="content">
+                <h5>
+                  <a href="">其实是展望</a>
+                </h5>
+                <span>{{new Date().toLocaleDateString()}}</span>
+              </div>
             </div>
-            <div class="content">
-              <h5>
-                <a href="">其实是展望</a>
-              </h5>
-              <span>{{new Date().toLocaleDateString()}}</span>
-            </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="article-sidebar-box">
+      <h5 class="title">
+        <i class="iconfont icon-menu"></i>
+        标签
+      </h5>
+      <div class="container">
+        <ul>
+          <li class="tag-container">
+            <a href="" class="tag">
+              <i class="iconfont icon-user"></i>
+              <span data-v-3a678449="">&nbsp;</span>
+              <span data-v-3a678449="">灵魂</span>
+              <span data-v-3a678449="">(3)</span>
+            </a>
+            </a>
+          </li>
+          <li class="tag-container">
+            <a href="" class="tag">
+              <i class="iconfont icon-user"></i>
+              <span data-v-3a678449="">&nbsp;</span>
+              <span data-v-3a678449="">灵魂</span>
+              <span data-v-3a678449="">(3)</span>
+            </a>
+            </a>
+          </li>
+          <li class="tag-container">
+            <a href="" class="tag">
+              <i class="iconfont icon-user"></i>
+              <span data-v-3a678449="">&nbsp;</span>
+              <span data-v-3a678449="">灵魂</span>
+              <span data-v-3a678449="">(3)</span>
+            </a>
+            </a>
+          </li>
+          <li class="tag-container">
+            <a href="" class="tag">
+              <i class="iconfont icon-user"></i>
+              <span data-v-3a678449="">&nbsp;</span>
+              <span data-v-3a678449="">灵魂</span>
+              <span data-v-3a678449="">(3)</span>
+            </a>
+            </a>
+          </li>
+          <li class="tag-container">
+            <a href="" class="tag">
+              <i class="iconfont icon-user"></i>
+              <span data-v-3a678449="">&nbsp;</span>
+              <span data-v-3a678449="">灵魂</span>
+              <span data-v-3a678449="">(3)</span>
+            </a>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +88,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article-sidear {
-  background-color: hsla(0, 0%, 100%, .6);
+.article-sidebar {
+  .article-sidebar-box {
+    margin-bottom: 2rem;
+    background-color: hsla(0, 0%, 100%, .6);
+  }
   .title {
     margin: 0;
     padding-left: 1rem;
@@ -61,6 +121,21 @@ export default {
         padding: 0 1rem;
         h5 {
           margin: .5rem 0 1rem 0;
+        }
+      }
+    }
+    .tag-container {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      .tag {
+        display: inline-block;
+        height: 2em;
+        padding: 0 .5em;
+        line-height: 2em;
+        background-color: hsla(0, 0%, 77%, .4);
+        &:hover {
+          background-color: rgba(95, 95, 95, .4);
         }
       }
     }
