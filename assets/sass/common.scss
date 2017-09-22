@@ -18,13 +18,13 @@ body {
 }
 
 a {
-  color: #48494d;
+  color: #555;
   text-decoration: none;
   transition: all .3s ease;
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    color: #1abc9c;
+    color: #222;
   }
 }
 
