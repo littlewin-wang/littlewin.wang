@@ -19,6 +19,15 @@
       <div class="col">
         <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['11']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
       </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['18']].url" :title="images[indexTest['0']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['19']].url" :title="images[indexTest['1']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['20']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
+      </div>
     </div>
     <div class="row">
       <div class="col">
@@ -38,6 +47,15 @@
       </div>
       <div class="col">
         <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['14']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['21']].url" :title="images[indexTest['0']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['22']].url" :title="images[indexTest['1']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['23']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
       </div>
     </div>
     <div class="row">
@@ -59,7 +77,17 @@
       <div class="col">
         <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['17']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
       </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['24']].url" :title="images[indexTest['0']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['25']].url" :title="images[indexTest['1']].label" @change="changeUrl"></Rotator>
+      </div>
+      <div class="col">
+        <Rotator ref="rotator" :animation="animations[Math.floor(Math.random()*animations.length)]" :imgUrl="images[indexTest['26']].url" :title="images[indexTest['2']].label" @change="changeUrl"></Rotator>
+      </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -91,7 +119,16 @@ export default {
         '14': 14,
         '15': 15,
         '16': 16,
-        '17': 17
+        '17': 17,
+        '18': 18,
+        '19': 19,
+        '20': 20,
+        '21': 21,
+        '22': 22,
+        '23': 23,
+        '24': 24,
+        '25': 25,
+        '26': 26,
       },
       images: [
         {
@@ -188,6 +225,45 @@ export default {
         {
           url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg',
           label: '23'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-8/29213923.jpg',
+          label: '24'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-9-27/77701867.jpg',
+          label: '25'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-9-30/85454892.jpg',
+          label: '26'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-10-17/11886208.jpg',
+          label: '27'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-10-30/20940731.jpg',
+          label: '28'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-8/65019381.jpg',
+          label: '29'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-11-8/7134187.jpg',
+          label: '30'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/public/16-12-5/39797105.jpg',
+          label: '31'
+        }, {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/public/16-12-8/34326467.jpg',
+          label: '32'
+        },
+        {
+          url: 'http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg',
+          label: '33'
         }
       ],
       animations: [
@@ -261,7 +337,7 @@ export default {
 .grid {
   display: flex;
   flex-flow: column nowrap;
-  width: 480px;
+  width: 720px;
   height: 240px;
   background: #000;
   .row {
