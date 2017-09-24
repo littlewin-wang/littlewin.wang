@@ -1,14 +1,11 @@
 <template>
   <div class="article-list">
+    <ListHeader></ListHeader>
 
     <Card></Card>
-
     <Card></Card>
-
     <Card></Card>
-
     <Card></Card>
-
     <Card></Card>
 
     <div class="loading">
@@ -19,11 +16,13 @@
 </template>
 
 <script>
+import ListHeader from './header'
 import Card from './card'
 
 export default {
   name: 'List',
   components: {
+    ListHeader,
     Card
   },
   data () {
