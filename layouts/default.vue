@@ -4,7 +4,19 @@
     <LHeader></LHeader>
     <div class="container">
       <div class="content">
-        <nuxt/>
+        <div class="carrousel-container">
+          <Carrousel></Carrousel>
+        </div>
+        <div class="main-container">
+          <div class="page-container">
+            <nuxt/>
+          </div>
+          <div class="sidebar">
+            <div>
+              <Sidebar></Sidebar>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <LFooter></LFooter>
@@ -15,12 +27,16 @@
 import Background from '~/components/layout/background'
 import LHeader from '~/components/layout/header'
 import LFooter from '~/components/layout/footer'
+import Carrousel from '~/components/layout/carrousel.vue'
+import Sidebar from '~/components/layout/sidebar.vue'
 
 export default {
   components: {
     Background,
     LHeader,
-    LFooter
+    LFooter,
+    Carrousel,
+    Sidebar
   }
 }
 </script>
@@ -44,6 +60,17 @@ export default {
       max-width: 980px;
       height: 100%;
       margin: 0 auto;
+      .main-container {
+        display: flex;
+        margin-top: 2rem;
+        .page-container {
+          flex: 1 1 66.6%;
+        }
+        .sidebar {
+          flex: 1 1 33.4%;
+          padding-left: 1rem;
+        }
+      }
     }
   }
 }
