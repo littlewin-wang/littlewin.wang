@@ -1,5 +1,8 @@
 <template>
   <div class="index">
+    <div class="nav">
+      <ArticleNav></ArticleNav>
+    </div>
     <div class="list">
       <div>
         <ArticleCard></ArticleCard>
@@ -23,6 +26,7 @@ import IndexSearch from '~/components/common/search.vue'
 import Grid from '~/components/rotator/grid.vue'
 import ArticleList from '~/components/article/list.vue'
 import ArticleCard from '~/components/article/card.vue'
+import ArticleNav from '~/components/article/nav.vue'
 
 export default {
   components: {
@@ -32,6 +36,7 @@ export default {
     Grid,
     ArticleList,
     ArticleCard,
+    ArticleNav
   },
   data () {
     return {
@@ -43,5 +48,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.index {}
+.index {
+  .nav {
+    margin-bottom: 1rem;
+  }
+}
 </style>
