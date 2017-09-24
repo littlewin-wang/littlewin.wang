@@ -1,12 +1,20 @@
 <template>
   <div class="article-list">
-    <waterfall :line-gap="200" :watch="items">
-      <waterfall-slot v-for="(item, index) in items" :width="item.width" :height="item.height" :order="index" :key="item.id" move-class="item-move">
-        <div class="article-item">
-          <Card></Card>
-        </div>
-      </waterfall-slot>
-    </waterfall>
+
+    <Card></Card>
+
+    <Card></Card>
+
+    <Card></Card>
+
+    <Card></Card>
+
+    <Card></Card>
+
+    <div class="loading">
+      <a href="">加载更多</a>
+    </div>
+
   </div>
 </template>
 
@@ -20,65 +28,22 @@ export default {
   },
   data () {
     return {
-      items: [
-        {
-          id: 0,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 1,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 2,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 3,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 4,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 5,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 6,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 7,
-          width: 240,
-          height: 360
-        },
-        {
-          id: 8,
-          width: 240,
-          height: 360
-        }
-      ]
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.item-move {
-  transition: all .5s cubic-bezier(.55, 0, .1, 1);
-  -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1);
-}
-
-.article-item {
-  padding: 1rem
+.loading {
+  margin-bottom: 2rem;
+  background-color: hsla(0, 0%, 100%, .6);
+  &:hover {
+    background-color: hsla(0, 0%, 77%, .4);
+  }
+  a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+  }
 }
 </style>

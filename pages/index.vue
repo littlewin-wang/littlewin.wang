@@ -4,15 +4,7 @@
       <ArticleNav></ArticleNav>
     </div>
     <div class="list">
-      <div>
-        <ArticleCard></ArticleCard>
-      </div>
-      <div>
-        <ArticleCard></ArticleCard>
-      </div>
-      <div>
-        <ArticleCard></ArticleCard>
-      </div>
+      <ArticleList></ArticleList>
     </div>
   </div>
 
@@ -24,9 +16,8 @@ import IndexLink from '~/components/common/link.vue'
 import IndexSelect from '~/components/common/select.vue'
 import IndexSearch from '~/components/common/search.vue'
 import Grid from '~/components/rotator/grid.vue'
-import ArticleList from '~/components/article/list.vue'
-import ArticleCard from '~/components/article/card.vue'
 import ArticleNav from '~/components/article/nav.vue'
+import ArticleList from '~/components/article/list.vue'
 
 export default {
   components: {
@@ -34,9 +25,8 @@ export default {
     IndexSelect,
     IndexSearch,
     Grid,
-    ArticleList,
-    ArticleCard,
-    ArticleNav
+    ArticleNav,
+    ArticleList
   },
   data () {
     return {

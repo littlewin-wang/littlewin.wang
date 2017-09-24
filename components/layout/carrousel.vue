@@ -48,10 +48,14 @@ export default {
         }
       ],
       swiperOption: {
+        autoplay: 3000,
         pagination: '.swiper-pagination',
         slidesPerView: 3,
+        spaceBetween: 30,
         paginationClickable: true,
-        spaceBetween: 30
+        mousewheelControl: true,
+        autoplayDisableOnInteraction: false,
+        lazyLoading: true
       }
     }
   }
