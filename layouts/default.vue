@@ -68,7 +68,7 @@ export default {
         }
         .sidebar {
           flex: 1 1 33.4%;
-          padding-left: 1rem;
+          padding-left: 2rem;
         }
       }
     }

@@ -3,7 +3,7 @@
     <div class="swiper" v-swiper:swiper="swiperOption">
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="(article, index) in articles" :key="index">
-          Slide {{index}}
+          <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg" alt="">
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -58,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .swiper {
   position: relative;
-  height: 300px;
+  height: 200px;
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -71,7 +71,10 @@ export default {
       text-align: center;
       font-size: 38px;
       font-weight: 700;
-      background-color: #ccc;
+      background-color: #eee;
+      img {
+        height: 100%
+      }
     }
   }
 }
