@@ -1,8 +1,5 @@
 <template>
   <div class="about">
-    <div class="grid-container">
-      <Grid></Grid>
-    </div>
     <div class="basic container">
       <div class="content">
         <h5 class="title">个人基本</h5>
@@ -64,6 +61,10 @@
           <a href="http://littlewin.wang">http://littlewin.wang</a>)的链接，请勿用于商业用途</p>
       </div>
     </div>
+
+    <div class="grid-container">
+      <Grid></Grid>
+    </div>
   </div>
   </div>
 </template>
@@ -91,6 +92,7 @@ export default {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   .container {

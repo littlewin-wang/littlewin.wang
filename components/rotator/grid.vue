@@ -339,7 +339,7 @@ export default {
   flex-flow: column nowrap;
   width: 720px;
   height: 240px;
-  background: #000;
+  background: transparent;
   .row {
     display: flex;
     flex-flow: row nowrap;
