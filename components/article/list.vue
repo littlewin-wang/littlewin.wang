@@ -1,17 +1,14 @@
 <template>
   <div class="article-list">
-    <ListHeader></ListHeader>
-
+    <ListHeader v-if="$route.name!=='index'"></ListHeader>
     <Card></Card>
     <Card></Card>
     <Card></Card>
     <Card></Card>
     <Card></Card>
-
     <div class="loading">
       <a href="">加载更多</a>
     </div>
-
   </div>
 </template>
 
