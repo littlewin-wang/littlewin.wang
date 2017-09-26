@@ -3,22 +3,22 @@
     <div class="container">
       <div class="date">
         <div class="detail">
-          <span class="date-day">04</span>
-          <span class="date-month">Oct</span>
+          <span class="date-day">{{new Date(article.createAt).getDate()}}</span>
+          <span class="date-month">{{new Date(article.createAt).getMonth() + 1}}月</span>
         </div>
       </div>
       <div class="content">
         <h2>
-          <a href="">应该是展望</a>
+          <a href="">{{article.title}}</a>
         </h2>
         <p class="excerpt">
-          > 生存压力以外的理想主义到底是不是耍流氓\n> 脱离知识分子的气韵来黑知识分子的虚伪外表是不是耍流氓\n> 抛弃雅俗共赏的勇气勾勒出一个不完整的人性思考轴是不是耍流氓
+          {{article.description}}
         </p>
         <div class="info">
           <div class="left">
             <span class="tag">
               <i class="iconfont icon-tag"></i>
-              <a href="">前端</a>
+              <a href="">{{article.tag[0].name}}</a>
             </span>
             <span class="author">
               <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg" alt="">
@@ -28,33 +28,36 @@
           <div class="right">
             <span class="tag">
               <i class="iconfont icon-view"></i>
-              <a href="">122</a>
+              <a href="">{{article.meta.views}}</a>
             </span>
             <span class="tag">
               <i class="iconfont icon-love"></i>
-              <a href="">122</a>
+              <a href="">{{article.meta.likes}}</a>
             </span>
             <span class="tag">
               <i class="iconfont icon-comment"></i>
-              <a href="">22</a>
+              <a href="">{{article.meta.comments}}</a>
             </span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
+  props: {
+    article: Object
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .article-card {
   display: inline-block;
+  width: 100%;
   padding: 1rem;
   margin-bottom: 2rem;
   background-color: hsla(0, 0%, 100%, .6);

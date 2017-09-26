@@ -9,7 +9,7 @@
           <ArticleNav></ArticleNav>
         </div>
         <div class="list">
-          <ArticleList></ArticleList>
+          <ArticleList :articles="articles"></ArticleList>
         </div>
       </div>
       <div class="sidebar">
@@ -28,6 +28,11 @@ import ArticleList from '~/components/article/list.vue'
 import Sidebar from '~/components/article/sidebar.vue'
 
 export default {
+  fetch ({ store }) {
+    return Promise.all([
+      store.dispatch('loadArticles')
+    ])
+  },
   components: {
     Carrousel,
     ArticleNav,
@@ -36,6 +41,11 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  computed: {
+    articles () {
+      return this.$store.state.article.list
     }
   },
   methods: {

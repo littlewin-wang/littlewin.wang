@@ -1,12 +1,8 @@
 <template>
   <div class="article-list">
     <ListHeader v-if="$route.name!=='index'"></ListHeader>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <div class="loading">
+    <Card v-for="(article, index) in articles.data.articles" :article="article" :key="index"></Card>
+    <div class="loading" @click="$emit('add')">
       <a href="">加载更多</a>
     </div>
   </div>
@@ -22,9 +18,8 @@ export default {
     ListHeader,
     Card
   },
-  data () {
-    return {
-    }
+  props: {
+    articles: Object
   }
 }
 </script>
