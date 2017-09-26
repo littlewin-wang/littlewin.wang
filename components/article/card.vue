@@ -21,22 +21,22 @@
               <a href="">{{article.tag[0].name}}</a>
             </span>
             <span class="author">
-              <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-12-20/28956487-file_1482226716996_dc59.jpg" alt="">
-              <a href="">Littlewin</a>
+              <img :src="user.gravatar" :alt="user.slogan">
+              <a href="">{{user.username}}</a>
             </span>
           </div>
           <div class="right">
             <span class="tag">
               <i class="iconfont icon-view"></i>
-              <a href="">{{article.meta.views}}</a>
+              <span>{{article.meta.views}}</span>
             </span>
             <span class="tag">
               <i class="iconfont icon-love"></i>
-              <a href="">{{article.meta.likes}}</a>
+              <span>{{article.meta.likes}}</span>
             </span>
             <span class="tag">
               <i class="iconfont icon-comment"></i>
-              <a href="">{{article.meta.comments}}</a>
+              <span>{{article.meta.comments}}</span>
             </span>
           </div>
         </div>
@@ -49,7 +49,8 @@
 export default {
   name: 'Card',
   props: {
-    article: Object
+    article: Object,
+    user: Object
   }
 }
 </script>

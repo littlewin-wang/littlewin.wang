@@ -9,7 +9,7 @@
           <ArticleNav></ArticleNav>
         </div>
         <div class="list">
-          <ArticleList :articles="articles"></ArticleList>
+          <ArticleList :articles="articles" :user="user"></ArticleList>
         </div>
       </div>
       <div class="sidebar">
@@ -30,7 +30,7 @@ import Sidebar from '~/components/article/sidebar.vue'
 export default {
   fetch ({ store }) {
     return Promise.all([
-      store.dispatch('loadArticles')
+      store.dispatch('getArticles')
     ])
   },
   components: {
@@ -46,6 +46,9 @@ export default {
   computed: {
     articles () {
       return this.$store.state.article.list
+    },
+    user () {
+      return this.$store.state.user
     }
   },
   methods: {
