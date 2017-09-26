@@ -13,10 +13,12 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "nuxt": "^1.0.0-rc8",
     "particles.js": "^2.0.0",
     "vue-awesome-swiper": "^2.6.4",
-    "vue-waterfall": "^1.0.6"
+    "vue-waterfall": "^1.0.6",
+    "vuex": "^2.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

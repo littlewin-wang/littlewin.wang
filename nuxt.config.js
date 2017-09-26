@@ -37,6 +37,7 @@ module.exports = {
     extend (webpackConfig, { isDev, isClient, isServer }) {
     },
     vendor: [
+      'axios',
       'vue-waterfall',
       'particles.js'
     ],
@@ -50,6 +51,7 @@ module.exports = {
     }
   },
   plugins: [
+    { src: '~/plugins/axios.js' },
     { src: '~plugins/vue-waterfall', ssr: false },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false }
