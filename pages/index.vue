@@ -6,7 +6,7 @@
     <div class="main-container">
       <div class="page-container">
         <div class="nav">
-          <ArticleNav></ArticleNav>
+          <ArticleNav :categories="categories"></ArticleNav>
         </div>
         <div class="list">
           <ArticleList :articles="articles" :user="user"></ArticleList>
@@ -49,6 +49,9 @@ export default {
     },
     user () {
       return this.$store.state.user
+    },
+    categories () {
+      return this.$store.state.category
     }
   },
   methods: {

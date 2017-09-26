@@ -9,8 +9,9 @@ export const actions = {
 
   nuxtServerInit (store, { params, route, isServer, req }) {
     const initAppData = [
-      // 配置数据
-      store.dispatch('getAdmin')
+      // 初始化GET博主/分类/标签等信息
+      store.dispatch('getAdmin'),
+      store.dispatch('getCategories')
     ]
     return Promise.all(initAppData)
   },
@@ -25,6 +26,20 @@ export const actions = {
         if (!success) commit('user/GET_USER_FALIURE')
       }, err => {
         commit('user/GET_USER_FALIURE', err)
+      })
+  },
+
+  // 获取分类信息
+  getCategories ({ commit }, params = { per_page: 100 }) {
+    commit('category/GET_LIST')
+    return Service.get('/category', { params })
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('category/GET_LIST_SUCCESS', res.data)
+        if (!success) commit('category/GET_LIST_FAILURE')
+      })
+      .catch(err => {
+        commit('category/GET_LIST_FAILURE', err)
       })
   },
 

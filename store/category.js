@@ -1,25 +1,25 @@
 /**
- * @file site数据管理
+ * @file 分类数据管理
  * @author littlewin(littlewin.wang@gmail.com)
  */
 
 export const state = () => {
   return {
     fetching: false,
-    data: {}
+    data: { categories: [] }
   }
 }
 
 export const mutations = {
-  GET_USER (state) {
+  GET_LIST (state) {
     state.fetching = true
   },
-  GET_USER_SUCCESS (state, action) {
+  GET_LIST_FAILURE (state) {
+    state.fetching = false
+    state.data = { categories: [] }
+  },
+  GET_LIST_SUCCESS (state, action) {
     state.fetching = false
     state.data = action.data
-  },
-  GET_USER_FAILURE (state) {
-    state.fetching = false
-    state.data = {}
   }
 }

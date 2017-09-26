@@ -2,17 +2,8 @@
   <div class="article-nav">
     <nav>
       <ul>
-        <li>
-          <a href="">思考</a>
-        </li>
-        <li>
-          <a href="">生活</a>
-        </li>
-        <li>
-          <a href="">编程</a>
-        </li>
-        <li>
-          <a href="">恋爱</a>
+        <li v-for="(category, index) in categories.data.categories" :key="index">
+          <a href="" :alt="category.name">{{category.name}}</a>
         </li>
       </ul>
     </nav>
@@ -21,7 +12,10 @@
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Nav',
+  props: {
+    categories: Object
+  }
 }
 </script>
 
