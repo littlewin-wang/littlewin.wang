@@ -11,7 +11,8 @@ export const actions = {
     const initAppData = [
       // 初始化GET博主/分类/标签等信息
       store.dispatch('getAdmin'),
-      store.dispatch('getCategories')
+      store.dispatch('getCategories'),
+      store.dispatch('getTags')
     ]
     return Promise.all(initAppData)
   },
@@ -40,6 +41,20 @@ export const actions = {
       })
       .catch(err => {
         commit('category/GET_LIST_FAILURE', err)
+      })
+  },
+
+  // 获取标签信息
+  getTags ({ commit }, params = { per_page: 100 }) {
+    commit('tag/GET_LIST')
+    return Service.get('/tag', { params })
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('tag/GET_LIST_SUCCESS', res.data)
+        if (!success) commit('tag/GET_LIST_FAILURE')
+      })
+      .catch(err => {
+        commit('tag/GET_LIST_FAILURE', err)
       })
   },
 
