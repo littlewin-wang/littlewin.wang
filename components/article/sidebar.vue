@@ -5,86 +5,18 @@
         <i class="iconfont icon-menu"></i>
         热门文章
       </h5>
-      <div class="container">
+      <div class="container" v-for="(article, index) in articles.data.articles" :key="index">
         <ul>
           <li>
             <div class="post">
               <div class="thumb">
-                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
+                <img :src="article.thumb" alt="">
               </div>
               <div class="content">
                 <h5>
-                  <a href="">其实是展望</a>
+                  <a href="">{{article.title}}</a>
                 </h5>
-                <span>{{new Date().toLocaleDateString()}}</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="container">
-        <ul>
-          <li>
-            <div class="post">
-              <div class="thumb">
-                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
-              </div>
-              <div class="content">
-                <h5>
-                  <a href="">其实是展望</a>
-                </h5>
-                <span>{{new Date().toLocaleDateString()}}</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="container">
-        <ul>
-          <li>
-            <div class="post">
-              <div class="thumb">
-                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
-              </div>
-              <div class="content">
-                <h5>
-                  <a href="">其实是展望</a>
-                </h5>
-                <span>{{new Date().toLocaleDateString()}}</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="container">
-        <ul>
-          <li>
-            <div class="post">
-              <div class="thumb">
-                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
-              </div>
-              <div class="content">
-                <h5>
-                  <a href="">其实是展望</a>
-                </h5>
-                <span>{{new Date().toLocaleDateString()}}</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="container">
-        <ul>
-          <li>
-            <div class="post">
-              <div class="thumb">
-                <img src="http://demo.qodeinteractive.com/bridge106/wp-content/uploads/2013/10/b-10-best-productivity-secrets-revealed-150x150.jpg" alt="">
-              </div>
-              <div class="content">
-                <h5>
-                  <a href="">其实是展望</a>
-                </h5>
-                <span>{{new Date().toLocaleDateString()}}</span>
+                <span>{{new Date(article.createAt).toLocaleDateString()}}</span>
               </div>
             </div>
           </li>
@@ -177,7 +109,10 @@
 
 <script>
 export default {
-  name: 'Sidebar'
+  name: 'Sidebar',
+  props: {
+    articles: Object
+  }
 }
 </script>
 

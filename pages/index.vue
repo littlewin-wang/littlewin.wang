@@ -14,7 +14,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar></Sidebar>
+          <Sidebar :articles="articles"></Sidebar>
         </div>
       </div>
     </div>
@@ -46,6 +46,9 @@ export default {
   computed: {
     articles () {
       return this.$store.state.article.list
+    },
+    hotArticles () {
+      return this.$store.state.article.hot
     },
     user () {
       return this.$store.state.user
