@@ -40,7 +40,7 @@ export default {
     }
   },
   created () {
-    // 如果标签找不到，则返回上一个页面
+    // 如果分类找不到，则返回上一个页面
     if (!this.categoryID) {
       this.$router.back()
     }
