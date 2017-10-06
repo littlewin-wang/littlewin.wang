@@ -63,6 +63,8 @@ export const actions = {
     commit('article/GET_LIST')
     return Service.get('/article', { params })
       .then(res => {
+        console.log(params)
+        console.log(res.data)
         const success = !!res.status && res.data && res.data.success === true
         const isAdd = params.page && params.page > 1
         const commitName = `article/${isAdd ? 'ADD' : 'GET'}_LIST_SUCCESS`

@@ -3,7 +3,7 @@
     <div class="main-container">
       <div class="page-container">
         <div class="list">
-          <ArticleList></ArticleList>
+          <ArticleList :articles="articles" :user="user"></ArticleList>
         </div>
       </div>
       <div class="sidebar">
@@ -26,8 +26,44 @@ export default {
     ArticleList,
     Sidebar
   },
-  data () {
+  validate ({ params }) {
+    return !!params.keyword
+  },
+  fetch ({ store, params }) {
+    return store.dispatch('getArticles', params)
+  },
+  head () {
+    const keyword = this.$route.params.keyword
+    const title = keyword.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
     return {
+      title: `${title} | 搜索`
+    }
+  },
+  created () {
+    // 如果标签找不到，则返回上一个页面
+    if (!this.keyword) {
+      this.$router.back()
+    }
+  },
+  computed: {
+    articles () {
+      return this.$store.state.article.list
+    },
+    user () {
+      return this.$store.state.user
+    },
+    keyword () {
+      return this.$route.params.keyword ? this.$route.params.keyword : ''
+    },
+    baseParams () {
+      return {
+        keyword: this.keyword
+      }
+    },
+    nextPageParams () {
+      return Object.assign({
+        page: this.articles.data.page + 1
+      }, this.baseParams)
     }
   },
   methods: {
