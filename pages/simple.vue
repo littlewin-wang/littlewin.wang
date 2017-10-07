@@ -18,7 +18,10 @@
               <span>
                 <i class="iconfont icon-category"></i>
               </span>
-              - {{category.name}}
+              - {{category.name}} ({{category.count}})
+              <p>
+                {{category.description}}
+              </p>
             </li>
           </ul>
         </div>
@@ -27,6 +30,17 @@
           <ul>
             <li v-for="(tag, index) in tags.data.tags" :key="index">
               {{tag.name}} ({{tag.count}})
+            </li>
+          </ul>
+        </div>
+        <div class="tag page-list">
+          <h5>页面</h5>
+          <ul>
+            <li class="item">
+              <router-link to="/">主页</router-link>
+            </li>
+            <li class="item">
+              <router-link to="/about">关于</router-link>
             </li>
           </ul>
         </div>
@@ -92,7 +106,8 @@ export default {
       }
     }
   }
-  .tag-list {
+  .tag-list,
+  .page-list {
     margin-bottom: 2rem;
     h5 {
       margin: 1rem 0
