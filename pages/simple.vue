@@ -2,14 +2,33 @@
   <div class="main">
     <div class="main-container">
       <div class="page-container">
-        <div class="articles">
+        <div class="articles list">
           <h5>文章</h5>
-          <ol>
+          <ul>
             <li v-for="(article, index) in articles.data.articles" :key="index">
               <span>{{index+1}}</span>
               - {{article.title}}
             </li>
-          </ol>
+          </ul>
+        </div>
+        <div class="category list">
+          <h5>分类</h5>
+          <ul>
+            <li v-for="(category, index) in categories.data.categories" :key="index">
+              <span>
+                <i class="iconfont icon-category"></i>
+              </span>
+              - {{category.name}}
+            </li>
+          </ul>
+        </div>
+        <div class="tag tag-list">
+          <h5>标签</h5>
+          <ul>
+            <li v-for="(tag, index) in tags.data.tags" :key="index">
+              {{tag.name}} ({{tag.count}})
+            </li>
+          </ul>
         </div>
       </div>
       <div class="sidebar">
@@ -58,20 +77,31 @@ export default {
   margin-bottom: 2rem;
   padding: 2em 3em;
   background-color: hsla(0, 0%, 100%, .6);
-  .articles {
+  .list {
+    margin-bottom: 2rem;
     h5 {
       margin: 1rem 0
     }
-    ol {
+    ul {
       padding-left: 2rem;
       li {
         margin-bottom: 1rem;
         span {
           font: bold italic 1.5rem Helvetica, Verdana, sans-serif;
         }
-        .iconfont {
-          margin-left: 1rem
-        }
+      }
+    }
+  }
+  .tag-list {
+    margin-bottom: 2rem;
+    h5 {
+      margin: 1rem 0
+    }
+    ul {
+      padding-left: 2rem;
+      li {
+        display: inline-block;
+        margin: .5rem 1rem;
       }
     }
   }
