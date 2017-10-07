@@ -2,10 +2,10 @@
   <div>
     <div class="swiper" v-swiper:swiper="swiperOption">
       <div class="swiper-wrapper">
-        <div class="swiper-slide item" v-for="(article, index) in articles" :key="index">
-          <img src="http://7xpot0.com1.z0.glb.clouddn.com/16-11-7/16133495.jpg" alt="">
+        <div class="swiper-slide item" v-for="(article, index) in articles.data.articles" :key="index">
+          <img :src="article.thumb" alt="">
           <span>
-            <a href="">应该是展望</a>
+            <a href="">{{article.title}}</a>
           </span>
         </div>
       </div>
@@ -16,37 +16,11 @@
 
 <script>
 export default {
+  props: {
+    articles: Object
+  },
   data () {
     return {
-      articles: [
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        },
-        {
-          content: '123'
-        }
-      ],
       swiperOption: {
         autoplay: 3000,
         pagination: '.swiper-pagination',

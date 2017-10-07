@@ -30,48 +30,12 @@
       </h5>
       <div class="container">
         <ul>
-          <li class="tag-container">
+          <li class="tag-container" v-for="(tag, index) in tags.data.tags" :key="index">
             <a href="" class="tag">
-              <i class="iconfont icon-user"></i>
+              <i class="iconfont icon-tag"></i>
               <span data-v-3a678449="">&nbsp;</span>
-              <span data-v-3a678449="">灵魂</span>
-              <span data-v-3a678449="">(3)</span>
-            </a>
-            </a>
-          </li>
-          <li class="tag-container">
-            <a href="" class="tag">
-              <i class="iconfont icon-user"></i>
-              <span data-v-3a678449="">&nbsp;</span>
-              <span data-v-3a678449="">灵魂</span>
-              <span data-v-3a678449="">(3)</span>
-            </a>
-            </a>
-          </li>
-          <li class="tag-container">
-            <a href="" class="tag">
-              <i class="iconfont icon-user"></i>
-              <span data-v-3a678449="">&nbsp;</span>
-              <span data-v-3a678449="">灵魂</span>
-              <span data-v-3a678449="">(3)</span>
-            </a>
-            </a>
-          </li>
-          <li class="tag-container">
-            <a href="" class="tag">
-              <i class="iconfont icon-user"></i>
-              <span data-v-3a678449="">&nbsp;</span>
-              <span data-v-3a678449="">灵魂</span>
-              <span data-v-3a678449="">(3)</span>
-            </a>
-            </a>
-          </li>
-          <li class="tag-container">
-            <a href="" class="tag">
-              <i class="iconfont icon-user"></i>
-              <span data-v-3a678449="">&nbsp;</span>
-              <span data-v-3a678449="">灵魂</span>
-              <span data-v-3a678449="">(3)</span>
+              <span data-v-3a678449="">{{tag.name}}</span>
+              <span data-v-3a678449="">({{tag.count}})</span>
             </a>
             </a>
           </li>
@@ -111,7 +75,8 @@
 export default {
   name: 'Sidebar',
   props: {
-    articles: Object
+    articles: Object,
+    tags: Object
   }
 }
 </script>
@@ -144,12 +109,11 @@ export default {
       }
       .thumb {
         flex: 0 0 80px;
-        height: 80px;
       }
       .content {
         padding: 0 1rem;
         h5 {
-          margin: .5rem 0 1rem 0;
+          margin: .2rem 0;
         }
       }
     }

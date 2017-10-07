@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="carrousel-container">
-      <Carrousel></Carrousel>
+      <Carrousel :articles="articles"></Carrousel>
     </div>
     <div class="main-container">
       <div class="page-container">
@@ -14,7 +14,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar :articles="articles"></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
         </div>
       </div>
     </div>
@@ -55,6 +55,9 @@ export default {
     },
     categories () {
       return this.$store.state.category
+    },
+    tags () {
+      return this.$store.state.tag
     }
   },
   methods: {

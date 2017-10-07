@@ -8,7 +8,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
         </div>
       </div>
     </div>
@@ -49,8 +49,14 @@ export default {
     articles () {
       return this.$store.state.article.list
     },
+    hotArticles () {
+      return this.$store.state.article.hot
+    },
     user () {
       return this.$store.state.user
+    },
+    tags () {
+      return this.$store.state.tag
     },
     categoryID () {
       let category = this.$store.state.category.data.categories.find(category => category.name === this.$route.params.name)

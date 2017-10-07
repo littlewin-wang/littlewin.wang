@@ -8,7 +8,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
         </div>
       </div>
     </div>
@@ -49,8 +49,14 @@ export default {
     articles () {
       return this.$store.state.article.list
     },
+    hotArticles () {
+      return this.$store.state.article.hot
+    },
     user () {
       return this.$store.state.user
+    },
+    tags () {
+      return this.$store.state.tag
     },
     keyword () {
       return this.$route.params.keyword ? this.$route.params.keyword : ''
