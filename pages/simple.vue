@@ -61,6 +61,9 @@ export default {
   components: {
     Sidebar
   },
+  head: {
+    title: 'Simple'
+  },
   fetch ({ store }) {
     return Promise.all([
       store.dispatch('getArticles')
@@ -119,6 +122,9 @@ export default {
         margin: .5rem 1rem;
       }
     }
+  }
+  a {
+    text-decoration: underline;
   }
 }
 </style>
