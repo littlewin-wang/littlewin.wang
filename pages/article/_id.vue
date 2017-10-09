@@ -3,6 +3,8 @@
     <div class="main-container">
       <div class="page-container article-container">
         <div class="article">
+          <h2 class="title">{{ article.title || '...' }}</h2>
+          <img class="thumb" :src="article.thumb" :alt="article.description">
           <div class="content" v-html="articleContent"></div>
         </div>
       </div>
@@ -72,13 +74,23 @@ export default {
 <style lang="scss">
 .article-container {
   margin-bottom: 2rem;
-  padding: 2em 3em;
+  padding: 2rem 3rem;
   background-color: hsla(0, 0%, 100%, .6);
   .article {
-    .content {
+    >.title {
+      text-align: center;
+      margin: 1.5rem 0;
+      font-weight: 700;
+    }
+    >.thumb {
+      display: block;
+      max-width: 100%;
+      margin: 1rem auto;
+    }
+    >.content {
       a {
         font-weight: bold;
-        margin: 0 .1em;
+        margin: 0 .1rem;
 
         &.image-link {
           margin: 0;
@@ -173,26 +185,26 @@ export default {
 
       code {
         color: #bd4147;
-        padding: .3em .5em;
-        margin: 0 .5em;
+        padding: .3rem .5rem;
+        margin: 0 .5rem;
         border-radius: 2px;
         background-color: rgba(197, 197, 197, 0.4);
       }
 
       pre {
-        display: block;
+        display: flex;
         position: relative;
         overflow: hidden;
-        margin-bottom: 1em;
-        padding-left: 2.5em;
+        margin-bottom: 1rem;
+        padding: 2.8rem 0 0 0;
         background-color: rgba(0, 0, 0, 0.8);
 
         &:before {
           color: white;
           content: attr(data-lang)" CODE";
-          height: 2.8em;
-          line-height: 2.8em;
-          font-size: 1em;
+          height: 2.8rem;
+          line-height: 2.8rem;
+          font-size: 1rem;
           position: absolute;
           top: 0;
           left: 0;
@@ -205,13 +217,8 @@ export default {
         }
 
         >.code-lines {
-          position: absolute;
-          left: 0;
-          top: 2.8em;
-          margin: 0;
-          padding: 1em 0;
-          width: 2.5em;
-          height: calc(100% - 2.8em);
+          flex: 0 0 2.5rem;
+          padding: 1rem 0;
           text-align: center;
           background-color: rgba(0, 0, 0, 0.2);
 
@@ -219,7 +226,7 @@ export default {
             padding: 0;
             position: relative;
             list-style-type: none;
-            line-height: 1.6em;
+            line-height: 2rem;
             transition: background-color .05s;
 
             &:hover {
@@ -232,11 +239,11 @@ export default {
 
             &:before {
               content: '';
-              height: 1.6em;
+              height: 1.6rem;
               position: absolute;
               top: 0;
-              left: 2.5em;
-              width: 66em;
+              left: 2.5rem;
+              width: 66rem;
               background-color: rgba(154, 154, 154, 0.2);
               display: none;
               visibility: hidden;
@@ -246,13 +253,10 @@ export default {
         }
 
         >code {
+          flex: 1;
           margin: 0;
-          padding: 1em;
-          float: left;
-          width: 100%;
-          height: 100%;
-          display: block;
-          line-height: 1.6em;
+          padding: 1rem;
+          line-height: 2rem;
           color: rgba(255, 255, 255, 0.87);
           background-color: transparent;
         }

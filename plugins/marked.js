@@ -34,15 +34,14 @@ const linkParse = (href, title, text) => {
 
 // 图片解析
 const imageParse = (src, title, alt) => {
-  src = src.replace(/^http:\/\//ig, '/proxy/')
   return `<img src="${src}"
-               title="${title || alt || 'surmon.me'}"
+               title="${title || alt || 'littlewin.wang'}"
                alt="${alt || title || src}"
                onclick="if(window.utils) window.utils.openImgPopup('${src}')"/>`.replace(/\s+/g, ' ').replace('\n', '')
 }
 
 // 代码解析器（增加行号）
-const codeParse = (code, lang, escaped) => {
+const codeParse = function (code, lang, escaped) {
   if (this.options.highlight) {
     const out = this.options.highlight(code, lang)
     if (out != null && out !== code) {

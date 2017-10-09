@@ -83,6 +83,7 @@ header {
         position: relative;
         margin: 0;
         padding: 0;
+        font-size: 2rem;
         &:after {
           position: absolute;
           content: ".WANG";
