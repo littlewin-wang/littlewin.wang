@@ -5,7 +5,7 @@ marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
   tables: true,
-  breaks: false,
+  breaks: true,
   pedantic: false,
   sanitize: false,
   smartLists: true,
@@ -72,7 +72,6 @@ renderer.image = imageParse
 renderer.paragraph = paragraphParse
 
 export default (content, tags, parseHtml = false) => {
-
   renderer.text = text => text
 
   // 如果是解析评论，则不解析html内容

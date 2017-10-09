@@ -87,5 +87,21 @@ export const actions = {
       .catch(err => {
         commit('article/GET_HOT_LIST_FAILURE', err)
       })
+  },
+
+  // 获取文章具体内容
+  getArticleDetail ({ commit }, params = {}) {
+    commit('article/GET_DETAIL')
+    return Service.get(`/article/${params.id}`)
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('article/GET_DETAIL_SUCCESS', res.data)
+        if (!success) commit('article/GET_DETAIL_FAILURE')
+        return Promise.resolve(res.data)
+      })
+      .catch(err => {
+        commit('article/GET_DETAIL_FAILURE', err)
+        return Promise.reject(err)
+      })
   }
 }

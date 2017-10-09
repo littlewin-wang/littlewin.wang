@@ -18,6 +18,10 @@ export const state = () => {
     hot: {
       fetching: false,
       data: {}
+    },
+    detail: {
+      fetching: false,
+      data: {}
     }
   }
 }
@@ -48,5 +52,17 @@ export const mutations = {
   GET_HOT_LIST_SUCCESS (state, action) {
     state.hot.fetching = false
     state.hot.data = action.data
+  },
+
+  GET_DETAIL (state) {
+    state.detail.fetching = true
+  },
+  GET_DETAIL_FAILURE (state) {
+    state.detail.fetching = false
+    state.detail.data = {}
+  },
+  GET_DETAIL_SUCCESS (state, action) {
+    state.detail.fetching = false
+    state.detail.data = action.data
   }
 }
