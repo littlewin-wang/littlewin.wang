@@ -69,7 +69,7 @@ pre {
   color: #555;
   display: block;
   font-family: $monospace;
-  font-size: $font-size-base;
+  font-size: 1rem;
   margin: $md-pad 0;
   padding: $md-pad;
   white-space: pre-wrap;
@@ -78,7 +78,7 @@ pre {
 code {
   color: $text;
   font-family: $monospace;
-  font-size: $font-size-base;
+  font-size: 1rem;
   line-height: inherit;
   margin: 0;
   padding: 0;
