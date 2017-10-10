@@ -66,15 +66,28 @@
         <ul class="list">
           <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
             <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item)
-                                ? false
-                                : loadComemntList({
-                                    page: comment.data.pages + 1 - item
-                                })">
+                                              ? false
+                                              : loadComemntList({
+                                                  page: comment.data.pages + 1 - item
+                                              })">
               {{ item }}
             </a>
           </li>
         </ul>
       </div>
+      <form class="post" id="post" name="comment">
+        <div class="user">
+          <div class="name">
+            <input required type="text" name="name" placeholder="name *" v-model="user.name">
+          </div>
+          <div class="email">
+            <input required type="email" name="email" placeholder="email *" v-model="user.email">
+          </div>
+          <div class="site">
+            <input type="url" name="url" placeholder="site" v-model="user.site">
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -87,7 +100,13 @@ export default {
   name: 'comment',
   data () {
     return {
-      sortMode: -1
+      sortMode: -1,
+      user: {
+        name: '',
+        email: '',
+        site: '',
+        gravatar: null
+      }
     }
   },
   props: {
@@ -383,6 +402,280 @@ export default {
         &.actived,
         &:hover {
           background-color: $module-hover-bg;
+        }
+      }
+    }
+  }
+}
+
+.post {
+  display: block;
+  border-top: 1px dashed darken($module-hover-bg, 30%);
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  >.user {
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    display: flex;
+    margin-bottom: 1rem;
+    padding-left: 5.2rem;
+
+    >.edit {
+      flex-grow: 1;
+      text-align: right;
+      line-height: 2em;
+      position: relative;
+
+      >.name {
+        font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+      }
+
+      >.setting {
+        margin-left: 1rem;
+        font-size: 1rem;
+        display: inline-block;
+
+        &:hover {
+
+          >.user-tool {
+            display: block;
+          }
+        }
+
+        >.iconfont {
+          margin-right: .5rem;
+        }
+
+        >.user-tool {
+          display: none;
+          position: absolute;
+          right: 0;
+          top: 2em;
+          margin: 0;
+          padding: 0;
+          padding-top: .5rem;
+          list-style-type: square;
+          z-index: 99;
+        }
+      }
+    }
+
+    >.save {
+      width: 10%;
+      margin-left: 1em;
+      flex-grow: 1;
+      line-height: 2em;
+      text-align: center;
+      font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+
+      >button {
+        display: block;
+        width: 100%;
+        background-color: $module-hover-bg;
+
+        &:hover {
+          background-color: darken($module-hover-bg, 10%);
+        }
+      }
+    }
+
+    >.name,
+    >.email,
+    >.site {
+      font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+      flex-grow: 1;
+
+      >input {
+        width: 100%;
+        height: 2em;
+        background-color: $module-hover-bg;
+
+        &:focus,
+        &:hover {
+          background-color: darken($module-hover-bg, 10%);
+        }
+      }
+    }
+
+    >.name,
+    >.email {
+      margin-right: 1em;
+    }
+  }
+
+  >.editor-box {
+    width: 100%;
+    display: flex;
+
+    >.user {
+      margin-right: 1em;
+
+      >.gravatar {
+        display: block;
+        margin-bottom: .5em;
+        width: 4rem;
+        height: 4rem;
+        background-color: darken($module-hover-bg, 20%);
+
+        >img {
+          width: 100%;
+          height: 100%;
+          transition: transform .5s ease-out;
+        }
+      }
+    }
+
+    >.editor {
+      flex-grow: 1;
+      position: relative;
+      overflow: hidden;
+
+      >.will-reply {
+        font-size: .95em;
+        margin-bottom: 1em;
+
+        >.reply-user {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          padding: 0 1rem;
+          height: 2.6em;
+          line-height: 2.6em;
+          background-color: $module-hover-bg;
+
+          &:hover {
+            background-color: darken($module-hover-bg, 10%);
+          }
+        }
+
+        >.reply-preview {
+          max-height: 10em;
+          overflow: auto;
+          padding: 1rem;
+
+          background-color: $module-hover-bg;
+
+          &:hover {
+            background-color: darken($module-hover-bg, 10%);
+          }
+        }
+      }
+
+      >.markdown {
+        position: relative;
+        overflow: hidden;
+
+        >.markdown-editor {
+          min-height: 6em;
+          max-height: 36em;
+          overflow: auto;
+          outline: none;
+          padding: .5em;
+          cursor: auto;
+          font-size: .95em;
+          line-height: 1.8em;
+          background-color: $module-hover-bg;
+
+          &:empty:before {
+            content: attr(placeholder);
+            color: $disabled;
+          }
+
+          &:focus {
+            content: none;
+          }
+
+          &:hover {
+            background-color: darken($module-hover-bg, 10%);
+          }
+        }
+
+        >.markdown-preview {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 0;
+          overflow: auto;
+          margin: 0;
+          padding: .5em;
+          @include css3-prefix(transform, translateY(-100%));
+          background-color: rgba(235, 235, 235, 0.85);
+          transition: transform .2s;
+
+          &.actived {
+            height: 100%;
+            transition: transform .2s;
+            @include css3-prefix(transform, translateY(0));
+          }
+        }
+      }
+
+      >.editor-tools {
+        height: 2em;
+        line-height: 2em;
+        background-color: darken($module-hover-bg, 20%);
+
+        >.emoji {
+
+          >.emoji-box {
+            display: none;
+            position: absolute;
+            bottom: 2em;
+            left: 0;
+            background-color: $module-bg;
+
+            >.emoji-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              font-size: 1.3em;
+              display: flex;
+              flex-wrap: wrap;
+
+              >.item {
+                padding: 0 .4em;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: $module-hover-bg;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            >.emoji-box {
+              display: block;
+            }
+          }
+        }
+
+        >.emoji,
+        >.image,
+        >.link,
+        >.code,
+        >.preview {
+          width: 2em;
+          height: 2em;
+          text-align: center;
+          display: inline-block;
+
+          &:hover {
+            background-color: darken($module-hover-bg, 20%);
+          }
+        }
+
+        >.submit {
+          float: right;
+          width: 7em;
+          background-color: darken($module-hover-bg, 15%);
+
+          &:hover {
+            background-color: darken($module-hover-bg, 40%);
+          }
         }
       }
     }
