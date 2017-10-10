@@ -47,6 +47,7 @@ module.exports = {
     vendor: [
       'axios',
       'vue-waterfall',
+      'clipboard',
       'particles.js',
       'swiper',
       'marked',
@@ -64,6 +65,7 @@ module.exports = {
   plugins: [
     { src: '~/plugins/axios.js' },
     { src: '~plugins/vue-waterfall', ssr: false },
+    { src: '~/plugins/clipboard.js' },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
     { src: '~/plugins/marked.js' }
