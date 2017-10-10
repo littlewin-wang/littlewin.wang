@@ -35,7 +35,7 @@ export default {
   },
   head () {
     const tag = this.$route.params.name
-    const title = tag.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
+    const title = tag ? tag.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()) : ''
     return {
       title: `${title} | 标签`
     }

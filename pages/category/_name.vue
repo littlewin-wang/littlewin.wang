@@ -35,7 +35,7 @@ export default {
   },
   head () {
     const category = this.$route.params.name
-    const title = category.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
+    const title = category ? category.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()) : ''
     return {
       title: `${title} | 分类`
     }

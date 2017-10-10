@@ -56,6 +56,20 @@ export default {
   validate ({ params }) {
     return (!!params.id && !Object.is(Number(params.id), NaN))
   },
+  head () {
+    const article = this.article
+    return {
+      title: article.title || 'No Result Data.',
+      meta: [
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: (article.keywords ? article.keywords.join(',') : article.title) || ''
+        },
+        { hid: 'description', name: 'description', content: article.description }
+      ]
+    }
+  },
   fetch ({ store, params }) {
     return store.dispatch('getArticleDetail', params)
   },
