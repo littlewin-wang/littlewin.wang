@@ -35,6 +35,9 @@
             <a href="http://creativecommons.org/licenses/by/4.0/deed.zh">署名 4.0 国际</a>」创作共享协议
           </p>
         </div>
+        <div class="carrousel-container">
+          <Carrousel :articles="article.related"></Carrousel>
+        </div>
       </div>
       <div class="sidebar">
         <div>
@@ -46,7 +49,7 @@
 </template>
 
 <script>
-import Carrousel from '~/components/index/carrousel.vue'
+import Carrousel from '~/components/article/carrousel.vue'
 import Sidebar from '~/components/article/sidebar.vue'
 import Share from '~/components/common/share.vue'
 import marked from '~/plugins/marked'
@@ -323,5 +326,12 @@ export default {
       text-decoration: underline;
     }
   }
+}
+
+.carrousel-container {
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsla(0, 0%, 100%, .6);
+  overflow: hidden;
 }
 </style>
