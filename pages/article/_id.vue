@@ -11,7 +11,7 @@
           <share></share>
         </div>
         <div class="meta-container">
-          <div>
+          <p>
             <span>本文于&nbsp;{{new Date(article.createAt).toLocaleDateString()}}&nbsp;</span>
             <span>
               发布在&nbsp;
@@ -21,7 +21,19 @@
               &nbsp;分类下,
             </span>
             <span>当前已被围观&nbsp;{{article.meta.views}}&nbsp;次</span>
-          </div>
+          </p>
+          <p>
+            并被添加「
+            <router-link :to="`/tag/${tag.name}`" :title="tag.description || tag.name" v-for="(tag, index) in article.tag" :key="index">
+              <span>{{ tag.name }}</span>
+              <span v-if="article.tag.length && article.tag[index + 1]">、</span>
+            </router-link>
+            」标签
+          </p>
+          <p>
+            本站使用「
+            <a href="http://creativecommons.org/licenses/by/4.0/deed.zh">署名 4.0 国际</a>」创作共享协议
+          </p>
         </div>
       </div>
       <div class="sidebar">
@@ -291,5 +303,11 @@ export default {
   margin-bottom: 1rem;
   padding: 1rem 1.5rem;
   background-color: hsla(0, 0%, 100%, .6);
+  p {
+    margin: .5rem 0;
+    a {
+      text-decoration: underline;
+    }
+  }
 }
 </style>
