@@ -103,5 +103,24 @@ export const actions = {
         commit('article/GET_DETAIL_FAILURE', err)
         return Promise.reject(err)
       })
+  },
+
+  // 根据post-id获取评论列表
+  loadCommentsByPostId ({ commit }, params) {
+    params.sort = params.sort || -1
+    params.page = params.page || 1
+    params.per_page = params.per_page || 40
+
+    commit('comment/GET_LIST')
+    return Service.get('/comment', { params }).then(res => {
+      const success = !!res.status && res.data && res.data.success === true
+      if (success) {
+        if (Object.is(params.sort, -1)) res.data.data.comments.reverse()
+        commit('comment/GET_LIST_SUCCESS', res.data)
+      }
+      if (!success) commit('comment/GET_LIST_FAILURE')
+    }, err => {
+      commit('comment/GET_LIST_FAILURE', err)
+    })
   }
 }

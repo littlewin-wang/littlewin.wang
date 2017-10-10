@@ -1,0 +1,68 @@
+// container
+$container-width: 75em;
+$header-height: 4.5em;
+$mobile-container-width: 100%;
+$body-bg: #eee;
+$module-bg: rgba(255,255,255,0.6);
+$module-hover-bg: rgba(197,197,197,0.4);
+
+// mobile
+$mobile-aside-bg: #34393d;
+$mobile-aisde-transition: all 0.35s ease-out;
+
+//Other
+$radius: 2px;
+$navbar-height: 4.5em;
+
+//Basic stylings
+$br: 4px;
+$xs-pad: 4px;
+$sm-pad: 8px;
+$md-pad: 1.2em;
+$lg-pad: 1.5em;
+$xlg-pad: 3em;
+$trans: .3s;
+
+//Breakpoints
+$small-breakpoint: 400px;
+$large-breakpoint: $container-width;
+
+//Colors
+$primary: #0088f5;
+$accent: #64ffda;
+$red: #f44336;
+$yellow: #ffeb3b;
+$grey: #efefef;
+$white: #fff;
+$black: #000;
+$black-light: #555;
+
+//Text
+$text: $black-light;
+$secondary: rgba(0, 0, 0, .54);
+$disabled: rgba(0, 0, 0, .38);
+$dividers: rgba(0, 0, 0, .26);
+
+//Links
+$link-color: $text;
+$link-hover-color: darken($link-color, 20%);
+
+//Font
+$sans-serif: DINRegular, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "微软雅黑", sans-serif;
+$serif: Georgia, Times, 'Times New Roman', serif;
+$monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-family: $sans-serif;
+
+//Typography
+$font-size-base: 14px;
+$font-size-large: 1.2rem;
+$font-size-small: .85rem;
+$font-size-h1: 2rem;
+$font-size-h2: 1.75rem;
+$font-size-h3: 1.5rem;
+$font-size-h4: 1.2rem;
+$font-size-h5: 1rem;
+$font-size-h6: $font-size-small;
+$line-height-base: 1.4;
+
+$border: 1px solid $dividers;

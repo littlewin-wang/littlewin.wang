@@ -51,7 +51,8 @@ module.exports = {
       'particles.js',
       'swiper',
       'marked',
-      'highlight.js'
+      'highlight.js',
+      'ua-device'
     ],
     babel: {
       presets: ['es2015', 'stage-2'],
@@ -68,7 +69,8 @@ module.exports = {
     { src: '~/plugins/clipboard.js' },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
-    { src: '~/plugins/marked.js' }
+    { src: '~/plugins/marked.js' },
+    { src: '~/plugins/ua-device.js' }
   ],
   css: [
     'swiper/dist/css/swiper.css',

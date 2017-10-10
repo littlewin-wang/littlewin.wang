@@ -39,7 +39,7 @@
           <Carrousel :articles="article.related"></Carrousel>
         </div>
         <div class="comment-container">
-          <Comment></Comment>
+          <Comment :likes="article.meta.likes" :postID="article.id"></Comment>
         </div>
       </div>
       <div class="sidebar">
