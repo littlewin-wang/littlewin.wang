@@ -89,12 +89,6 @@ code {
 
 a {
   color: $link-color;
-
-  &:hover,
-  &:focus {
-    color: $primary;
-    text-decoration: underline;
-  }
 }
 
 dl {

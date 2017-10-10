@@ -109,7 +109,7 @@ export const actions = {
   loadCommentsByPostId ({ commit }, params) {
     params.sort = params.sort || -1
     params.page = params.page || 1
-    params.per_page = params.per_page || 40
+    params.per_page = params.per_page || 2
 
     commit('comment/GET_LIST')
     return Service.get('/comment', { params }).then(res => {

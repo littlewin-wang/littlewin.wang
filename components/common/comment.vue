@@ -62,6 +62,19 @@
           </li>
         </ul>
       </div>
+      <div class="pagination" v-if="comment.data.pages > 1">
+        <ul class="list">
+          <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
+            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item)
+                                ? false
+                                : loadComemntList({
+                                    page: comment.data.pages + 1 - item
+                                })">
+              {{ item }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -136,6 +149,11 @@ export default {
     },
     marked (content) {
       return marked(content, null, false)
+    },
+    // 翻页反向计算
+    paginationReverseActive (index) {
+      const comment = this.comment.data
+      return Object.is(index, comment.pages + 1 - comment.page)
     }
   }
 }
@@ -320,6 +338,51 @@ export default {
 
         &:hover {
           opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  margin-top: .5rem;
+
+  >.list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+
+    >.item {
+      margin: 0 0.5em;
+
+      >.pagination-btn {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        display: inline-block;
+        line-height: 2rem;
+        text-align: center;
+
+        &.prev,
+        &.next {
+          width: 5em;
+          font-size: .9em;
+
+          &:hover {
+            background: none;
+          }
+        }
+
+        &.disabled {
+          cursor: no-drop;
+          opacity: .5;
+        }
+
+        &.actived,
+        &:hover {
+          background-color: $module-hover-bg;
         }
       }
     }
