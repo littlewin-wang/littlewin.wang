@@ -32,11 +32,14 @@
           </p>
           <p>
             本站使用「
-            <a href="http://creativecommons.org/licenses/by/4.0/deed.zh">署名 4.0 国际</a>」创作共享协议
+            <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external nofollow">署名 4.0 国际</a>」创作共享协议
           </p>
         </div>
         <div class="carrousel-container">
           <Carrousel :articles="article.related"></Carrousel>
+        </div>
+        <div class="comment-container">
+          <Comment></Comment>
         </div>
       </div>
       <div class="sidebar">
@@ -52,6 +55,7 @@
 import Carrousel from '~/components/article/carrousel.vue'
 import Sidebar from '~/components/article/sidebar.vue'
 import Share from '~/components/common/share.vue'
+import Comment from '~/components/common/comment.vue'
 import marked from '~/plugins/marked'
 
 export default {
@@ -79,7 +83,8 @@ export default {
   components: {
     Carrousel,
     Sidebar,
-    Share
+    Share,
+    Comment
   },
   data () {
     return {
@@ -333,5 +338,11 @@ export default {
   padding: 1rem 1.5rem;
   background-color: hsla(0, 0%, 100%, .6);
   overflow: hidden;
+}
+
+.comment-container {
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsla(0, 0%, 100%, .6);
 }
 </style>
