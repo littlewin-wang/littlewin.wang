@@ -30,7 +30,8 @@ export default {
     return !!params.name
   },
   fetch ({ store, params }) {
-    return store.dispatch('getArticles', { tag: this.tagID })
+    let tag = store.state.tag.data.tags.find(tag => tag.name === params.name)
+    return store.dispatch('getArticles', { tag: tag ? tag._id : '' })
   },
   head () {
     const tag = this.$route.params.name

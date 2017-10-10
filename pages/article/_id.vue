@@ -10,6 +10,19 @@
         <div class="share-container">
           <share></share>
         </div>
+        <div class="meta-container">
+          <div>
+            <span>本文于&nbsp;{{new Date(article.createAt).toLocaleDateString()}}&nbsp;</span>
+            <span>
+              发布在&nbsp;
+              <router-link :to="`/category/${article.category.name}`" :title="article.category.description || article.category.name">
+                <span>{{ article.category.name }}</span>
+              </router-link>
+              &nbsp;分类下,
+            </span>
+            <span>当前已被围观&nbsp;{{article.meta.views}}&nbsp;次</span>
+          </div>
+        </div>
       </div>
       <div class="sidebar">
         <div>
@@ -269,7 +282,13 @@ export default {
 }
 
 .share-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsla(0, 0%, 100%, .6);
+}
+
+.meta-container {
+  margin-bottom: 1rem;
   padding: 1rem 1.5rem;
   background-color: hsla(0, 0%, 100%, .6);
 }

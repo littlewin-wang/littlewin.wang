@@ -30,7 +30,8 @@ export default {
     return !!params.name
   },
   fetch ({ store, params }) {
-    return store.dispatch('getArticles', { category: this.categoryID })
+    let category = store.state.category.data.categories.find(category => category.name === params.name)
+    return store.dispatch('getArticles', { category: category ? category._id : '' })
   },
   head () {
     const category = this.$route.params.name
