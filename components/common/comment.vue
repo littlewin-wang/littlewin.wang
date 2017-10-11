@@ -65,11 +65,7 @@
       <div class="pagination" v-if="comment.data.pages > 1">
         <ul class="list">
           <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
-            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item)
-                                              ? false
-                                              : loadComemntList({
-                                                  page: comment.data.pages + 1 - item
-                                              })">
+            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item) ? false : loadComemntList({ page: comment.data.pages + 1 - item})">
               {{ item }}
             </a>
           </li>
@@ -85,6 +81,21 @@
           </div>
           <div class="site">
             <input type="url" name="url" placeholder="site" v-model="user.site">
+          </div>
+        </div>
+        <div class="editor-box">
+          <div class="user">
+            <div class="gravatar">
+              <img :alt="user.name || '匿名用户'" :src="user.gravatar || '/images/anonymous.png'">
+            </div>
+          </div>
+          <div class="editor">
+            <div class="markdown">
+              <div class="markdown-editor" ref="markdown" contenteditable="true" placeholder="凡事三思而后言">
+              </div>
+              <div class="markdown-preview" :class="{ actived: previewMode }">
+              </div>
+            </div>
           </div>
         </div>
       </form>
@@ -676,6 +687,182 @@ export default {
           &:hover {
             background-color: darken($module-hover-bg, 40%);
           }
+        }
+      }
+    }
+  }
+}
+
+.editor-box {
+  width: 100%;
+  display: flex;
+
+  >.user {
+    margin-right: 1em;
+
+    >.gravatar {
+      display: block;
+      margin-bottom: .5em;
+      width: 4rem;
+      height: 4rem;
+      background-color: darken($module-hover-bg, 20%);
+
+      >img {
+        width: 100%;
+        height: 100%;
+        transition: transform .5s ease-out;
+      }
+    }
+  }
+
+  >.editor {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+
+    >.will-reply {
+      font-size: .95em;
+      margin-bottom: 1em;
+
+      >.reply-user {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+        height: 2.6em;
+        line-height: 2.6em;
+        background-color: $module-hover-bg;
+
+        &:hover {
+          background-color: darken($module-hover-bg, 10%);
+        }
+      }
+
+      >.reply-preview {
+        max-height: 10em;
+        overflow: auto;
+        padding: 1rem;
+
+        background-color: $module-hover-bg;
+
+        &:hover {
+          background-color: darken($module-hover-bg, 10%);
+        }
+      }
+    }
+
+    >.markdown {
+      position: relative;
+      overflow: hidden;
+
+      >.markdown-editor {
+        min-height: 6em;
+        max-height: 36em;
+        overflow: auto;
+        outline: none;
+        padding: .5em;
+        cursor: auto;
+        font-size: .95em;
+        line-height: 1.8em;
+        background-color: $module-hover-bg;
+
+        &:empty:before {
+          content: attr(placeholder);
+          color: $disabled;
+        }
+
+        &:focus {
+          content: none;
+        }
+
+        &:hover {
+          background-color: darken($module-hover-bg, 10%);
+        }
+      }
+
+      >.markdown-preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: auto;
+        margin: 0;
+        padding: .5em;
+        @include css3-prefix(transform, translateY(-100%));
+        background-color: rgba(235, 235, 235, 0.85);
+        transition: transform .2s;
+
+        &.actived {
+          height: 100%;
+          transition: transform .2s;
+          @include css3-prefix(transform, translateY(0));
+        }
+      }
+    }
+
+    >.editor-tools {
+      height: 2em;
+      line-height: 2em;
+      background-color: darken($module-hover-bg, 20%);
+
+      >.emoji {
+
+        >.emoji-box {
+          display: none;
+          position: absolute;
+          bottom: 2em;
+          left: 0;
+          background-color: $module-bg;
+
+          >.emoji-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.3em;
+            display: flex;
+            flex-wrap: wrap;
+
+            >.item {
+              padding: 0 .4em;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $module-hover-bg;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          >.emoji-box {
+            display: block;
+          }
+        }
+      }
+
+      >.emoji,
+      >.image,
+      >.link,
+      >.code,
+      >.preview {
+        width: 2em;
+        height: 2em;
+        text-align: center;
+        display: inline-block;
+
+        &:hover {
+          background-color: darken($module-hover-bg, 20%);
+        }
+      }
+
+      >.submit {
+        float: right;
+        width: 7em;
+        background-color: darken($module-hover-bg, 15%);
+
+        &:hover {
+          background-color: darken($module-hover-bg, 40%);
         }
       }
     }
