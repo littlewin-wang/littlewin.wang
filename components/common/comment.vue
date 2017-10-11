@@ -108,6 +108,60 @@
               <div class="markdown-preview">
               </div>
             </div>
+            <div class="editor-tools">
+              <a href="" class="emoji" title="插入emoji表情" @click.stop.prevent>
+                <i class="iconfont icon-emoji"></i>
+                <div class="emoji-box">
+                  <ul class="emoji-list">
+                    <li class="item" @click="insertEmoji('😃')">😃</li>
+                    <li class="item" @click="insertEmoji('😂')">😂</li>
+                    <li class="item" @click="insertEmoji('😅')">😅</li>
+                    <li class="item" @click="insertEmoji('😉')">😉</li>
+                    <li class="item" @click="insertEmoji('😌')">😌</li>
+                    <li class="item" @click="insertEmoji('😔')">😔</li>
+                    <li class="item" @click="insertEmoji('😓')">😓</li>
+                    <li class="item" @click="insertEmoji('😢')">😢</li>
+                    <li class="item" @click="insertEmoji('😍')">😍</li>
+                    <li class="item" @click="insertEmoji('😘')">😘</li>
+                    <li class="item" @click="insertEmoji('😜')">😜</li>
+                    <li class="item" @click="insertEmoji('😡')">😡</li>
+                    <li class="item" @click="insertEmoji('😭')">😭</li>
+                    <li class="item" @click="insertEmoji('😱')">😱</li>
+                    <li class="item" @click="insertEmoji('😳')">😳</li>
+                    <li class="item" @click="insertEmoji('😵')">😵</li>
+                    <li class="item" @click="insertEmoji('🌚')">🌚</li>
+                    <li class="item" @click="insertEmoji('🙏')">🙏</li>
+                    <li class="item" @click="insertEmoji('👆')">👆</li>
+                    <li class="item" @click="insertEmoji('👇')">👇</li>
+                    <li class="item" @click="insertEmoji('👌')">👌</li>
+                    <li class="item" @click="insertEmoji('👍')">👍</li>
+                    <li class="item" @click="insertEmoji('👎')">👎</li>
+                    <li class="item" @click="insertEmoji('💪')">💪</li>
+                    <li class="item" @click="insertEmoji('👏')">👏</li>
+                    <li class="item" @click="insertEmoji('🌻')">🌻</li>
+                    <li class="item" @click="insertEmoji('🌹')">🌹</li>
+                    <li class="item" @click="insertEmoji('💊')">💊</li>
+                    <li class="item" @click="insertEmoji('🇨🇳')">🇨🇳</li>
+                    <li class="item" @click="insertEmoji('🇺🇸')">🇺🇸</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="" class="image" title="插入图片">
+                <i class="iconfont icon-image"></i>
+              </a>
+              <a href="" class="link" title="插入链接">
+                <i class="iconfont icon-link"></i>
+              </a>
+              <a href="" class="code" title="插入代码">
+                <i class="iconfont icon-code"></i>
+              </a>
+              <a href="" class="preview" title="预览评论">
+                <i class="iconfont icon-view"></i>
+              </a>
+              <button type="submit" class="submit">
+                <span>{{ '发布' }}</span>
+              </button>
+            </div>
           </div>
         </div>
       </form>
@@ -637,8 +691,8 @@ export default {
       }
 
       >.editor-tools {
-        height: 2em;
-        line-height: 2em;
+        height: 2rem;
+        line-height: 2rem;
         background-color: darken($module-hover-bg, 20%);
 
         >.emoji {
@@ -646,7 +700,7 @@ export default {
           >.emoji-box {
             display: none;
             position: absolute;
-            bottom: 2em;
+            bottom: 2rem;
             left: 0;
             background-color: $module-bg;
 
@@ -654,12 +708,12 @@ export default {
               list-style: none;
               padding: 0;
               margin: 0;
-              font-size: 1.3em;
+              font-size: 1.4rem;
               display: flex;
               flex-wrap: wrap;
 
               >.item {
-                padding: 0 .4em;
+                padding: 0 .4rem;
                 cursor: pointer;
 
                 &:hover {
@@ -681,19 +735,23 @@ export default {
         >.link,
         >.code,
         >.preview {
-          width: 2em;
-          height: 2em;
+          width: 2rem;
+          height: 2rem;
           text-align: center;
           display: inline-block;
 
           &:hover {
             background-color: darken($module-hover-bg, 20%);
           }
+
+          i {
+            font-size: 1rem;
+          }
         }
 
         >.submit {
           float: right;
-          width: 7em;
+          width: 7rem;
           background-color: darken($module-hover-bg, 15%);
 
           &:hover {
@@ -877,6 +935,72 @@ export default {
           background-color: darken($module-hover-bg, 40%);
         }
       }
+    }
+  }
+}
+
+.editor-tools {
+  height: 2em;
+  line-height: 2em;
+  background-color: darken($module-hover-bg, 20%);
+
+  >.emoji {
+
+    >.emoji-box {
+      display: none;
+      position: absolute;
+      bottom: 2em;
+      left: 0;
+      background-color: $module-bg;
+
+      >.emoji-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1.3em;
+        display: flex;
+        flex-wrap: wrap;
+
+        >.item {
+          padding: 0 .4em;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $module-hover-bg;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      >.emoji-box {
+        display: block;
+      }
+    }
+  }
+
+  >.emoji,
+  >.image,
+  >.link,
+  >.code,
+  >.preview {
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    display: inline-block;
+
+    &:hover {
+      background-color: darken($module-hover-bg, 20%);
+    }
+  }
+
+  >.submit {
+    float: right;
+    width: 7em;
+    background-color: darken($module-hover-bg, 15%);
+
+    &:hover {
+      background-color: darken($module-hover-bg, 40%);
     }
   }
 }

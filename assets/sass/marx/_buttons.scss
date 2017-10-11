@@ -1,14 +1,8 @@
 input[type=submit],
 input[type=reset],
 button {
-  background: $primary;
-  border: $border;
-  border-radius: $br;
-  color: $white;
   cursor: pointer;
   display: inline-block;
-  margin: 0;
-  padding: $sm-pad $md-pad;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
