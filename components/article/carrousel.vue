@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/sass/mixins';
+
 .swiper {
   position: relative;
   height: 120px;
@@ -46,12 +48,21 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
       text-align: center;
       font-size: 38px;
       font-weight: 700;
       background-color: #eee;
+      &:hover {
+        img {
+          opacity: 1;
+          @include css3-prefix(transform, scale(1.2) rotate(3deg));
+          @include css3-prefix(transition, all 1s);
+        }
+      }
       img {
-        height: 100%
+        height: 100%;
+        opacity: .8;
       }
       span {
         position: absolute;

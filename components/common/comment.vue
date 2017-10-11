@@ -93,7 +93,7 @@
             <div class="markdown">
               <div class="markdown-editor" ref="markdown" contenteditable="true" placeholder="凡事三思而后言">
               </div>
-              <div class="markdown-preview" :class="{ actived: previewMode }">
+              <div class="markdown-preview">
               </div>
             </div>
           </div>
