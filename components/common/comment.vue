@@ -19,7 +19,7 @@
           <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comment.data.comments">
             <div class="cm-avatar">
               <a target="_blank" rel="external nofollow" :href="comment.author.site">
-                <img :alt="comment.author.name || '匿名用户'" :src="'/images/anonymous.png'">
+                <img :alt="comment.author.name || '匿名用户'" :src="'/images/anonymous.jpg'">
               </a>
             </div>
             <div class="cm-body">
@@ -86,10 +86,22 @@
         <div class="editor-box">
           <div class="user">
             <div class="gravatar">
-              <img :alt="user.name || '匿名用户'" :src="user.gravatar || '/images/anonymous.png'">
+              <img :alt="user.name || '匿名用户'" :src="user.gravatar || '/images/anonymous.jpg'">
             </div>
           </div>
           <div class="editor">
+            <div class="will-reply">
+              <div class="reply-user">
+                <span>
+                  <span>回复 </span>
+                  <a href="">
+                    <strong>#123 @test：</strong>
+                  </a>
+                </span>
+                <a href="" class="cancel iconfont icon-close"></a>
+              </div>
+              <div class="reply-preview"></div>
+            </div>
             <div class="markdown">
               <div class="markdown-editor" ref="markdown" contenteditable="true" placeholder="凡事三思而后言">
               </div>
