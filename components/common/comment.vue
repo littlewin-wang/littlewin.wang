@@ -10,8 +10,8 @@
           </span>
         </div>
         <div class="right">
-          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, -1) }">最新</a>
-          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, 2) }">最热</a>
+          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, -1) }" @click.stop.prevent="sortComments(-1)">最新</a>
+          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, 2) }" @click.stop.prevent="sortComments(2)">最热</a>
         </div>
       </div>
       <div class="list">
@@ -65,7 +65,7 @@
       <div class="pagination" v-if="comment.data.pages > 1">
         <ul class="list">
           <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
-            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item) ? false : loadComemntList({ page: comment.data.pages + 1 - item})">
+            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item) ? false : loadCommentList({ page: comment.data.pages + 1 - item})">
               {{ item }}
             </a>
           </li>
@@ -177,6 +177,7 @@ export default {
   name: 'comment',
   data () {
     return {
+      // 评论排序 -1:最新 2:最热
       sortMode: -1,
       user: {
         name: '',
@@ -212,7 +213,7 @@ export default {
   mounted () {
     this.initUser()
     if (!this.comment.data.pages) {
-      this.loadComemntList()
+      this.loadCommentList()
     }
   },
   methods: {
@@ -241,6 +242,13 @@ export default {
           console.warn('喜欢失败', err)
         })
     },
+    // 排序评论
+    sortComments (sort) {
+      if (this.sortMode !== sort) {
+        this.sortMode = sort
+        this.loadCommentList()
+      }
+    },
     // 顶某条评论
     likeComment (comment) {
       if (this.commentLiked(comment.id)) return false
@@ -258,7 +266,7 @@ export default {
       return this.historyLikes.comments.includes(id)
     },
     // 获取评论列表
-    loadComemntList (params = {}) {
+    loadCommentList (params = {}) {
       params.sort = this.sortMode
       this.$store.dispatch('loadCommentsByPostId', Object.assign(params, { postID: this.postID }))
     },
