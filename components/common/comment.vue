@@ -162,8 +162,8 @@
               <a href="" class="preview" :class="{ actived: previewMode }" title="预览评论" @click.stop.prevent="togglePreviewMode">
                 <i class="iconfont icon-view"></i>
               </a>
-              <button type="submit" class="submit">
-                <span>{{ '发布' }}</span>
+              <button type="submit" class="submit" :disabled="comment.posting" @click="submitComment($event)">
+                <span>{{ comment.posting ? '发布中...' : '发布' }}</span>
               </button>
             </div>
           </div>
@@ -191,6 +191,9 @@ export default {
       commentContentText: '',
       previewContent: '',
       previewMode: false,
+      // 用户相关
+      userCacheMode: false,
+      userCacheEditing: false,
       user: {
         name: '',
         email: '',
@@ -202,6 +205,10 @@ export default {
         pages: [],
         comments: []
       },
+      regexs: {
+        email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
+        url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+      }
     }
   },
   props: {
@@ -381,6 +388,12 @@ export default {
       }
       this.commentContentChange()
     },
+    // 清空评论框
+    clearCommentContent () {
+      this.commentContentHtml = ''
+      this.$refs.markdown.innerHTML = this.commentContentHtml
+      this.commentContentChange()
+    },
     // 切换预览模式
     togglePreviewMode () {
       this.previewContent = this.marked(this.commentContentText)
@@ -405,6 +418,45 @@ export default {
         }
       }
       this.updateCommentContent(contents[type])
+    },
+    // 提交评论
+    submitComment (event) {
+      // 为了使用原生表单拦截，不使用事件修饰符
+      event.preventDefault()
+
+      // 表单验证
+      if (!this.user.name) return alert('名字？')
+      if (!this.user.email) return alert('邮箱？')
+      if (!this.regexs.email.test(this.user.email)) return alert('邮箱不合法')
+      if (this.user.site && !this.regexs.url.test(this.user.site)) return alert('链接不合法')
+      if (!this.commentContentText || !this.commentContentText.replace(/\s/g, '')) return alert('内容？')
+      const lineOverflow = this.commentContentText.split('\n').length > 36
+      const lengthOverflow = this.commentContentText.length > 2000
+      if (lineOverflow || lengthOverflow) return alert('内容需要在2000字/36行以内')
+
+      // TODO 使用服务单配置的黑名单在本地校验邮箱和关键字
+
+      if (!this.user.site) {
+        delete this.user.site
+      }
+
+      this.$store.dispatch('postComment', {
+        pid: this.pid,
+        postID: this.postID,
+        content: this.commentContentText,
+        author: this.user,
+        agent: navigator.userAgent
+      }).then(data => {
+        // 发布成功后清空评论框内容并更新本地信息
+        this.previewMode = false
+        this.userCacheMode = true
+        this.closeCommentReply()
+        this.clearCommentContent()
+        localStorage.setItem('user', JSON.stringify(this.user))
+      }).catch(err => {
+        console.warn('评论发布失败', err)
+        alert('发布失败，原因 => 控制台')
+      })
     }
   }
 }

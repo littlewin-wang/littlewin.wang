@@ -36,6 +36,19 @@ export const mutations = {
     }
   },
 
+  // 发布评论
+  POST_ITEM (state) {
+    state.posting = true
+  },
+  POST_ITEM_SUCCESS (state, action) {
+    state.posting = false
+    state.data.total += 1
+    state.data.comments.push(action.data.result)
+  },
+  POST_ITEM_FAILURE (state) {
+    state.posting = false
+  },
+
   // 喜欢某条评论
   LIKE_ITEM (state, action) {
     const comment = state.data.comments.find(comment => comment.id === action.id)

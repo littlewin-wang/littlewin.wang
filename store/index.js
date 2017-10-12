@@ -109,7 +109,7 @@ export const actions = {
   loadCommentsByPostId ({ commit }, params) {
     params.sort = params.sort || -1
     params.page = params.page || 1
-    params.per_page = params.per_page || 2
+    params.per_page = params.per_page || 40
 
     commit('comment/GET_LIST')
     return Service.get('/comment', { params }).then(res => {
@@ -122,6 +122,25 @@ export const actions = {
     }, err => {
       commit('comment/GET_LIST_FAILURE', err)
     })
+  },
+
+  // 发布评论
+  postComment ({ commit }, comment) {
+    commit('comment/POST_ITEM')
+    return Service.post('/comment', comment)
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) {
+          commit('comment/POST_ITEM_SUCCESS', res.data)
+          return Promise.resolve(res.data)
+        } else {
+          commit('comment/POST_ITEM_FAILURE')
+          return Promise.reject(res.data)
+        }
+      }, err => {
+        commit('comment/POST_ITEM_FAILURE', err)
+        return Promise.reject(err)
+      })
   },
 
   // 喜欢某个页面或主站 || 为某条回复点赞
