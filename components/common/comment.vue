@@ -304,7 +304,7 @@ export default {
     OSClass (agent) {
       let ua = new UA(agent)
       switch (true) {
-        case /win/.test(ua.os.name):
+        case /Win/.test(ua.os.name):
           return 'icon-windows'
           break
         case /Mac/.test(ua.os.name):
