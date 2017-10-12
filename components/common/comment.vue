@@ -43,8 +43,9 @@
               <div class="cm-content">
                 <p class="reply" v-if="!!comment.pid">
                   <span>回复 </span>
-                  <a href="">
+                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
                     <span>#{{ comment.pid }}&nbsp;</span>
+                    <strong v-if="getReply(comment.pid)">@{{ getReply(comment.pid) }}</strong>
                   </a>
                   <span>：</span>
                 </p>
@@ -357,6 +358,11 @@ export default {
           s.addRange(r)
         }
       }
+    },
+    // 找到回复来源
+    getReply (id) {
+      const src = this.comment.data.comments.find(comment => Object.is(comment.id, id))
+      return src ? src.author.name : null
     },
     // 翻页反向计算
     paginationReverseActive (index) {
