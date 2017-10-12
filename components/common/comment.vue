@@ -14,17 +14,20 @@
           <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, 2) }" @click.stop.prevent="sortComments(2)">最热</a>
         </div>
       </div>
+      <div class="empty-box" v-if="!comment.data.comments.length && !comment.fetching">
+        You're first, no one can replace you.
+      </div>
       <div class="list">
         <ul>
           <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comment.data.comments">
             <div class="cm-avatar">
-              <a target="_blank" rel="external nofollow" :href="comment.author.site">
+              <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
                 <img :alt="comment.author.name || '匿名用户'" :src="'/images/anonymous.jpg'">
               </a>
             </div>
             <div class="cm-body">
               <div class="cm-header">
-                <a class="user-name" target="_blank" rel="external nofollow" :href="comment.author.site">
+                <a class="user-name" target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
                   {{ comment.author.name }}
                 </a>
                 <span class="os" v-if="comment.agent">
@@ -49,11 +52,11 @@
               </div>
               <div class="cm-footer">
                 <span class="create_at">{{new Date(comment.createAt).toLocaleDateString()}}</span>
-                <a href="" class="reply">
+                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
                   <i class="iconfont icon-reply"></i>
                   <span>回复</span>
                 </a>
-                <a href="" class="like" :class="{ liked: commentLiked(comment.id) }" @click.stop.prevent="likeComment(comment)">
+                <a href="" class="like" :class="{ liked: commentLiked(comment.id), actived: !!comment.likes }" @click.stop.prevent="likeComment(comment)">
                   <i class="iconfont icon-zan"></i>
                   <span>顶&nbsp;({{ comment.likes }})</span>
                 </a>
@@ -90,17 +93,17 @@
             </div>
           </div>
           <div class="editor">
-            <div class="will-reply">
+            <div class="will-reply" v-if="!!pid">
               <div class="reply-user">
                 <span>
                   <span>回复 </span>
-                  <a href="">
-                    <strong>#123 @test：</strong>
+                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${replyCommentSelf.id}`)">
+                    <strong>#{{ replyCommentSelf.id }} @{{ replyCommentSelf.author.name }}:</strong>
                   </a>
                 </span>
-                <a href="" class="cancel iconfont icon-close"></a>
+                <a href="" class="cancel iconfont icon-close" @click.stop.prevent="closeCommentReply"></a>
               </div>
-              <div class="reply-preview"></div>
+              <div class="reply-preview" v-html="marked(replyCommentSelf.content)"></div>
             </div>
             <div class="markdown">
               <div class="markdown-editor" ref="markdown" contenteditable="true" placeholder="凡事三思而后言">
@@ -172,11 +175,14 @@
 <script>
 import marked from '~/plugins/marked'
 import UA from 'ua-device'
+import { scrollTo } from '~/utils/scroll-to-anywhere'
 
 export default {
   name: 'comment',
   data () {
     return {
+      // 回复的评论ID
+      pid: 0,
       // 评论排序 -1:最新 2:最热
       sortMode: -1,
       user: {
@@ -208,6 +214,9 @@ export default {
     },
     comment () {
       return this.$store.state.comment
+    },
+    replyCommentSelf () {
+      return this.comment.data.comments.find(comment => Object.is(comment.id, this.pid))
     }
   },
   mounted () {
@@ -248,6 +257,10 @@ export default {
         this.sortMode = sort
         this.loadCommentList()
       }
+    },
+    // 点击用户
+    clickUser (event, user) {
+      if (!user.site) event.preventDefault()
     },
     // 顶某条评论
     likeComment (comment) {
@@ -304,6 +317,34 @@ export default {
     marked (content) {
       return marked(content, null, false)
     },
+    // 回复评论
+    replyComment (comment) {
+      this.pid = comment.id
+      this.toSomeAnchorById('post')
+    },
+    // 取消回复
+    closeCommentReply () {
+      this.pid = 0
+    },
+    // 跳转到某条指定的id位置
+    toSomeAnchorById (id) {
+      const targetDom = document.getElementById(id)
+
+      if (targetDom) {
+        let isToEditor = Object.is(id, 'post')
+        scrollTo(targetDom, 200, { offset: isToEditor ? 0 : -300 })
+        // 如果是进入编辑模式，则需要激活光标
+        if (isToEditor) {
+          let p = this.$refs.markdown
+          let s = window.getSelection()
+          let r = document.createRange()
+          r.setStart(p, p.childElementCount)
+          r.setEnd(p, p.childElementCount)
+          s.removeAllRanges()
+          s.addRange(r)
+        }
+      }
+    },
     // 翻页反向计算
     paginationReverseActive (index) {
       const comment = this.comment.data
@@ -348,6 +389,13 @@ export default {
       }
     }
   }
+}
+
+.empty-box {
+  font-weight: bold;
+  text-align: center;
+  height: 5rem;
+  line-height: 5rem;
 }
 
 .comment-item {
