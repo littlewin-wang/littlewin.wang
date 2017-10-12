@@ -4,9 +4,9 @@
       <div class="toolbar">
         <div class="left">
           <span>{{comment.data.total}}条评论</span>
-          <span>
+          <span style="cursor:pointer" :class="{ liked: pageLiked }" @click.stop.prevent="likePage">
             <i class="iconfont icon-love"></i>
-            11人喜欢
+            {{ likes || 0 }}人喜欢
           </span>
         </div>
         <div class="right">
@@ -183,7 +183,12 @@ export default {
         email: '',
         site: '',
         gravatar: null
-      }
+      },
+      // 用户历史点赞数据
+      historyLikes: {
+        pages: [],
+        comments: []
+      },
     }
   },
   props: {
@@ -197,16 +202,45 @@ export default {
     }
   },
   computed: {
+    pageLiked () {
+      return this.historyLikes.pages.includes(this.postID)
+    },
     comment () {
       return this.$store.state.comment
     }
   },
   mounted () {
+    this.initUser()
     if (!this.comment.data.pages) {
       this.loadComemntList()
     }
   },
   methods: {
+    // 初始化本地用户即本地用户的点赞历史
+    initUser () {
+      if (localStorage) {
+        const user = localStorage.getItem('user')
+        const historyLikes = localStorage.getItem('user_like_history')
+        if (historyLikes) {
+          this.historyLikes = JSON.parse(historyLikes)
+        }
+      }
+    },
+    // 喜欢当前页面
+    likePage () {
+      if (this.pageLiked) {
+        return false
+      }
+
+      this.$store.dispatch('addLike', { type: 2, id: this.postID })
+        .then(data => {
+          this.historyLikes.pages.push(this.postID)
+          localStorage.setItem('user_like_history', JSON.stringify(this.historyLikes))
+        })
+        .catch(err => {
+          console.warn('喜欢失败', err)
+        })
+    },
     // 获取评论列表
     loadComemntList (params = {}) {
       params.sort = this.sortMode

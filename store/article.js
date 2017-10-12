@@ -64,5 +64,12 @@ export const mutations = {
   GET_DETAIL_SUCCESS (state, action) {
     state.detail.fetching = false
     state.detail.data = action.data
+  },
+
+  LIKE_ARTICLE (state, action) {
+    let article = state.detail.data
+    if (Object.is(article.id, action.id)) {
+      state.detail.data.meta.likes++
+    }
   }
 }

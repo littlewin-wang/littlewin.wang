@@ -34,5 +34,13 @@ export const mutations = {
       pages: 0,
       comments: []
     }
+  },
+
+  // 喜欢某条评论
+  LIKE_ITEM (state, action) {
+    const comment = state.data.comments.find(comment => comment.id === action.id)
+    if (comment) {
+      comment.likes++
+    }
   }
 }

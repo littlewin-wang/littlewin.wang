@@ -122,5 +122,32 @@ export const actions = {
     }, err => {
       commit('comment/GET_LIST_FAILURE', err)
     })
+  },
+
+  // 喜欢某个页面或主站 || 为某条回复点赞
+  addLike ({ commit }, like) {
+    return Service.post('/like', like)
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) {
+          let mutation
+          switch (like.type) {
+            case 1:
+              mutation = 'comment/LIKE_ITEM'
+              break
+            case 2:
+              mutation = Object.is(like.id, 0) ? 'site/LIKE_SITE' : 'article/LIKE_ARTICLE'
+              break
+            default:
+              break
+          }
+          commit(mutation, like)
+          return Promise.resolve(res.data)
+        } else {
+          return Promise.reject(res.data)
+        }
+      }, err => {
+        return Promise.reject(err)
+      })
   }
 }

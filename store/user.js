@@ -1,5 +1,5 @@
 /**
- * @file site数据管理
+ * @file 用户数据管理
  * @author littlewin(littlewin.wang@gmail.com)
  */
 
