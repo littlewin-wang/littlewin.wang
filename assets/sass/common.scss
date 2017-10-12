@@ -76,3 +76,80 @@ menu, ul, ol {
     }
   }
 }
+
+.cm-content,
+.reply-preview,
+.markdown-preview {
+  font-size: 1em;
+  line-height: 2em;
+  margin: .5em 0;
+  word-wrap: break-word;
+
+  a {
+    text-decoration: underline;
+  }
+
+  img {
+    margin: .5rem 0;
+    max-width: 100%;
+    border-radius: 2px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  code {
+    color: #bd4147;
+    padding: .3em .5em;
+    margin: 0 .5em;
+    border-radius: $radius;
+    background-color: $module-hover-bg;
+  }
+
+  pre {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap-reverse;
+    position: relative;
+    overflow: hidden;
+    margin-top: .6em;
+    margin-bottom: 1em;
+    padding-top: 2.5em;
+    border-radius: $radius;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &:before {
+      color: white;
+      content: attr(data-lang)" CODE";
+      height: 2.5em;
+      line-height: 2.5em;
+      font-size: 1em;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-weight: 700;
+      background-color: rgba(68, 68, 68, 0.9);
+      display: block;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    >.code-lines {
+      display: none;
+    }
+
+    >code {
+      margin: 0;
+      padding: 1em;
+      float: left;
+      width: 100%;
+      height: 100%;
+      display: block;
+      line-height: 1.6em;
+      color: rgba(255, 255, 255, 0.87);
+      background-color: transparent;
+    }
+  }
+}

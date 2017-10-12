@@ -133,6 +133,7 @@
                     <li class="item" @click="insertEmoji('😳')">😳</li>
                     <li class="item" @click="insertEmoji('😵')">😵</li>
                     <li class="item" @click="insertEmoji('🌚')">🌚</li>
+                    <li class="item" @click="insertEmoji('👻')">👻</li>
                     <li class="item" @click="insertEmoji('🙏')">🙏</li>
                     <li class="item" @click="insertEmoji('👆')">👆</li>
                     <li class="item" @click="insertEmoji('👇')">👇</li>
@@ -412,6 +413,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/sass/mixins';
 @import '~assets/sass/variables';
+
 .toolbar {
   display: flex;
   justify-content: space-between;
