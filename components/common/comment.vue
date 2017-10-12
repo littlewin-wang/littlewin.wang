@@ -3,7 +3,7 @@
     <div class="comment-box">
       <div class="toolbar">
         <div class="left">
-          <span>{{comment.data.total}}条评论</span>
+          <span>{{ comment.data.total || 0 }}条评论</span>
           <span style="cursor:pointer" :class="{ liked: pageLiked }" @click.stop.prevent="likePage">
             <i class="iconfont icon-love"></i>
             {{ likes || 0 }}人喜欢
@@ -53,7 +53,7 @@
                   <i class="iconfont icon-reply"></i>
                   <span>回复</span>
                 </a>
-                <a href="" class="like">
+                <a href="" class="like" :class="{ liked: commentLiked(comment.id) }" @click.stop.prevent="likeComment(comment)">
                   <i class="iconfont icon-zan"></i>
                   <span>顶&nbsp;({{ comment.likes }})</span>
                 </a>
@@ -226,7 +226,7 @@ export default {
         }
       }
     },
-    // 喜欢当前页面
+    // 点赞当前页面
     likePage () {
       if (this.pageLiked) {
         return false
@@ -240,6 +240,22 @@ export default {
         .catch(err => {
           console.warn('喜欢失败', err)
         })
+    },
+    // 顶某条评论
+    likeComment (comment) {
+      if (this.commentLiked(comment.id)) return false
+      this.$store.dispatch('addLike', { type: 1, id: comment.id })
+        .then(data => {
+          this.historyLikes.comments.push(comment.id)
+          localStorage.setItem('user_like_history', JSON.stringify(this.historyLikes))
+        })
+        .catch(err => {
+          console.warn('评论点赞失败', err)
+        })
+    },
+    // 获取某条评论是否被点赞
+    commentLiked (id) {
+      return this.historyLikes.comments.includes(id)
     },
     // 获取评论列表
     loadComemntList (params = {}) {
