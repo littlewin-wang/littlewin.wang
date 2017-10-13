@@ -51,6 +51,7 @@ module.exports = {
       'particles.js',
       'swiper',
       'marked',
+      'gravatar',
       'highlight.js',
       'ua-device'
     ],
@@ -70,6 +71,7 @@ module.exports = {
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
     { src: '~/plugins/marked.js' },
+    { src: '~/plugins/gravatar.js' },
     { src: '~/plugins/ua-device.js' }
   ],
   css: [

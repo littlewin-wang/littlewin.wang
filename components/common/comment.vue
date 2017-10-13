@@ -22,7 +22,7 @@
           <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comment.data.comments">
             <div class="cm-avatar">
               <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
-                <img :alt="comment.author.name || '匿名用户'" :src="'/images/anonymous.jpg'">
+                <img :alt="comment.author.name || '匿名用户'" :src="gravatar(comment.author.email) || '/images/anonymous.jpg'">
               </a>
             </div>
             <div class="cm-body">
@@ -76,15 +76,33 @@
         </ul>
       </div>
       <form class="post" id="post" name="comment">
-        <div class="user">
+        <div class="user" v-if="!userCacheMode || userCacheEditing">
           <div class="name">
             <input required type="text" name="name" placeholder="name *" v-model="user.name">
           </div>
           <div class="email">
-            <input required type="email" name="email" placeholder="email *" v-model="user.email">
+            <input required type="email" name="email" placeholder="email *" v-model="user.email" @blur="updateGravatar">
           </div>
           <div class="site">
             <input type="url" name="url" placeholder="site" v-model="user.site">
+          </div>
+          <div class="save" v-if="userCacheEditing">
+            <button type="submit" @click="updateUserCache($event)">
+              <i class="iconfont icon-confirm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="user" v-else-if="userCacheMode && !userCacheEditing">
+          <div class="edit">
+            <strong class="name">{{ user.name }}</strong>
+            <a href="" class="setting" @click.stop.prevent>
+              <i class="iconfont icon-setting"></i>
+              <span>账户设置</span>
+              <ul class="user-tool">
+                <li @click.stop.prevent="userCacheEditing = true">编辑信息</li>
+                <li @click.stop.prevent="clearUserCache">清空信息</li>
+              </ul>
+            </a>
           </div>
         </div>
         <div class="editor-box">
@@ -176,6 +194,7 @@
 
 <script>
 import marked from '~/plugins/marked'
+import gravatar from '~/plugins/gravatar'
 import UA from 'ua-device'
 import { scrollTo } from '~/utils/scroll-to-anywhere'
 
@@ -206,6 +225,7 @@ export default {
         pages: [],
         comments: []
       },
+      // 邮箱和地址校验正则
       regexs: {
         email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
         url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
@@ -223,6 +243,12 @@ export default {
     }
   },
   computed: {
+    isArticlePage () {
+      return !!this.$route.params.id
+    },
+    isGuestPage () {
+      return Object.is(this.$route.name, 'guest')
+    },
     pageLiked () {
       return this.historyLikes.pages.includes(this.postID)
     },
@@ -248,7 +274,46 @@ export default {
         if (historyLikes) {
           this.historyLikes = JSON.parse(historyLikes)
         }
+        if (user) {
+          this.user = JSON.parse(user)
+          this.updateGravatar()
+          this.userCacheMode = true
+        }
       }
+    },
+    // 头像服务
+    gravatar (email) {
+      if (!this.regexs.email.test(email)) {
+        return null
+      }
+      let gravatar_url = gravatar.url(email, {
+        protocol: 'https'
+      })
+      return gravatar_url
+    },
+    // 更新头像
+    updateGravatar () {
+      const isEmailVerified = this.regexs.email.test(this.user.email)
+      this.user.gravatar = isEmailVerified ? this.gravatar(this.user.email) : null
+    },
+    // 更新用户数据
+    updateUserCache (event) {
+      event.preventDefault()
+      if (!this.user.name) return alert('名字？')
+      if (!this.user.email) return alert('邮箱？')
+      if (!this.regexs.email.test(this.user.email)) return alert('邮箱不合法')
+      if (this.user.site && !this.regexs.url.test(this.user.site)) return alert('链接不合法')
+      localStorage.setItem('user', JSON.stringify(this.user))
+      this.userCacheEditing = false
+    },
+    // 清空用户数据
+    clearUserCache () {
+      this.userCacheMode = false
+      this.userCacheEditing = false
+      localStorage.removeItem('user')
+      Object.keys(this.user).forEach(key => {
+        this.user[key] = ''
+      })
     },
     // 点赞当前页面
     likePage () {
