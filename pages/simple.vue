@@ -47,7 +47,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags" :comments="LatestComments"></Sidebar>
         </div>
       </div>
     </div>
@@ -84,6 +84,9 @@ export default {
     },
     tags () {
       return this.$store.state.tag
+    },
+    LatestComments () {
+      return this.$store.state.comment.latest
     }
   }
 }

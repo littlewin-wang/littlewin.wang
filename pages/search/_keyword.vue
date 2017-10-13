@@ -8,7 +8,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags" :comments="LatestComments"></Sidebar>
         </div>
       </div>
     </div>
@@ -51,6 +51,9 @@ export default {
     },
     hotArticles () {
       return this.$store.state.article.hot
+    },
+    LatestComments () {
+      return this.$store.state.comment.latest
     },
     user () {
       return this.$store.state.user
