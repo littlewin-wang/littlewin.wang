@@ -13,11 +13,26 @@ export const state = () => {
       page: 0,
       pages: 0,
       comments: []
+    },
+    latest: {
+      fetching: false,
+      comments: []
     }
   }
 }
 
 export const mutations = {
+  GET_LATEST (state) {
+    state.latest.fetching = true
+  },
+  GET_LATEST_SUCCESS (state, action) {
+    state.latest.fetching = false
+    state.latest.comments = action.data.comments
+  },
+  GET_LATEST_FAILURE (state) {
+    state.latest.fetching = false
+  },
+
   GET_LIST (state) {
     state.fetching = true
   },

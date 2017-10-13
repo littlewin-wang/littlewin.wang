@@ -11,7 +11,7 @@
       </div>
       <div class="sidebar">
         <div>
-          <Sidebar :articles="hotArticles" :tags="tags"></Sidebar>
+          <Sidebar :articles="hotArticles" :tags="tags" :comments="LatestComments"></Sidebar>
         </div>
       </div>
     </div>
@@ -23,6 +23,10 @@ import Comment from '~/components/common/comment.vue'
 import Sidebar from '~/components/article/sidebar.vue'
 
 export default {
+  name: 'guest',
+  head: {
+    title: '留言板'
+  },
   components: {
     Comment,
     Sidebar
@@ -33,6 +37,9 @@ export default {
     },
     tags () {
       return this.$store.state.tag
+    },
+    LatestComments () {
+      return this.$store.state.comment.latest
     }
   },
   methods: {

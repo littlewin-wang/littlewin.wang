@@ -9,12 +9,14 @@ export const actions = {
 
   nuxtServerInit (store, { params, route, isServer, req }) {
     const initAppData = [
-      // 初始化GET博主/分类/标签等信息
+      // 初始化获取博主/站点/分类/标签等信息
       store.dispatch('getAdmin'),
       store.dispatch('getSite'),
       store.dispatch('getCategories'),
       store.dispatch('getTags'),
-      store.dispatch('getHotArticles')
+      // 初始化热门文章/最近回复
+      store.dispatch('getHotArticles'),
+      store.dispatch('getLatestComments')
     ]
     return Promise.all(initAppData)
   },
@@ -92,7 +94,7 @@ export const actions = {
   // 获取热门文章列表
   getHotArticles ({ commit }) {
     commit('article/GET_HOT_LIST')
-    return Service.get('/article', { params: { hot: 1 } })
+    return Service.get('/article', { params: { hot: 1, per_page: 5 } })
       .then(res => {
         const success = !!res.status && res.data && res.data.success === true
         if (success) commit('article/GET_HOT_LIST_SUCCESS', res.data)
@@ -117,6 +119,18 @@ export const actions = {
         commit('article/GET_DETAIL_FAILURE', err)
         return Promise.reject(err)
       })
+  },
+
+  // 获取最近回复
+  getLatestComments ({ commit }) {
+    commit('comment/GET_LATEST')
+    return Service.get('/comment', { params: { sort: -1, per_page: 5 } }).then(res => {
+      const success = !!res.status && res.data && res.data.success === true
+      if (success) commit('comment/GET_LATEST_SUCCESS', res.data)
+      if (!success) commit('comment/GET_LATEST_FAILURE')
+    }, err => {
+      commit('comment/GET_LATEST_FAILURE', err)
+    })
   },
 
   // 根据post-id获取评论列表

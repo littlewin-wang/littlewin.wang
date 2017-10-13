@@ -50,18 +50,18 @@
       <div class="container">
         <ul>
           <li>
-            <div class="comment">
-              <div class="title">
-                <span>
-                  <a href="">阿土</a>
-                </span>
+            <div class="comment" v-for="(comment,index) in this.comments.comments" :key="index">
+              <div class="comment-title">
+                <strong>
+                  <a href="">{{ comment.author.name }}</a>
+                </strong>
                 在
-                <span>
-                  <a href="">应该是展望</a>
-                </span>
+                <strong>
+                  <a href="">#{{ comment.postID }}</a>
+                </strong>
               </div>
-              <div class="content">
-                <span>大诗人，你啥时候发表下一篇文章</span>
+              <div class="comment-content">
+                <div v-html="marked(comment.content)"></div>
               </div>
             </div>
           </li>
@@ -72,11 +72,19 @@
 </template>
 
 <script>
+import marked from '~/plugins/marked'
+
 export default {
   name: 'Sidebar',
   props: {
     articles: Object,
-    tags: Object
+    tags: Object,
+    comments: Object
+  },
+  methods: {
+    marked (content) {
+      return marked(content, null, false)
+    }
   }
 }
 </script>
@@ -133,11 +141,14 @@ export default {
       }
     }
     .comment {
+      padding: .5rem;
+      margin-bottom: 1rem;
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
       }
-      .content {
-        padding: 0 1rem;
+      .comment-title {
+        height: 1.5rem;
+        line-height: 1.5rem;
       }
     }
   }
