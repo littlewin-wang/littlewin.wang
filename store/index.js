@@ -11,6 +11,7 @@ export const actions = {
     const initAppData = [
       // 初始化GET博主/分类/标签等信息
       store.dispatch('getAdmin'),
+      store.dispatch('getSite'),
       store.dispatch('getCategories'),
       store.dispatch('getTags'),
       store.dispatch('getHotArticles')
@@ -28,6 +29,19 @@ export const actions = {
         if (!success) commit('user/GET_USER_FALIURE')
       }, err => {
         commit('user/GET_USER_FALIURE', err)
+      })
+  },
+
+  // 获取全站信息
+  getSite ({ commit }) {
+    commit('site/GET_SITE')
+    return Service.get('/site')
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('site/GET_SITE_SUCCESS', res.data)
+        if (!success) commit('site/GET_SITE_FALIURE')
+      }, err => {
+        commit('site/GET_SITE_FALIURE', err)
       })
   },
 
