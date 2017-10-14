@@ -1,6 +1,6 @@
 <template>
   <div class="search" :class="searchClass">
-    <input type="search" autofocus v-model="value" class="search-box" :placeholder="placeholder" v-if="isOpen" @blur="handleBlur" />
+    <input type="search" autofocus v-model="value" class="search-box" :placeholder="placeholder" v-if="isOpen" @blur="handleBlur" @keyup.enter="handleClick" />
     <span class="search-button" @click="handleClick">
       <i class="iconfont" :class="iconClass"></i>
     </span>
@@ -44,11 +44,8 @@ export default {
       }
     },
     handleBlur () {
-      if (this.value) {
-        this.isOpen = true
-      } else {
-        this.isOpen = false
-      }
+      this.value = ''
+      this.isOpen = false
     }
   }
 }

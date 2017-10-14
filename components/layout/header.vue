@@ -2,9 +2,11 @@
   <transition :enter-active-class="'animated slideInDown'" :leave-active-class="'animated slideOutUp'">
     <header class="bg-white">
       <div class="header-container" :class="{'open-nav': isOpen}">
-        <div class="header-logo">
-          <h3>LITTLEWIN</h3>
-        </div>
+        <nuxt-link to="/">
+          <div class="header-logo">
+            <h3>LITTLEWIN</h3>
+          </div>
+        </nuxt-link>
         <div class="mobile-toggle" @click="handleOpen">
           <span></span>
           <span></span>
@@ -13,16 +15,13 @@
         <nav>
           <ul>
             <li>
-              <a href="#" @click="handleOpen">首页</a>
+              <nuxt-link to="/simple">极简</nuxt-link>
             </li>
             <li>
-              <a href="#" @click="handleOpen">极简</a>
+              <nuxt-link to="/about">关于</nuxt-link>
             </li>
             <li>
-              <a href="#" @click="handleOpen">关于</a>
-            </li>
-            <li>
-              <Search></Search>
+              <Search @search="goSearch"></Search>
             </li>
           </ul>
         </nav>
@@ -46,6 +45,9 @@ export default {
   methods: {
     handleOpen () {
       this.isOpen = !this.isOpen
+    },
+    goSearch (str) {
+      this.$router.push(`/search/${str}`)
     }
   }
 }
@@ -162,6 +164,7 @@ header {
           color: #888888;
           text-transform: uppercase;
           font-size: 16px;
+          font-weight: 300;
         }
       }
     }

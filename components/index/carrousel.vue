@@ -3,9 +3,9 @@
     <div class="swiper" v-swiper:swiper="swiperOption">
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="(article, index) in articles.data.articles" :key="index">
-          <img :src="article.thumb" alt="">
+          <img :src="article.thumb">
           <span>
-            <a href="">{{article.title}}</a>
+            <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
           </span>
         </div>
       </div>
@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/sass/mixins';
+
 .swiper {
   position: relative;
   height: 200px;
@@ -50,12 +52,19 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
       text-align: center;
       font-size: 38px;
       font-weight: 700;
       background-color: #eee;
       img {
-        height: 100%
+        height: 100%;
+        @include css3-prefix(transform, rotate(0deg) scale(1));
+        @include css3-prefix(transition, transform 1s);
+
+        &:hover {
+          @include css3-prefix(transform, rotate(2deg) scale(1.1));
+        }
       }
       span {
         position: absolute;

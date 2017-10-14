@@ -3,9 +3,9 @@
     <div class="swiper" v-swiper:swiper="swiperOption">
       <div class="swiper-wrapper">
         <div class="swiper-slide item" v-for="(article, index) in articles" :key="index">
-          <img :src="article.thumb" alt="">
+          <img :src="article.thumb">
           <span>
-            <a href="">{{article.title}}</a>
+            <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
           </span>
         </div>
       </div>

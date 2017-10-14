@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li v-for="(category, index) in categories.data.categories" :key="index">
-          <a href="" :alt="category.name">{{category.name}}</a>
+          <nuxt-link :to="`/category/${category.name}`">{{category.name}}</nuxt-link>
         </li>
       </ul>
     </nav>

@@ -50,6 +50,15 @@ export const mutations = {
       comments: []
     }
   },
+  CLEAR_LIST (state) {
+    state.data = {
+      total: 0,
+      limit: 0,
+      page: 0,
+      pages: 0,
+      comments: []
+    }
+  },
 
   // 发布评论
   POST_ITEM (state) {

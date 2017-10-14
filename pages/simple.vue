@@ -7,7 +7,8 @@
           <ul>
             <li v-for="(article, index) in articles.data.articles" :key="index">
               <span>{{index+1}}</span>
-              - {{article.title}}
+              -
+              <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -18,7 +19,10 @@
               <span>
                 <i class="iconfont icon-category"></i>
               </span>
-              - {{category.name}} ({{category.count}})
+              -
+              <nuxt-link :to="`/category/${category.name}`">
+                {{category.name}} ({{category.count}})
+              </nuxt-link>
               <p>
                 {{category.description}}
               </p>
@@ -29,7 +33,9 @@
           <h5>标签</h5>
           <ul>
             <li v-for="(tag, index) in tags.data.tags" :key="index">
-              {{tag.name}} ({{tag.count}})
+              <nuxt-link :to="`/tag/${tag.name}`">
+                {{tag.name}} ({{tag.count}})
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -41,6 +47,9 @@
             </li>
             <li class="item">
               <router-link to="/about">关于</router-link>
+            </li>
+            <li class="item">
+              <router-link to="/guest">留言板</router-link>
             </li>
           </ul>
         </div>

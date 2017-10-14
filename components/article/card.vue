@@ -9,7 +9,7 @@
       </div>
       <div class="content">
         <h2>
-          <a href="">{{article.title}}</a>
+          <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
         </h2>
         <p class="excerpt">
           {{article.description}}
@@ -18,11 +18,11 @@
           <div class="left">
             <span class="tag">
               <i class="iconfont icon-tag"></i>
-              <a href="">{{article.tag[0].name}}</a>
+              <nuxt-link :to="`/tag/${article.tag[0].name}`">{{article.tag[0].name}}</nuxt-link>
             </span>
             <span class="author">
               <img :src="user.gravatar" :alt="user.slogan">
-              <a href="">{{user.username}}</a>
+              <span>{{user.username}}</span>
             </span>
           </div>
           <div class="right">

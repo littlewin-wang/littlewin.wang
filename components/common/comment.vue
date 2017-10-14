@@ -265,6 +265,9 @@ export default {
       this.loadCommentList()
     }
   },
+  destroyed() {
+      this.$store.commit('comment/CLEAR_LIST')
+    },
   methods: {
     // 初始化本地用户即本地用户的点赞历史
     initUser () {

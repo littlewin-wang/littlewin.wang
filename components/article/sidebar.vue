@@ -14,7 +14,7 @@
               </div>
               <div class="content">
                 <h5>
-                  <a href="">{{article.title}}</a>
+                  <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
                 </h5>
                 <span>{{new Date(article.createAt).toLocaleDateString()}}</span>
               </div>
@@ -31,12 +31,12 @@
       <div class="container">
         <ul>
           <li class="tag-container" v-for="(tag, index) in tags.data.tags" :key="index">
-            <a href="" class="tag">
+            <nuxt-link :to="`/tag/${tag.name}`" class="tag">
               <i class="iconfont icon-tag"></i>
               <span data-v-3a678449="">&nbsp;</span>
               <span data-v-3a678449="">{{tag.name}}</span>
               <span data-v-3a678449="">({{tag.count}})</span>
-            </a>
+            </nuxt-link>
             </a>
           </li>
         </ul>
@@ -53,11 +53,12 @@
             <div class="comment" v-for="(comment,index) in this.comments.comments" :key="index">
               <div class="comment-title">
                 <strong>
-                  <a href="">{{ comment.author.name }}</a>
+                  <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">{{ comment.author.name }}</a>
                 </strong>
                 在
                 <strong>
-                  <a href="">#{{ comment.postID }}</a>
+                  <nuxt-link :to="`/article/${comment.postID}`" v-if="comment.postID!==0">#{{ comment.postID }}</nuxt-link>
+                  <nuxt-link :to="`/guest`" v-else>#{{ comment.postID }}</nuxt-link>
                 </strong>
               </div>
               <div class="comment-content">
@@ -82,8 +83,13 @@ export default {
     comments: Object
   },
   methods: {
+    // markdown转义
     marked (content) {
       return marked(content, null, false)
+    },
+    // 点击用户
+    clickUser (event, user) {
+      if (!user.site) event.preventDefault()
     }
   }
 }
