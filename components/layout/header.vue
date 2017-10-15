@@ -21,6 +21,9 @@
               <nuxt-link to="/about">关于</nuxt-link>
             </li>
             <li>
+              <nuxt-link to="/guest">留言</nuxt-link>
+            </li>
+            <li>
               <Search @search="goSearch"></Search>
             </li>
           </ul>
