@@ -25,7 +25,7 @@
 import Carrousel from '~/components/index/carrousel.vue'
 import ArticleNav from '~/components/index/nav.vue'
 import ArticleList from '~/components/article/list.vue'
-import Sidebar from '~/components/article/sidebar.vue'
+import Sidebar from '~/components/common/sidebar.vue'
 
 export default {
   fetch ({ store }) {

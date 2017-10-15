@@ -20,7 +20,7 @@
 
 <script>
 import Comment from '~/components/common/comment.vue'
-import Sidebar from '~/components/article/sidebar.vue'
+import Sidebar from '~/components/common/sidebar.vue'
 
 export default {
   name: 'guest',

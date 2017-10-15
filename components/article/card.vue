@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="content">
-        <h2>
+        <h2 class="title">
           <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
         </h2>
         <p class="excerpt">
@@ -87,7 +87,7 @@ export default {
     .content {
       flex: 1;
       padding: 0 35px 0 20px;
-      h2 {
+      .title {
         margin: 0;
         font-family: Raleway;
         font-size: 20px;
@@ -96,6 +96,10 @@ export default {
         letter-spacing: 1px;
         text-transform: uppercase;
         margin-bottom: 1rem;
+        &:hover {
+          text-decoration: underline;
+          transform: translateX(1rem)
+        }
       }
       .info {
         display: flex;

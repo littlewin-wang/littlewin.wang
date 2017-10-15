@@ -53,7 +53,7 @@
 
 <script>
 import Carrousel from '~/components/article/carrousel.vue'
-import Sidebar from '~/components/article/sidebar.vue'
+import Sidebar from '~/components/common/sidebar.vue'
 import Share from '~/components/common/share.vue'
 import Comment from '~/components/common/comment.vue'
 import marked from '~/plugins/marked'

@@ -128,6 +128,10 @@ export default {
         padding: 0 1rem;
         h5 {
           margin: .2rem 0;
+          &:hover {
+            text-decoration: underline;
+            transform: translateX(.5rem)
+          }
         }
       }
     }
