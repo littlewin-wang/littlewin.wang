@@ -14,13 +14,13 @@
         </div>
         <nav>
           <ul>
-            <li>
+            <li @click="handleClick">
               <nuxt-link to="/simple">极简</nuxt-link>
             </li>
-            <li>
+            <li @click="handleClick">
               <nuxt-link to="/about">关于</nuxt-link>
             </li>
-            <li>
+            <li @click="handleClick">
               <nuxt-link to="/guest">留言</nuxt-link>
             </li>
             <li>
@@ -46,10 +46,14 @@ export default {
     }
   },
   methods: {
+    handleClick (e) {
+      this.isOpen = false
+    },
     handleOpen () {
       this.isOpen = !this.isOpen
     },
     goSearch (str) {
+      this.isOpen = false
       this.$router.push(`/search/${str}`)
     }
   }
@@ -71,7 +75,7 @@ header {
   line-height: 70px;
   padding: 0;
   text-align: right;
-  background-color: hsla(0, 0%, 100%, .6);
+  background-color: hsla(0, 0%, 100%, .8);
   z-index: 999;
   .header-container {
     max-width: 980px;
@@ -133,7 +137,8 @@ header {
         display: none;
         top: 100%;
         width: 100%;
-        opacity: 0.4;
+        color: #000;
+        background-color: hsla(0, 0%, 100%, .6);
       }
 
       ul {

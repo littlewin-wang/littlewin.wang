@@ -117,6 +117,23 @@ footer {
       }
     }
   }
+
+  @media screen and (max-width: 400px) {
+    .footer-content {
+      width: 100%;
+      display: block;
+      .left {
+        .left-line {
+          text-align: center;
+        }
+      }
+      .right {
+        .right-line {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 </style>
 
