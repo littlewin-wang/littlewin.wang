@@ -4,6 +4,7 @@
       <div class="page-container">
         <div class="articles list">
           <h5>文章</h5>
+          <p v-if="!articles.data.articles.length">暂无文章</p>
           <ul>
             <li v-for="(article, index) in articles.data.articles" :key="index">
               <span>{{index+1}}</span>
@@ -14,6 +15,7 @@
         </div>
         <div class="category list">
           <h5>分类</h5>
+          <p v-if="!categories.data.categories.length">暂无分类</p>
           <ul>
             <li v-for="(category, index) in categories.data.categories" :key="index">
               <span>
@@ -31,6 +33,7 @@
         </div>
         <div class="tag tag-list">
           <h5>标签</h5>
+          <p v-if="!tags.data.tags.length">暂无标签</p>
           <ul>
             <li v-for="(tag, index) in tags.data.tags" :key="index">
               <nuxt-link :to="`/tag/${tag.name}`">

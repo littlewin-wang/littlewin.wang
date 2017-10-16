@@ -5,6 +5,9 @@
         <i class="iconfont icon-menu"></i>
         热门文章
       </h5>
+      <div class="container" v-if="!articles.data.articles.length">
+        <p>暂无热门文章</p>
+      </div>
       <div class="container" v-for="(article, index) in articles.data.articles" :key="index">
         <ul>
           <li>
@@ -28,6 +31,9 @@
         <i class="iconfont icon-menu"></i>
         标签
       </h5>
+      <div class="container" v-if="!tags.data.tags.length">
+        <p>暂无标签</p>
+      </div>
       <div class="container">
         <ul>
           <li class="tag-container" v-for="(tag, index) in tags.data.tags" :key="index">
@@ -47,6 +53,9 @@
         <i class="iconfont icon-menu"></i>
         最新评论
       </h5>
+      <div class="container" v-if="!comments.comments.length">
+        <p>暂无最新评论</p>
+      </div>
       <div class="container">
         <ul>
           <li>
