@@ -3,7 +3,7 @@
     <div class="main-container">
       <div class="page-container">
         <div class="list">
-          <ArticleList :articles="articles" :user="user"></ArticleList>
+          <ArticleList :articles="articles" :user="user" @add="addArticles"></ArticleList>
         </div>
       </div>
       <div class="sidebar">
@@ -78,6 +78,9 @@ export default {
     }
   },
   methods: {
+    addArticles () {
+      this.$store.dispatch('getArticles', this.nextPageParams)
+    }
   }
 }
 </script>

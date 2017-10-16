@@ -75,7 +75,7 @@ export default {
   },
   fetch ({ store }) {
     return Promise.all([
-      store.dispatch('getArticles')
+      store.dispatch('getArticles', { per_page: 100 })
     ])
   },
   computed: {

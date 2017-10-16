@@ -5,6 +5,7 @@
         <div class="detail">
           <span class="date-day">{{new Date(article.createAt).getDate()}}</span>
           <span class="date-month">{{new Date(article.createAt).getMonth() + 1}}月</span>
+          <span class="date-year">{{new Date(article.createAt).getFullYear()}}</span>
         </div>
       </div>
       <div class="content">
@@ -79,7 +80,8 @@ export default {
           padding-bottom: 5px;
         }
         .date-day,
-        .date-month {
+        .date-month,
+        .date-year {
           display: block;
         }
       }
