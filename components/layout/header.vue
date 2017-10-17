@@ -138,7 +138,7 @@ header {
         top: 100%;
         width: 100%;
         color: #000;
-        background-color: hsla(0, 0%, 100%, .6);
+        background-color: hsla(0, 0%, 100%, .9);
       }
 
       ul {

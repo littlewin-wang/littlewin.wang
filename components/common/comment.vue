@@ -1068,8 +1068,8 @@ export default {
         >.link,
         >.code,
         >.preview {
-          width: 2rem;
-          height: 2rem;
+          width: 2.5rem;
+          height: 2.5rem;
           text-align: center;
           display: inline-block;
 
@@ -1090,17 +1090,11 @@ export default {
 
         >.submit {
           float: right;
-          width: 7rem;
+          width: 8rem;
           background-color: darken($module-hover-bg, 15%);
 
           &:hover {
             background-color: darken($module-hover-bg, 40%);
-          }
-        }
-
-        @media screen and (max-width: 400px) {
-          >.submit {
-            width: 4rem;
           }
         }
       }

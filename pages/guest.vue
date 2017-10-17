@@ -73,8 +73,11 @@ export default {
     }
   }
   @media screen and (max-width: 480px) {
-    img:hover {
-      @include css3-prefix(transform, translateY(0));
+    img {
+      opacity: 1;
+      &:hover {
+        @include css3-prefix(transform, translateY(0));
+      }
     }
   }
 }
