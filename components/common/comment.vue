@@ -632,6 +632,8 @@ export default {
     >.cm-header {
       display: block;
       position: relative;
+      height: 2rem;
+      line-height: 2rem;
 
       >.user-name {
         font-weight: bold;
@@ -644,12 +646,13 @@ export default {
       >.os,
       >.ua,
       >.location {
+        display: inline-block;
+        height: 2rem;
+        line-height: 2rem;
         color: $disabled;
-        font-size: .8rem;
-        margin-right: .8rem;
+        margin-right: .5rem;
 
         .iconfont {
-          font-size: .8rem;
           margin-right: .2rem;
         }
       }
@@ -657,9 +660,6 @@ export default {
       >.id {
         color: $dividers;
         font-weight: 900;
-        font-size: .8rem;
-        display: inline-block;
-        line-height: 2rem;
         float: right;
       }
 
@@ -688,12 +688,11 @@ export default {
 
     >.cm-footer {
       display: flex;
-      line-height: 1.5rem;
+      line-height: 2rem;
 
       >.create_at,
       >.reply,
       >.like {
-        font-size: .8rem;
         margin-right: 1rem;
       }
 
@@ -1078,7 +1077,7 @@ export default {
           }
 
           i {
-            font-size: 1rem;
+            font-size: 1.5rem;
           }
 
           &.actived {
