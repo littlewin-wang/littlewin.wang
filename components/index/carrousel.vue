@@ -17,20 +17,35 @@
 <script>
 export default {
   props: {
-    articles: Object
+    articles: Object,
+    clientWidth: Number
   },
   data () {
     return {
       swiperOption: {
         autoplay: 3000,
         pagination: '.swiper-pagination',
-        slidesPerView: 3,
-        spaceBetween: 30,
+        slidesPerView: this.clientWidth > 768 ? 3 : this.clientWidth > 500 ? 2 : 1,
+        spaceBetween: this.clientWidth > 768 ? 30 : this.clientWidth > 500 ? 10 : 0,
         paginationClickable: true,
         mousewheelControl: true,
         autoplayDisableOnInteraction: false,
         lazyLoading: true
       }
+    }
+  },
+  computed: {
+    slidesPerView () {
+      return this.clientWidth > 768 ? 3 : this.clientWidth > 500 ? 2 : 1
+    },
+    spaceBetween () {
+      return this.clientWidth > 768 ? 30 : this.clientWidth > 500 ? 10 : 0
+    }
+  },
+  watch: {
+    clientWidth () {
+      this.$set(this.swiperOption, 'slidesPerView', this.slidesPerView)
+      this.$set(this.swiperOption, 'spaceBetween', this.spaceBetween)
     }
   }
 }
@@ -59,6 +74,7 @@ export default {
       background-color: #eee;
       img {
         height: 100%;
+        margin: 0 auto;
         @include css3-prefix(transform, rotate(0deg) scale(1));
         @include css3-prefix(transition, transform 1s);
 
@@ -78,6 +94,12 @@ export default {
           &:hover {
             background-color: hsla(0, 0%, 77%, .4);
           }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        span {
+          left: 50%;
+          transform: translateX(-50%);
         }
       }
     }

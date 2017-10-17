@@ -196,5 +196,10 @@ export const actions = {
       }, err => {
         return Promise.reject(err)
       })
+  },
+
+  // 页面宽度设置
+  getWidth ({ commit }, width) {
+    commit('site/GET_WIDTH', width)
   }
 }

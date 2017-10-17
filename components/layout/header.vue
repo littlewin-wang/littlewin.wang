@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 @mixin small {
-  @media only screen and (max-width: 766px) {
+  @media only screen and (max-width: 768px) {
     @content;
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <div class="main">
     <div class="carrousel-container">
-      <Carrousel :articles="articles"></Carrousel>
+      <no-ssr>
+        <Carrousel :articles="articles" v-if="clientWidth" :clientWidth="clientWidth"></Carrousel>
+      </no-ssr>
     </div>
     <div class="main-container">
       <div class="page-container">
@@ -61,12 +63,21 @@ export default {
     },
     LatestComments () {
       return this.$store.state.comment.latest
+    },
+    clientWidth () {
+      return this.$store.state.site.width
     }
   },
   methods: {
     addArticles () {
       this.$store.dispatch('getArticles', { page: this.articles.data.page + 1 })
     }
+  },
+  mounted () {
+    this.$store.dispatch('getWidth', document.body.clientWidth)
+    window.addEventListener('resize', () => {
+      this.$store.dispatch('getWidth', document.body.clientWidth)
+    })
   }
 }
 </script>

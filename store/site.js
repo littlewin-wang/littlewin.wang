@@ -8,6 +8,9 @@ export const state = () => {
     // ua
     userAgent: '',
 
+    // 页面宽度
+    width: 0,
+
     // 全局配置
     site: {
       fetching: false,
@@ -36,5 +39,10 @@ export const mutations = {
   // 喜欢本站
   LIKE_SITE (state) {
     state.site.data.meta.likes++
+  },
+
+  // 页面宽度
+  GET_WIDTH (state, action) {
+    state.width = action
   }
 }
