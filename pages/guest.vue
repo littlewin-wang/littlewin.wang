@@ -57,14 +57,24 @@ export default {
   height: 16rem;
   margin-bottom: 1rem;
   img {
-    margin-top: -14rem;
+    position: absolute;
+    bottom: 0;
     opacity: 0.6;
     @include css3-prefix(transition, all 1.5s);
 
     &:hover {
       opacity: 1;
       @include css3-prefix(transform, translateY(10rem));
-      @include css3-prefix(transition, all 1.5s);
+    }
+  }
+  @media screen and (max-width: 600px) {
+    img:hover {
+      @include css3-prefix(transform, translateY(6rem));
+    }
+  }
+  @media screen and (max-width: 480px) {
+    img:hover {
+      @include css3-prefix(transform, translateY(0));
     }
   }
 }

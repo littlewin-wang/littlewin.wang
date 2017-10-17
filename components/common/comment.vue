@@ -32,11 +32,11 @@
                 </a>
                 <span class="os" v-if="comment.agent">
                   <i class="iconfont" :class="OSClass(comment.agent)"></i>
-                  {{OSParse(comment.agent)}}
+                  <span>{{OSParse(comment.agent)}}</span>
                 </span>
                 <span class="ua" v-if="comment.agent">
                   <i class="iconfont icon-internet"></i>
-                  {{UAParse(comment.agent)}}
+                  <span>{{UAParse(comment.agent)}}</span>
                 </span>
                 <span class="id">#{{ comment.id }}</span>
               </div>
@@ -265,9 +265,9 @@ export default {
       this.loadCommentList()
     }
   },
-  destroyed() {
-      this.$store.commit('comment/CLEAR_LIST')
-    },
+  destroyed () {
+    this.$store.commit('comment/CLEAR_LIST')
+  },
   methods: {
     // 初始化本地用户即本地用户的点赞历史
     initUser () {
@@ -662,6 +662,15 @@ export default {
         line-height: 2rem;
         float: right;
       }
+
+      @media screen and (max-width: 400px) {
+        >.os,
+        >.ua {
+          span {
+            display: none
+          }
+        }
+      }
     }
 
     >.cm-content {
@@ -725,6 +734,18 @@ export default {
           opacity: 1;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .comment-item {
+    padding: .6em 0;
+    >.cm-avatar {
+      display: none;
+    }
+    >.cm-body {
+      padding: .6rem;
     }
   }
 }
@@ -871,6 +892,23 @@ export default {
     }
   }
 
+  @media screen and (max-width: 480px) {
+    >.user {
+      display: block;
+      height: auto;
+      padding-left: 0;
+      >.name,
+      >.email,
+      >.site {
+        margin-right: 4rem;
+        margin-bottom: .5rem;
+      }
+      >.save {
+        margin-left: 0;
+      }
+    }
+  }
+
   >.editor-box {
     width: 100%;
     display: flex;
@@ -890,6 +928,12 @@ export default {
           height: 100%;
           transition: transform .5s ease-out;
         }
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      >.user {
+        display: none;
       }
     }
 
@@ -1053,249 +1097,13 @@ export default {
             background-color: darken($module-hover-bg, 40%);
           }
         }
-      }
-    }
-  }
-}
 
-.editor-box {
-  width: 100%;
-  display: flex;
-
-  >.user {
-    margin-right: 1rem;
-
-    >.gravatar {
-      display: block;
-      margin-bottom: .5em;
-      width: 4rem;
-      height: 4rem;
-      background-color: darken($module-hover-bg, 20%);
-
-      >img {
-        width: 100%;
-        height: 100%;
-        transition: transform .5s ease-out;
-      }
-    }
-  }
-
-  >.editor {
-    flex-grow: 1;
-    position: relative;
-    overflow: hidden;
-
-    >.will-reply {
-      font-size: .95rem;
-      margin-bottom: 1rem;
-
-      >.reply-user {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        padding: 0 1rem;
-        height: 2.6em;
-        line-height: 2.6em;
-        background-color: $module-hover-bg;
-
-        &:hover {
-          background-color: darken($module-hover-bg, 10%);
-        }
-      }
-
-      >.reply-preview {
-        max-height: 10em;
-        overflow: auto;
-        padding: 1rem;
-
-        background-color: $module-hover-bg;
-
-        &:hover {
-          background-color: darken($module-hover-bg, 10%);
-        }
-      }
-    }
-
-    >.markdown {
-      position: relative;
-      overflow: hidden;
-
-      >.markdown-editor {
-        min-height: 6rem;
-        max-height: 36rem;
-        overflow: auto;
-        outline: none;
-        padding: .5rem;
-        cursor: auto;
-        font-size: .95rem;
-        line-height: 1.5rem;
-        background-color: $module-hover-bg;
-
-        &:empty:before {
-          content: attr(placeholder);
-          color: $disabled;
-        }
-
-        &:focus {
-          content: none;
-        }
-
-        &:hover {
-          background-color: darken($module-hover-bg, 10%);
-        }
-      }
-
-      >.markdown-preview {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        overflow: auto;
-        margin: 0;
-        padding: .5rem;
-        @include css3-prefix(transform, translateY(-100%));
-        background-color: rgba(235, 235, 235, 0.85);
-        transition: transform .2s;
-
-        &.actived {
-          height: 100%;
-          transition: transform .2s;
-          @include css3-prefix(transform, translateY(0));
-        }
-      }
-    }
-
-    >.editor-tools {
-      height: 2rem;
-      line-height: 2rem;
-      background-color: darken($module-hover-bg, 20%);
-
-      >.emoji {
-
-        >.emoji-box {
-          display: none;
-          position: absolute;
-          bottom: 2em;
-          left: 0;
-          background-color: $module-bg;
-
-          >.emoji-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 1.3em;
-            display: flex;
-            flex-wrap: wrap;
-
-            >.item {
-              padding: 0 .4em;
-              cursor: pointer;
-
-              &:hover {
-                background-color: $module-hover-bg;
-              }
-            }
-          }
-        }
-
-        &:hover {
-          >.emoji-box {
-            display: block;
+        @media screen and (max-width: 400px) {
+          >.submit {
+            width: 4rem;
           }
         }
       }
-
-      >.emoji,
-      >.image,
-      >.link,
-      >.code,
-      >.preview {
-        width: 2rem;
-        height: 2rem;
-        text-align: center;
-        display: inline-block;
-
-        &:hover {
-          background-color: darken($module-hover-bg, 20%);
-        }
-      }
-
-      >.submit {
-        float: right;
-        width: 7rem;
-        background-color: darken($module-hover-bg, 15%);
-
-        &:hover {
-          background-color: darken($module-hover-bg, 40%);
-        }
-      }
-    }
-  }
-}
-
-.editor-tools {
-  height: 2rem;
-  line-height: 2rem;
-  background-color: darken($module-hover-bg, 20%);
-
-  >.emoji {
-
-    >.emoji-box {
-      display: none;
-      position: absolute;
-      bottom: 2rem;
-      left: 0;
-      background-color: $module-bg;
-
-      >.emoji-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        font-size: 1.2rem;
-        display: flex;
-        flex-wrap: wrap;
-
-        >.item {
-          padding: 0 .4rem;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $module-hover-bg;
-          }
-        }
-      }
-    }
-
-    &:hover {
-      >.emoji-box {
-        display: block;
-      }
-    }
-  }
-
-  >.emoji,
-  >.image,
-  >.link,
-  >.code,
-  >.preview {
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-    display: inline-block;
-
-    &:hover {
-      background-color: darken($module-hover-bg, 20%);
-    }
-  }
-
-  >.submit {
-    float: right;
-    width: 7rem;
-    background-color: darken($module-hover-bg, 15%);
-
-    &:hover {
-      background-color: darken($module-hover-bg, 40%);
     }
   }
 }

@@ -36,7 +36,9 @@
           </p>
         </div>
         <div class="carrousel-container">
-          <Carrousel :articles="article.related"></Carrousel>
+          <no-ssr>
+            <Carrousel :articles="article.related" :clientWidth="clientWidth"></Carrousel>
+          </no-ssr>
         </div>
         <div class="comment-container">
           <Comment :likes="article.meta.likes" :postID="article.id"></Comment>
@@ -119,6 +121,9 @@ export default {
     },
     tags () {
       return this.$store.state.tag
+    },
+    clientWidth () {
+      return this.$store.state.site.width
     }
   },
   methods: {

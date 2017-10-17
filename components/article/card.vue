@@ -111,6 +111,11 @@ export default {
         margin-top: 1rem;
         padding-top: .5rem;
         border-top: 1px solid #ebebeb;
+        .left,
+        .right {
+          height: 2em;
+          line-height: 2rem;
+        }
         span {
           margin: 0 4px;
         }
@@ -131,6 +136,12 @@ export default {
             transform: translateY(-50%);
             border-radius: 50%;
           }
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .info {
+          display: block;
         }
       }
     }

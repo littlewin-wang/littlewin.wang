@@ -32,6 +32,11 @@ export default {
         background-color: hsla(0, 0%, 77%, .4);
       }
     }
+    @media screen and (max-width: 400px) {
+      a {
+        padding: .5rem 1rem;
+      }
+    }
   }
 }
 </style>

@@ -16,18 +16,29 @@
 <script>
 export default {
   props: {
-    articles: Array
+    articles: Array,
+    clientWidth: Number
   },
   data () {
     return {
       swiperOption: {
         autoplay: 3000,
-        slidesPerView: 4,
+        slidesPerView: this.clientWidth > 500 ? 4 : this.clientWidth > 400 ? 3 : 2,
         spaceBetween: 10,
         mousewheelControl: true,
         autoplayDisableOnInteraction: false,
         lazyLoading: true
       }
+    }
+  },
+  computed: {
+    slidesPerView () {
+      return this.clientWidth > 500 ? 4 : this.clientWidth > 400 ? 3 : 2
+    }
+  },
+  watch: {
+    clientWidth () {
+      this.$set(this.swiperOption, 'slidesPerView', this.slidesPerView)
     }
   }
 }
@@ -62,6 +73,7 @@ export default {
       }
       img {
         height: 100%;
+        margin: 0 auto;
         opacity: .8;
       }
       span {
