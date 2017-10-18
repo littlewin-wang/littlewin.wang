@@ -138,10 +138,20 @@ export default {
           }
         }
       }
-
-      @media screen and (max-width: 480px) {
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .container {
+      display: block;
+      .date {
+        display: none;
+      }
+      .content {
+        padding: 0;
         .info {
-          display: block;
+          .author {
+            display: none;
+          }
         }
       }
     }
