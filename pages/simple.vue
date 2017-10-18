@@ -19,7 +19,7 @@
           <ul>
             <li v-for="(category, index) in categories.data.categories" :key="index">
               <span>
-                <i class="iconfont icon-category"></i>
+                <i class="iconfont" :class="[category.extends.find(t => Object.is(t.name, 'icon')).value]"></i>
               </span>
               -
               <nuxt-link :to="`/category/${category.name}`">

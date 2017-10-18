@@ -38,7 +38,7 @@
         <ul>
           <li class="tag-container" v-for="(tag, index) in tags.data.tags" :key="index">
             <nuxt-link :to="`/tag/${tag.name}`" class="tag">
-              <i class="iconfont icon-tag"></i>
+              <i class="iconfont" :class="[tag.extends.find(t => Object.is(t.name, 'icon')).value]"></i>
               <span data-v-3a678449="">&nbsp;</span>
               <span data-v-3a678449="">{{tag.name}}</span>
               <span data-v-3a678449="">({{tag.count}})</span>

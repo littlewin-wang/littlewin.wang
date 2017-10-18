@@ -18,7 +18,7 @@
         <div class="info">
           <div class="left">
             <span class="tag">
-              <i class="iconfont icon-tag"></i>
+              <i class="iconfont" :class="[article.tag[0].extends.find(t => Object.is(t.name, 'icon')).value]"></i>
               <nuxt-link :to="`/tag/${article.tag[0].name}`">{{article.tag[0].name}}</nuxt-link>
             </span>
             <span class="author">

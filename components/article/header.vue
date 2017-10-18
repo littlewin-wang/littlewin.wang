@@ -2,9 +2,9 @@
   <div class="article-header">
     <div class="logo">
       <!-- tag -->
-      <i class="iconfont icon-tag" v-if="currentTag"></i>
+      <i class="iconfont" :class="[currentTag.extends.find(t => Object.is(t.name, 'icon')).value]" v-if="currentTag"></i>
       <!-- category -->
-      <i class="iconfont icon-category" v-else-if="currentCategory"></i>
+      <i class="iconfont" :class="[currentCategory.extends.find(t => Object.is(t.name, 'icon')).value]" v-else-if="currentCategory"></i>
       <!-- search -->
       <i class="iconfont icon-search" v-else-if="currentKeyword"></i>
     </div>
