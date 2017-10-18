@@ -38,6 +38,11 @@
                   <i class="iconfont icon-internet"></i>
                   <span>{{UAParse(comment.agent)}}</span>
                 </span>
+                <span class="location" v-if="comment.ip_location">
+                  <span>{{ comment.ip_location.country }}</span>
+                  <span v-if="comment.ip_location.country && comment.ip_location.city">&nbsp;-&nbsp;</span>
+                  <span>{{ comment.ip_location.city }}</span>
+                </span>
                 <span class="id">#{{ comment.id }}</span>
               </div>
               <div class="cm-content">
@@ -394,7 +399,7 @@ export default {
     },
     UAParse (agent) {
       let ua = new UA(agent)
-      return `${ua.browser.name} - ${ua.browser.version.original.split('.')[0]}`
+      return `${ua.browser.name} | ${ua.browser.version.original.split('.')[0]}`
     },
     marked (content) {
       return marked(content, null, false)
@@ -651,8 +656,10 @@ export default {
         line-height: 2rem;
         color: $disabled;
         margin-right: .5rem;
+        font-size: 0.9rem;
 
         .iconfont {
+          font-size: 0.9rem;
           margin-right: .2rem;
         }
       }
@@ -663,7 +670,7 @@ export default {
         float: right;
       }
 
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 480px) {
         >.os,
         >.ua {
           span {
