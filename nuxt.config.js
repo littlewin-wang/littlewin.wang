@@ -70,6 +70,7 @@ module.exports = {
     { src: '~/plugins/clipboard.js' },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
+    { src: '~/plugins/copy-right.js', ssr: false },
     { src: '~/plugins/marked.js' },
     { src: '~/plugins/gravatar.js' },
     { src: '~/plugins/ua-device.js' }

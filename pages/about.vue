@@ -76,6 +76,9 @@ export default {
   components: {
     Grid
   },
+  head: {
+    title: '关于'
+  },
   data () {
     return {
     }

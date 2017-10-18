@@ -74,7 +74,7 @@ export default {
     Sidebar
   },
   head: {
-    title: 'Simple'
+    title: '极简'
   },
   fetch ({ store }) {
     return Promise.all([

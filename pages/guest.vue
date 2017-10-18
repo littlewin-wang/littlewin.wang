@@ -25,7 +25,7 @@ import Sidebar from '~/components/common/sidebar.vue'
 export default {
   name: 'guest',
   head: {
-    title: '留言板'
+    title: '留言'
   },
   components: {
     Comment,

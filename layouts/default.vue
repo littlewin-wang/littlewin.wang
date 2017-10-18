@@ -21,6 +21,22 @@ export default {
     Background,
     LHeader,
     LFooter
+  },
+  methods: {
+    isActive () {
+      let reallyDocumentTitle
+      document.addEventListener('visibilitychange', event => {
+        if (event.target.hidden || event.target.webkitHidden) {
+          reallyDocumentTitle = document.title
+          document.title = '来不及解释了，快上车!'
+        } else {
+          document.title = reallyDocumentTitle
+        }
+      }, false)
+    }
+  },
+  mounted () {
+    this.isActive()
   }
 }
 </script>
