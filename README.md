@@ -9,6 +9,9 @@
 ## Demo
 ![](https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/screenshot.png)
 
+## Browser support
+![Browser support](https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/support.png)
+
 ## Build Setup
 
 ``` bash
@@ -26,4 +29,5 @@ $ npm start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## Contact
+Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
