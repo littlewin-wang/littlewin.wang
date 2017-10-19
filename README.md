@@ -31,8 +31,8 @@ $ npm run generate
 ```
 
 ## Technical
-
-Client <==> SSR PAR T& NO-SSR PART <==> Vuex <==> Server 
+ - [Nuxt.js](https://nuxtjs.org/) SSR + NO-SSR components
+ - [Vuex](https://vuex.vuejs.org/en/) + [axios](https://github.com/axios/axios) 
 
 ## Feature list
  - [x] 首页/留言/分类/标签/搜索/极简 页面设计
