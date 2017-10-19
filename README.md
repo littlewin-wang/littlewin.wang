@@ -14,6 +14,8 @@
 
 ## Build Setup
 
+Need [littlewin.server](https://github.com/littlewin-wang/littlewin.server) running first
+
 ``` bash
 # install dependencies
 $ npm install # Or yarn install
@@ -29,5 +31,17 @@ $ npm start
 $ npm run generate
 ```
 
+## Feature list
+ - [x] 首页/留言/分类/标签/搜索/极简 页面设计
+ - [x] 页面内链/跳转
+ - [x] 响应式优化
+ - [x] 页面布局优化
+ - [x] Icon优化
+ - [x] html head统一 / 设置未激活title
+ - [x] 增加copyright
+ - [ ] 页面过渡效果优化
+ - [ ] 增加RSS
+ - [ ] 启用SSL
+ 
 ## Contact
 Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
