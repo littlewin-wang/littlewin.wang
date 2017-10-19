@@ -10,7 +10,7 @@
 ![](https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/screenshot.png)
 
 ## Browser support
-![Browser support](https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/support.png)
+![](https://github.com/littlewin-wang/hexo-theme-casual/raw/master/support.png)
 
 ## Build Setup
 
