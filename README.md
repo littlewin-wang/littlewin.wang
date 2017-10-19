@@ -13,7 +13,6 @@
 ![](https://github.com/littlewin-wang/hexo-theme-casual/raw/master/support.png)
 
 ## Build Setup
-
 Need [littlewin.server](https://github.com/littlewin-wang/littlewin.server) running first
 
 ``` bash
@@ -30,6 +29,10 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
+
+## Technical
+
+Client <==> SSR PAR T& NO-SSR PART <==> Vuex <==> Server 
 
 ## Feature list
  - [x] 首页/留言/分类/标签/搜索/极简 页面设计
