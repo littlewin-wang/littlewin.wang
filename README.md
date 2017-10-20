@@ -42,6 +42,7 @@ $ npm run generate
  - [x] Icon优化
  - [x] html head统一 / 设置未激活title
  - [x] 增加copyright
+ - [x] 增加友链框
  - [ ] 页面过渡效果优化
  - [ ] 增加RSS
  - [ ] 启用SSL
