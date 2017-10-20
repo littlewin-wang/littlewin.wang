@@ -5,6 +5,20 @@
         <div class="guest-banner">
           <img src="/images/hello.png" alt="">
         </div>
+        <div class="guest-link">
+          <h5 class="title">
+            <i class="iconfont icon-menu"></i>
+            友链
+          </h5>
+          <ul class="content">
+            <li v-for="(link, index) in links" :key="index">
+              <a target="_blank" rel="external nofollow" :href="link.site">
+                {{link.title}}
+              </a>
+              - {{link.description}}
+            </li>
+          </ul>
+        </div>
         <div class="guest-comment">
           <Comment :likes="$store.state.site.site.data.meta.likes" :postID="0"></Comment>
         </div>
@@ -32,6 +46,9 @@ export default {
     Sidebar
   },
   computed: {
+    links () {
+      return this.$store.state.site.site.data.links
+    },
     hotArticles () {
       return this.$store.state.article.hot
     },
@@ -82,8 +99,35 @@ export default {
   }
 }
 
+.guest-link,
 .guest-comment {
   background-color: hsla(0, 0%, 100%, .6);
   padding: 1em;
+  margin-bottom: 1rem;
+}
+
+.guest-link {
+  .title {
+    margin: 0;
+    padding-left: 1rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 14px;
+    font-weight: 400;
+    color: #48494d;
+    border-bottom: 1px dashed #eee;
+    i {
+      font-size: 14px;
+    }
+  }
+  .content {
+    padding: .5rem;
+    li {
+      margin: .5rem 0;
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 </style>
