@@ -1,8 +1,19 @@
-# littlewin.wang
+<p align='center'>
+  <p align='center'><img width='300' src='https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/logo.png' /></p>
+  <p align='center'>A blog FE project built with Nuxt.js.</p>
+</p>
 
-> A blog FE project built with Nuxt.js.
+[![](https://img.shields.io/badge/product-NUXT-brightgreen.svg?style=flat-square)](https://nuxtjs.org/)
+[![](https://img.shields.io/badge/blog-SSR-blue.svg?style=flat-square)](https://vuejs.org/v2/guide/ssr.html)
+
+## Demo
+![](https://raw.githubusercontent.com/littlewin-wang/littlewin.wang/master/static/screenshot.png)
+
+## Browser support
+![](https://github.com/littlewin-wang/hexo-theme-casual/raw/master/support.png)
 
 ## Build Setup
+Need [littlewin.server](https://github.com/littlewin-wang/littlewin.server) running first
 
 ``` bash
 # install dependencies
@@ -19,4 +30,21 @@ $ npm start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## Technical
+ - [Nuxt.js](https://nuxtjs.org/) SSR + NO-SSR components
+ - [Vuex](https://vuex.vuejs.org/en/) + [axios](https://github.com/axios/axios) 
+
+## Feature list
+ - [x] 首页/留言/分类/标签/搜索/极简 页面设计
+ - [x] 页面内链/跳转
+ - [x] 响应式优化
+ - [x] 页面布局优化
+ - [x] Icon优化
+ - [x] html head统一 / 设置未激活title
+ - [x] 增加copyright
+ - [ ] 页面过渡效果优化
+ - [ ] 增加RSS
+ - [ ] 启用SSL
+ 
+## Contact
+Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
