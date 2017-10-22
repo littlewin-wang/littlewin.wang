@@ -43,6 +43,7 @@ $ npm run generate
  - [x] html head统一 / 设置未激活title
  - [x] 增加copyright
  - [x] 增加友链框
+ - [x] 增加SITEMAP链接
  - [ ] 页面过渡效果优化
  - [ ] 增加RSS
  - [ ] 启用SSL
