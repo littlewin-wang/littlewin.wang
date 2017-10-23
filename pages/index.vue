@@ -1,9 +1,13 @@
 <template>
   <div class="main">
     <div class="carrousel-container">
-      <no-ssr>
-        <Carrousel :articles="articles" v-if="clientWidth" :clientWidth="clientWidth"></Carrousel>
-      </no-ssr>
+      <keep-alive>
+        <transition enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft">
+          <no-ssr>
+            <Carrousel :articles="articles" v-if="clientWidth" :clientWidth="clientWidth"></Carrousel>
+          </no-ssr>
+        </transition>
+      </keep-alive>
     </div>
     <div class="main-container">
       <div class="page-container">
