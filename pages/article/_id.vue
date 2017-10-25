@@ -32,7 +32,7 @@
           </p>
           <p>
             本站使用「
-            <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external nofollow">署名 4.0 国际</a>」创作共享协议
+            <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external nofollow">署名 4.0 国际</a>」创作共享协议
           </p>
         </div>
         <div class="carrousel-container">
