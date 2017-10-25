@@ -12,3 +12,6 @@ dist
 
 # Mac
 .DS_Store
+
+# IDE
+.idea
