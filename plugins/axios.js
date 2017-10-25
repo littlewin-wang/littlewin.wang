@@ -8,7 +8,7 @@ import axios from 'axios'
 
 // mock service in remote
 const service = axios.create({
-  baseURL: 'http://api.littlewin.wang'
+  baseURL: 'https://api.littlewin.wang'
 })
 
 // http request 拦截器
