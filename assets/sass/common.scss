@@ -166,6 +166,8 @@ menu, ul, ol {
       line-height: 1.6em;
       color: rgba(255, 255, 255, 0.87);
       background-color: transparent;
+      white-space: pre;
+      overflow: scroll;
     }
   }
 }

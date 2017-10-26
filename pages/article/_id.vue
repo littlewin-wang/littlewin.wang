@@ -318,8 +318,16 @@ export default {
         line-height: 2rem;
         color: rgba(255, 255, 255, 0.87);
         background-color: transparent;
+        white-space: pre;
+        overflow: scroll;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .article-container {
+    padding: 1rem;
   }
 }
 

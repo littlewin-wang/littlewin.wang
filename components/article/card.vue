@@ -16,6 +16,11 @@
           {{article.description}}
         </p>
         <div class="info">
+          <div class="before-left">
+            <span class="time-ago">
+              {{timeAgo(article.createAt)}}
+            </span>
+          </div>
           <div class="left">
             <span class="tag">
               <i class="iconfont" :class="[article.tag[0].extends.find(t => Object.is(t.name, 'icon')).value]"></i>
@@ -52,6 +57,27 @@ export default {
   props: {
     article: Object,
     user: Object
+  },
+  methods: {
+    timeAgo (createAt) {
+      var now = Date.parse(new Date()) / 1000
+      var limit = now - Date.parse(new Date(createAt)) / 1000
+      var content = ""
+      if (limit < 60) {
+        content = "刚刚"
+      } else if (limit >= 60 && limit < 3600) {
+        content = Math.floor(limit / 60) + "分钟前"
+      } else if (limit >= 3600 && limit < 86400) {
+        content = Math.floor(limit / 3600) + "小时前"
+      } else if (limit >= 86400 && limit < 2592000) {
+        content = Math.floor(limit / 86400) + "天前"
+      } else if (limit >= 2592000 && limit < 31104000) {
+        content = Math.floor(limit / 2592000) + "个月前"
+      } else {
+        content = "很久前"
+      }
+      return content
+    }
   }
 }
 </script>
@@ -111,13 +137,14 @@ export default {
         margin-top: 1rem;
         padding-top: .5rem;
         border-top: 1px solid #ebebeb;
+        .before-left,
         .left,
         .right {
           height: 2em;
           line-height: 2rem;
         }
-        span {
-          margin: 0 4px;
+        .tag {
+          margin-left: 4px;
         }
         i {
           color: #8d8d8d;
@@ -126,6 +153,7 @@ export default {
         }
         .author {
           position: relative;
+          margin-left: 4px;
           padding-left: 22px;
           img {
             position: absolute;
@@ -135,6 +163,11 @@ export default {
             left: 0;
             transform: translateY(-50%);
             border-radius: 50%;
+          }
+        }
+        @media screen and (min-width: 481px) {
+          .before-left {
+            display: none;
           }
         }
       }
