@@ -77,6 +77,7 @@ module.exports = {
   ],
   css: [
     'swiper/dist/css/swiper.css',
+    'highlight.js/styles/monokai.css',
     { src: '~assets/css/animate.css', lang: 'css' },
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]
