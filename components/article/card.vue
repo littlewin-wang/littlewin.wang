@@ -149,16 +149,16 @@ export default {
         i {
           color: #8d8d8d;
           font-size: 14px;
-          margin-right: 2px;
+          margin-right: 4px;
         }
         .author {
           position: relative;
-          margin-left: 4px;
+          margin-left: 6px;
           padding-left: 22px;
           img {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
