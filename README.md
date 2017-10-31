@@ -47,6 +47,7 @@ $ npm run generate
  - [x] 页面过渡效果优化
  - [x] 增加RSS
  - [x] 启用SSL / 切换图片服务器至腾讯COS + CDN
+ - [x] 增加Google Analytics
  
 ## Contact
 Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
