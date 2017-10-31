@@ -73,7 +73,8 @@ module.exports = {
     { src: '~/plugins/copy-right.js', ssr: false },
     { src: '~/plugins/marked.js' },
     { src: '~/plugins/gravatar.js' },
-    { src: '~/plugins/ua-device.js' }
+    { src: '~/plugins/ua-device.js' },
+    { src: '~/plugins/ga.js', ssr: false }
   ],
   css: [
     'swiper/dist/css/swiper.css',
