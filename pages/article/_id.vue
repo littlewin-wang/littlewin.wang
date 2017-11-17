@@ -319,7 +319,7 @@ export default {
         color: rgba(255, 255, 255, 0.87);
         background-color: transparent;
         white-space: pre;
-        overflow: scroll;
+        overflow: auto;
       }
     }
   }
