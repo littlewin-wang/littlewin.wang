@@ -65,16 +65,17 @@ module.exports = {
     }
   },
   plugins: [
-    { src: '~/plugins/axios.js' },
+    { src: '~plugins/axios.js' },
     { src: '~plugins/vue-waterfall', ssr: false },
-    { src: '~/plugins/clipboard.js' },
+    { src: '~plugins/clipboard.js' },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
-    { src: '~/plugins/copy-right.js', ssr: false },
-    { src: '~/plugins/marked.js' },
-    { src: '~/plugins/gravatar.js' },
-    { src: '~/plugins/ua-device.js' },
-    { src: '~/plugins/ga.js', ssr: false }
+    { src: '~plugins/copy-right.js', ssr: false },
+    { src: '~plugins/image-popup.js', ssr: false },
+    { src: '~plugins/marked.js' },
+    { src: '~plugins/gravatar.js' },
+    { src: '~plugins/ua-device.js' },
+    { src: '~plugins/ga.js', ssr: false }
   ],
   css: [
     'swiper/dist/css/swiper.css',
