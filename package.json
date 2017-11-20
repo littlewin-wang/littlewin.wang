@@ -21,9 +21,8 @@
     "marked": "^0.3.6",
     "nuxt": "^1.0.0-rc8",
     "particles.js": "^2.0.0",
-    "ua-device": "^0.1.10",
+    "ua-parser-js": "^0.7.17",
     "vue-awesome-swiper": "^2.6.4",
-    "vue-waterfall": "^1.0.6",
     "vuex": "^2.4.0"
   },
   "devDependencies": {

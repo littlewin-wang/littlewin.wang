@@ -68,11 +68,9 @@
 </template>
 
 <script>
-import Grid from '~/components/rotator/grid.vue'
 
 export default {
   components: {
-    Grid
   },
   head: {
     title: '关于'

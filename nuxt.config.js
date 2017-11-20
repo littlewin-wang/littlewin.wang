@@ -46,14 +46,11 @@ module.exports = {
     },
     vendor: [
       'axios',
-      'vue-waterfall',
       'clipboard',
       'particles.js',
       'swiper',
       'marked',
-      'gravatar',
-      'highlight.js',
-      'ua-device'
+      'gravatar'
     ],
     babel: {
       presets: ['es2015', 'stage-2'],
@@ -62,17 +59,18 @@ module.exports = {
         'transform-runtime'
       ],
       comments: true
-    }
+    },
+    analyze: true
   },
   plugins: [
     { src: '~plugins/axios.js' },
-    { src: '~plugins/vue-waterfall', ssr: false },
     { src: '~plugins/clipboard.js' },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/particles.js', ssr: false },
     { src: '~plugins/copy-right.js', ssr: false },
     { src: '~plugins/image-popup.js', ssr: false },
     { src: '~plugins/marked.js' },
+    { src: '~plugins/highlight.js' },
     { src: '~plugins/gravatar.js' },
     { src: '~plugins/ua-device.js' },
     { src: '~plugins/ga.js', ssr: false }
@@ -80,7 +78,6 @@ module.exports = {
   css: [
     'swiper/dist/css/swiper.css',
     'highlight.js/styles/monokai.css',
-    { src: '~assets/css/animate.css', lang: 'css' },
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]
 }

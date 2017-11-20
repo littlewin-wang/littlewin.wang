@@ -200,7 +200,7 @@
 <script>
 import marked from '~/plugins/marked'
 import gravatar from '~/plugins/gravatar'
-import UA from 'ua-device'
+import UA from '~/plugins/ua-device'
 import { scrollTo } from '~/utils/scroll-to-anywhere'
 
 export default {
@@ -371,35 +371,29 @@ export default {
       this.$store.dispatch('loadCommentsByPostId', Object.assign(params, { postID: this.postID }))
     },
     OSParse (agent) {
-      let ua = new UA(agent)
+      let ua = UA(agent)
       return ua.os.name
     },
     OSClass (agent) {
-      let ua = new UA(agent)
+      let ua = UA(agent)
       switch (true) {
         case /Win/.test(ua.os.name):
           return 'icon-windows'
-          break
         case /Mac/.test(ua.os.name):
           return 'icon-mac'
-          break
         case /Android/.test(ua.os.name):
           return 'icon-android'
-          break
         case /iOS/.test(ua.os.name):
           return 'icon-mac'
-          break
         case /Linux/.test(ua.os.name):
           return 'icon-linux'
-          break
         default:
           return 'icon-device'
-          break
       }
     },
     UAParse (agent) {
-      let ua = new UA(agent)
-      return `${ua.browser.name} | ${ua.browser.version.original.split('.')[0]}`
+      let ua = UA(agent)
+      return `${ua.browser.name} | ${ua.browser.version.split('.')[0]}`
     },
     marked (content) {
       return marked(content, null, false)

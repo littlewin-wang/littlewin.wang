@@ -1,5 +1,5 @@
 import marked from 'marked'
-import highlight from 'highlight.js'
+import highligher from '~/plugins/highlight.js'
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -11,7 +11,7 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
   highlight (code) {
-    return highlight.highlightAuto(code).value
+    return highligher.highlightAuto(code).value
   }
 })
 
