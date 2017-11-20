@@ -12,9 +12,6 @@
         <ul>
           <li>
             <div class="post">
-              <div class="thumb">
-                <img :src="article.thumb" alt="">
-              </div>
               <div class="content">
                 <h5>
                   <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
@@ -124,22 +121,17 @@ export default {
     }
   }
   .container {
-    padding: 1rem;
+    padding: .5rem 1rem;
     .post {
-      display: flex;
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
       }
-      .thumb {
-        flex: 0 0 80px;
-      }
       .content {
-        padding: 0 1rem;
+        padding: .5rem 1rem;
         h5 {
           margin: .2rem 0;
           &:hover {
             text-decoration: underline;
-            transform: translateX(.5rem)
           }
         }
       }

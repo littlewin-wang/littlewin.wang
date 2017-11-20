@@ -1,14 +1,5 @@
 <template>
   <div class="main">
-    <div class="carrousel-container">
-      <keep-alive>
-        <transition enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutLeft">
-          <no-ssr>
-            <Carrousel :articles="articles" v-if="clientWidth" :clientWidth="clientWidth"></Carrousel>
-          </no-ssr>
-        </transition>
-      </keep-alive>
-    </div>
     <div class="main-container">
       <div class="page-container">
         <div class="nav">
@@ -28,7 +19,6 @@
 </template>
 
 <script>
-import Carrousel from '~/components/index/carrousel.vue'
 import ArticleNav from '~/components/index/nav.vue'
 import ArticleList from '~/components/article/list.vue'
 import Sidebar from '~/components/common/sidebar.vue'
@@ -40,7 +30,6 @@ export default {
     ])
   },
   components: {
-    Carrousel,
     ArticleNav,
     ArticleList,
     Sidebar
@@ -87,7 +76,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.carrousel-container {
-  margin-bottom: 1rem;
-}
 </style>
