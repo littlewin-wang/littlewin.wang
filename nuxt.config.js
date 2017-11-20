@@ -47,8 +47,6 @@ module.exports = {
     vendor: [
       'axios',
       'clipboard',
-      'particles.js',
-      'swiper',
       'marked',
       'gravatar'
     ],
@@ -65,8 +63,6 @@ module.exports = {
   plugins: [
     { src: '~plugins/axios.js' },
     { src: '~plugins/clipboard.js' },
-    { src: '~plugins/swiper.js', ssr: false },
-    { src: '~plugins/particles.js', ssr: false },
     { src: '~plugins/copy-right.js', ssr: false },
     { src: '~plugins/image-popup.js', ssr: false },
     { src: '~plugins/marked.js' },
@@ -76,7 +72,6 @@ module.exports = {
     { src: '~plugins/ga.js', ssr: false }
   ],
   css: [
-    'swiper/dist/css/swiper.css',
     'highlight.js/styles/monokai.css',
     { src: '~assets/sass/app.scss', lang: 'sass' }
   ]

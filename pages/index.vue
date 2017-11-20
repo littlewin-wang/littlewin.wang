@@ -56,21 +56,12 @@ export default {
     },
     LatestComments () {
       return this.$store.state.comment.latest
-    },
-    clientWidth () {
-      return this.$store.state.site.width
     }
   },
   methods: {
     addArticles () {
       this.$store.dispatch('getArticles', { page: this.articles.data.page + 1 })
     }
-  },
-  mounted () {
-    this.$store.dispatch('getWidth', document.body.clientWidth)
-    window.addEventListener('resize', () => {
-      this.$store.dispatch('getWidth', document.body.clientWidth)
-    })
   }
 }
 </script>

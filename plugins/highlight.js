@@ -2,7 +2,6 @@ const highligher = require('highlight.js/lib/highlight')
 
 highligher.registerLanguage('go', require('highlight.js/lib/languages/go'))
 highligher.registerLanguage('css', require('highlight.js/lib/languages/css'))
-highligher.registerLanguage('sql', require('highlight.js/lib/languages/sql'))
 highligher.registerLanguage('xml', require('highlight.js/lib/languages/xml'))
 highligher.registerLanguage('json', require('highlight.js/lib/languages/json'))
 highligher.registerLanguage('bash', require('highlight.js/lib/languages/bash'))
