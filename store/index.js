@@ -215,5 +215,23 @@ export const actions = {
   // 页面宽度设置
   getWidth ({ commit }, width) {
     commit('site/GET_WIDTH', width)
+  },
+
+  // 页面宽度设置
+  getProjects ({ commit, state }) {
+    // 如果数据已存在，则直接返回Promise成功，并返回数据
+    if (state.project.data.length) {
+      return Promise.resolve(state.project.data)
+    }
+    // 不存在则请求新数据
+    commit('project/GET_PROJECTS')
+    return Service.get(`/github`)
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('project/GET_PROJECTS_SUCCESS', res.data)
+        if (!success) commit('project/GET_PROJECTS_FAILURE')
+      }, err => {
+        commit('project/GET_PROJECTS_FAILURE', err)
+      })
   }
 }
