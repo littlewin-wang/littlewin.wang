@@ -86,8 +86,8 @@ export default {
 .article-card {
   display: inline-block;
   width: 100%;
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: .5rem;
+  margin-bottom: 1rem;
   background-color: hsla(0, 0%, 100%, .6);
   &:hover {
     background-color: hsla(0, 0%, 77%, .4);
@@ -117,10 +117,8 @@ export default {
       padding: 0 35px 0 20px;
       .title {
         margin: 0;
-        font-family: Raleway;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
+        font-size: 18px;
+        font-weight: 500;
         letter-spacing: 1px;
         text-transform: uppercase;
         margin-bottom: 1rem;

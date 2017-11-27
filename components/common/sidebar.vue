@@ -16,7 +16,6 @@
                 <h5>
                   <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
                 </h5>
-                <span>{{new Date(article.createAt).toLocaleDateString()}}</span>
               </div>
             </div>
           </li>
@@ -121,7 +120,7 @@ export default {
     }
   }
   .container {
-    padding: .5rem 1rem;
+    padding: .2rem 1rem;
     .post {
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
@@ -153,7 +152,6 @@ export default {
     }
     .comment {
       padding: .5rem;
-      margin-bottom: 1rem;
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
       }

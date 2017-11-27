@@ -26,7 +26,7 @@ export default {
     margin-right: 1rem;
     a {
       display: inline-block;
-      padding: 1rem 2rem;
+      padding: .5rem 2rem;
       background-color: hsla(0, 0%, 100%, .6);
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
