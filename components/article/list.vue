@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .loading {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: hsla(0, 0%, 100%, .6);
   &:hover {
     background-color: hsla(0, 0%, 77%, .4);

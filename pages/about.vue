@@ -59,7 +59,7 @@
         <h5 class="title">一些声明</h5>
         <p>本站所有文章均为本人原创，仅代表个人在撰文时刻的观点和想法<br>内容转载请保留署名
           <strong>Littlewin</strong>或指向该原文(
-          <a target="_blank" rel="external nofollow" href="https://littlewin.wang">http://littlewin.wang</a>)的链接，请勿用于商业用途</p>
+          <a target="_blank" rel="external nofollow" href="https://littlewin.wang">https://littlewin.wang</a>)的链接，请勿用于商业用途</p>
       </div>
     </div>
 
@@ -96,14 +96,14 @@ export default {
 
   .container {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background-color: hsla(0, 0%, 100%, .6);
     .content {
       padding: 1rem 2rem;
       h5 {
         position: relative;
         border-bottom: 1px solid #eee;
-        margin-bottom: 1rem;
+        margin: 1rem;
         &:after {
           content: "#";
           position: absolute;
