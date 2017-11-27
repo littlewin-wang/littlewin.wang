@@ -12,6 +12,7 @@ export const actions = {
       // 初始化获取博主/站点/分类/标签等信息
       store.dispatch('getAdmin'),
       store.dispatch('getSite'),
+      store.dispatch('getMessage'),
       store.dispatch('getCategories'),
       store.dispatch('getTags'),
       // 初始化热门文章/最近回复
@@ -44,6 +45,19 @@ export const actions = {
         if (!success) commit('site/GET_SITE_FALIURE')
       }, err => {
         commit('site/GET_SITE_FALIURE', err)
+      })
+  },
+
+  // 获取全站信息
+  getMessage ({ commit }) {
+    commit('message/REQUEST_LIST')
+    return Service.get('/message')
+      .then(res => {
+        const success = !!res.status && res.data && res.data.success === true
+        if (success) commit('message/GET_LIST_SUCCESS', res.data)
+        if (!success) commit('message/GET_LIST_FAILURE')
+      }, err => {
+        commit('message/GET_LIST_FAILURE', err)
       })
   },
 

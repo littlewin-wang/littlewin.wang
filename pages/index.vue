@@ -2,6 +2,9 @@
   <div class="main">
     <div class="main-container">
       <div class="page-container">
+        <div class="message">
+          <MessageBox :messages="messages"></MessageBox>
+        </div>
         <div class="nav">
           <ArticleNav :categories="categories"></ArticleNav>
         </div>
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+import MessageBox from '~/components/index/message.vue'
 import ArticleNav from '~/components/index/nav.vue'
 import ArticleList from '~/components/article/list.vue'
 import Sidebar from '~/components/common/sidebar.vue'
@@ -30,6 +34,7 @@ export default {
     ])
   },
   components: {
+    MessageBox,
     ArticleNav,
     ArticleList,
     Sidebar
@@ -47,6 +52,9 @@ export default {
     },
     user () {
       return this.$store.state.user
+    },
+    messages () {
+      return this.$store.state.message.data
     },
     categories () {
       return this.$store.state.category
