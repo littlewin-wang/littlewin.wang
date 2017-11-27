@@ -103,7 +103,7 @@ export default {
 <style lang="scss" scoped>
 .article-sidebar {
   .article-sidebar-box {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background-color: hsla(0, 0%, 100%, .6);
   }
   .title {
