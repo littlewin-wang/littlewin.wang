@@ -48,6 +48,8 @@ $ npm run generate
  - [x] 增加RSS
  - [x] 启用SSL / 切换图片服务器至腾讯COS + CDN
  - [x] 增加Google Analytics
+ - [x] 优化bundle
+ - [x] 增加个人公告模块
  
 ## Contact
 Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
