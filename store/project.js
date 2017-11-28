@@ -18,6 +18,7 @@ export const mutations = {
     state.fetching = false
     const newProjects = action.data.projects
       .filter(rep => (rep.stargazers_count > 3))
+      .sort((rep1, rep2) => (rep2.stargazers_count - rep1.stargazers_count))
       .map(rep => {
         return {
           html_url: rep.html_url,

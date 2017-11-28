@@ -109,7 +109,7 @@
               justify-content: space-between;
               .item {
                 i {
-                  margin-right: .5rem;
+                  margin-right: .2rem;
                 }
               }
             }
