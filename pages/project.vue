@@ -2,9 +2,9 @@
   <div class="project">
     <ul class="project-list">
       <li class="project-item" v-for="item in projects" :key="item.name">
-        <div class="content">
+        <div class="content" :style="{ background: colors[Math.floor(Math.random()*colors.length)] }">
           <a target="_blank" rel="external nofollow" :href="item.html_url" :title="item.description">
-            <h5 class="title" :style="{ background: colors[Math.floor(Math.random()*colors.length)] }">{{item.name[0].toUpperCase()}}</h5>
+            <h5 class="title">{{item.name[0].toUpperCase()}}</h5>
             <div class="main">
               <p class="description" style="-webkit-box-orient: vertical;">{{ item.description.replace(/:.*:/g, '') }}</p>
               <p class="meta">
@@ -45,13 +45,14 @@
       },
       colors () {
         return [
-          '#FFFFCC',
-          '#CCFFFF',
-          '#FFCCCC',
-          '#CCCCFF',
-          '#FFFF99',
-          '#FFCC99',
-          '#CCFFCC'
+          '#F4E9F7',
+          '#DFEFFE',
+          '#DFF7F7',
+          '#F8EFEA',
+          '#F7F5EA',
+          '#FBF1FA',
+          '#E9EBF7',
+          '#F8E9EC'
         ]
       }
     }
@@ -75,7 +76,6 @@
           width: 100%;
           height: 100%;
           border-radius: .5rem;
-          background: #ccc;
           .title {
             margin: 0;
             line-height: calc(200px-1rem);
@@ -113,6 +113,9 @@
                 }
               }
             }
+          }
+          &:hover {
+            box-shadow: 2px 2px 12px #aaa;
           }
         }
       }
