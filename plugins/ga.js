@@ -9,12 +9,13 @@ const uuidv4 = require('uuid/v4')
 
 /* eslint-disable */
 // 只在生产模式加载
-// if (process.env.NODE_ENV === 'production') {
-if (1) {
+if (process.env.NODE_ENV === 'production') {
   // Generate Client information
   let clientInfo = (window, document, navigator, location, route) => {
     let screen = window.screen;
     let encode = encodeURIComponent;
+
+    // 从cookie中取_cid, 没有就新建并保存
     let cid = Cookies.get('_cid')
 
     if (!cid) {
@@ -22,6 +23,7 @@ if (1) {
       Cookies.set('_cid', cid)
     }
 
+    // 组装query
     let data = [
       'v=1',
       't=pageview',
@@ -41,6 +43,7 @@ if (1) {
 
   // 应用挂载后
   window.onNuxtReady((app) => {
+    // 告诉后端统计分析服务 增加新的页面访问统计
     Service.post('/ga', {
       query: clientInfo(window, document, navigator, location, app.$route)
     })
