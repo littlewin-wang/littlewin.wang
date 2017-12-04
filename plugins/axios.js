@@ -7,8 +7,12 @@ import Vue from 'vue'
 import axios from 'axios'
 
 // mock service in remote
-const service = axios.create({
+let service = axios.create({
   baseURL: 'https://api.littlewin.wang'
+})
+
+let notes = axios.create({
+  baseURL: 'https://api.github.com/repos/littlewin-wang/Notes/'
 })
 
 // http request 拦截器
@@ -18,6 +22,13 @@ service.interceptors.request.use(config => {
   return Promise.reject(error)
 })
 
+notes.interceptors.request.use(config => {
+  return config
+}, error => {
+  return Promise.reject(error)
+})
+
+
 // http response 拦截器
 service.interceptors.response.use(response => {
   return response
@@ -25,5 +36,12 @@ service.interceptors.response.use(response => {
   return Promise.reject(error)
 })
 
+notes.interceptors.response.use(response => {
+  return response
+}, error => {
+  return Promise.reject(error)
+})
+
 Vue.prototype.$http = axios
-export default service
+export const Service = service
+export const Notes = notes

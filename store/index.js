@@ -3,7 +3,7 @@
  * @author littlewin(littlewin.wang@gmail.com)
  */
 
-import Service from '~/plugins/axios'
+import { Service, Notes } from '~/plugins/axios'
 
 export const actions = {
 
@@ -15,6 +15,7 @@ export const actions = {
       store.dispatch('getMessage'),
       store.dispatch('getCategories'),
       store.dispatch('getTags'),
+      store.dispatch('getNotes'),
       // 初始化热门文章/最近回复
       store.dispatch('getHotArticles'),
       store.dispatch('getLatestComments')
@@ -232,6 +233,19 @@ export const actions = {
         if (!success) commit('project/GET_PROJECTS_FAILURE')
       }, err => {
         commit('project/GET_PROJECTS_FAILURE', err)
+      })
+  },
+
+  // 页面宽度设置
+  getNotes ({ commit, state }) {
+    commit('note/GET_NOTES')
+    return Notes.get(`/issues`)
+      .then(res => {
+        const success = !!res.status && res.data
+        if (success) commit('note/GET_NOTES_SUCCESS', res.data)
+        if (!success) commit('note/GET_NOTES_FAILURE')
+      }, err => {
+        commit('note/GET_NOTES_FAILURE', err)
       })
   }
 }

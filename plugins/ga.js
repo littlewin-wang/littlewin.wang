@@ -3,7 +3,7 @@
  * @author littlewin(littlewin.wang@gmail.com)
  */
 
-import Service from '~/plugins/axios'
+import { Service } from '~/plugins/axios'
 import Cookies from 'js-cookie'
 const uuidv4 = require('uuid/v4')
 
