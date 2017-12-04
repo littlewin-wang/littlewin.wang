@@ -12,7 +12,7 @@ let service = axios.create({
 })
 
 let notes = axios.create({
-  baseURL: 'https://api.github.com/repos/littlewin-wang/Notes/'
+  baseURL: 'https://api.github.com/repos/littlewin-wang/Notes'
 })
 
 // http request 拦截器
