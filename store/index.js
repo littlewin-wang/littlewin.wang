@@ -15,7 +15,6 @@ export const actions = {
       store.dispatch('getMessage'),
       store.dispatch('getCategories'),
       store.dispatch('getTags'),
-      store.dispatch('getNotes'),
       // 初始化热门文章/最近回复
       store.dispatch('getHotArticles'),
       store.dispatch('getLatestComments')
