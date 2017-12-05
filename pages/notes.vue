@@ -5,9 +5,10 @@
         <ul>
           <li v-for="(note, index) in notes" :key="index">
             <div class="note">
-              <i class="iconfont icon-issue-opened"></i>
+              <i style="color: green" class="iconfont icon-issue-opened" v-if="note.state==='open'"></i>
+              <i style="color: red" class="iconfont icon-issue-closed" v-if="note.state==='close'"></i>
               <div class="note-title">
-                <h5>{{note.title}}</h5>
+                <h5><nuxt-link :to="'/note/'.concat(note.number)">{{note.title}}</nuxt-link></h5>
                 <div>#{{note.number}} {{new Date(note.updated_at).toLocaleDateString()}} by <a target="_blank" rel="external nofollow" :href="note.user.html_url">{{note.user.login}}</a></div>
               </div>
               <i class="iconfont icon-comment"></i>
@@ -60,15 +61,20 @@ export default {
 <style lang="scss" scoped>
 .page-container {
   margin-bottom: 2rem;
-  padding: 2em 3em;
+  padding: 1rem;
   background-color: hsla(0, 0%, 100%, .6);
   ul {
     li {
       .note {
         display: flex;
-        height: 40px;
+        padding: .5rem;
+        height: calc(40px+1rem);
         line-height: 40px;
         justify-content: space-between;
+        &:hover {
+          background-color: hsla(0, 0%, 77%, .4);
+        }
+
         i {
           padding: 0 .5rem;
         }
@@ -78,11 +84,17 @@ export default {
             margin: 0;
             height: 24px;
             line-height: 24px;
+            &:hover {
+              text-decoration: underline;
+            }
           }
           div {
             height: 16px;
             line-height: 16px;
             font-size: 12px;
+            a {
+              text-decoration: underline;
+            }
           }
         }
       }

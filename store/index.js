@@ -217,7 +217,7 @@ export const actions = {
     commit('site/GET_WIDTH', width)
   },
 
-  // 页面宽度设置
+  // 获取github repos
   getProjects ({ commit, state }) {
     // 如果数据已存在，则直接返回Promise成功，并返回数据
     if (state.project.data.length) {
@@ -235,8 +235,8 @@ export const actions = {
       })
   },
 
-  // 页面宽度设置
-  getNotes ({ commit, state }) {
+  // 获取notes
+  getNotes ({ commit }) {
     commit('note/GET_NOTES')
     return Notes.get(`/issues`)
       .then(res => {
@@ -245,6 +245,32 @@ export const actions = {
         if (!success) commit('note/GET_NOTES_FAILURE')
       }, err => {
         commit('note/GET_NOTES_FAILURE', err)
+      })
+  },
+
+  // 获取具体note内容
+  getNote ({ commit }, id) {
+    commit('note/GET_NOTE')
+    return Notes.get(`/issues/${id}`)
+      .then(res => {
+        const success = !!res.status && res.data
+        if (success) commit('note/GET_NOTE_SUCCESS', res.data)
+        if (!success) commit('note/GET_NOTE_FAILURE')
+      }, err => {
+        commit('note/GET_NOTE_FAILURE', err)
+      })
+  },
+
+  // 获取具体note评论
+  getNoteComments ({ commit }, id) {
+    commit('note/GET_NOTE_COMMENTS')
+    return Notes.get(`/issues/${id}/comments`)
+      .then(res => {
+        const success = !!res.status && res.data
+        if (success) commit('note/GET_NOTE_COMMENTS_SUCCESS', res.data)
+        if (!success) commit('note/GET_NOTE_COMMENTS_FAILURE')
+      }, err => {
+        commit('note/GET_NOTE_COMMENTS_FAILURE', err)
       })
   }
 }

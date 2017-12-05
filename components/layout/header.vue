@@ -18,7 +18,7 @@
               <nuxt-link to="/simple">极简</nuxt-link>
             </li>
             <li @click="handleClick">
-              <nuxt-link to="/note">学记</nuxt-link>
+              <nuxt-link to="/notes">学记</nuxt-link>
             </li>
             <li @click="handleClick">
               <nuxt-link to="/project">项目</nuxt-link>
