@@ -129,6 +129,7 @@ export default {
       }
       .excerpt {
         font-size: 13px;
+        color: #777;
       }
       .info {
         display: flex;
