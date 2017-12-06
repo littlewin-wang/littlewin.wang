@@ -118,16 +118,17 @@ export default {
       padding: 0 35px 0 20px;
       .title {
         margin: 0;
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 17px;
+        font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: .8rem;
+        margin-bottom: .5rem;
         &:hover {
           text-decoration: underline;
         }
       }
       .excerpt {
+        margin-bottom: .5rem;
         font-size: 13px;
         color: #777;
       }
