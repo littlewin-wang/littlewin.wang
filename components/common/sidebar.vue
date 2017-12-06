@@ -129,6 +129,7 @@ export default {
         padding: .5rem 1rem;
         h5 {
           margin: .2rem 0;
+          font-size: 13px;
           &:hover {
             text-decoration: underline;
           }
@@ -144,6 +145,7 @@ export default {
         height: 2em;
         padding: 0 .5em;
         line-height: 2em;
+        font-size: 13px;
         background-color: hsla(0, 0%, 77%, .4);
         &:hover {
           background-color: rgba(95, 95, 95, .4);
@@ -158,6 +160,9 @@ export default {
       .comment-title {
         height: 1.5rem;
         line-height: 1.5rem;
+      }
+      .comment-content {
+        color: #888;
       }
     }
   }

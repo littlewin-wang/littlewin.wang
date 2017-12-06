@@ -9,7 +9,7 @@ export const state = () => {
     data: [],
     note: {
       fetching: false,
-      data: {},
+      data: {}
     },
     comments: {
       fetching: false,

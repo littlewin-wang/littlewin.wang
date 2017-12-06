@@ -99,16 +99,17 @@ export default {
       .detail {
         padding: 0 20px;
         border-right: 1px solid #ebebeb;
-        .date-day {
-          font-size: 21px;
-          font-weight: 600;
-          color: #303030;
-          padding-bottom: 5px;
-        }
         .date-day,
         .date-month,
         .date-year {
+          font-size: 12px;
           display: block;
+        }
+        .date-day {
+          font-size: 16px;
+          font-weight: 500;
+          color: #303030;
+          padding-bottom: 5px;
         }
       }
     }
@@ -117,21 +118,23 @@ export default {
       padding: 0 35px 0 20px;
       .title {
         margin: 0;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: 1rem;
+        margin-bottom: .8rem;
         &:hover {
           text-decoration: underline;
         }
       }
+      .excerpt {
+        font-size: 13px;
+      }
       .info {
         display: flex;
         justify-content: space-between;
-        font-size: 14px;
+        font-size: 12px;
         color: #222222;
-        margin-top: 1rem;
         padding-top: .5rem;
         border-top: 1px solid #ebebeb;
         .before-left,
@@ -141,11 +144,11 @@ export default {
           line-height: 2rem;
         }
         .tag {
-          margin-left: 4px;
+          margin-left: 6px;
         }
         i {
           color: #8d8d8d;
-          font-size: 14px;
+          font-size: 12px;
           margin-right: 4px;
         }
         .author {
@@ -154,8 +157,8 @@ export default {
           padding-left: 22px;
           img {
             position: absolute;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
