@@ -31,6 +31,34 @@
             <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external nofollow">署名 4.0 国际</a>」创作共享协议
           </p>
         </div>
+        <div class="comment-container">
+          <div class="list">
+            <ul>
+              <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comments">
+                <div class="cm-avatar">
+                  <a target="_blank" rel="external nofollow" :href="comment.user.html_url">
+                    <img :alt="comment.user.origin || '匿名用户'" :src="comment.user.avatar_url || '/images/anonymous.jpg'">
+                  </a>
+                </div>
+                <div class="cm-body">
+                  <div class="cm-header">
+                    <a class="user-name" target="_blank" rel="external nofollow" :href="comment.user.html_url">
+                      {{ comment.user.login }}
+                    </a>
+                  </div>
+                  <div class="cm-content">
+                    <div v-html="marked(comment.body)"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="link-container">
+          <a :href="note.html_url" target="_blank" rel="external nofollow">
+            >>> 前往Github Issues评论参与 <<<
+          </a>
+        </div>
       </div>
       <div class="sidebar">
         <div>
@@ -77,6 +105,9 @@ export default {
     note () {
       return this.$store.state.note.note.data
     },
+    comments () {
+      return this.$store.state.note.comments.data
+    },
     noteContent () {
       let content = this.note.body
 
@@ -100,11 +131,17 @@ export default {
     }
   },
   methods: {
+    marked (content) {
+      return marked(content, null, false)
+    }
   }
 }
 </script>
 
 <style lang="scss">
+@import '~assets/sass/mixins';
+@import '~assets/sass/variables';
+
 .article-container {
   margin-bottom: 1rem;
   padding: 2rem 3rem;
@@ -333,5 +370,98 @@ export default {
   margin-bottom: 1rem;
   padding: 1rem 1.5rem;
   background-color: hsla(0, 0%, 100%, .6);
+  .comment-item {
+    position: relative;
+    padding: .6em 0 .6em 1.5em;
+
+    &:hover {
+
+      >.cm-avatar {
+        >a {
+          >img {
+            transition: transform .5s ease-out;
+            transform: rotate(360deg);
+          }
+        }
+      }
+
+      >.cm-body {
+        background-color: darken($module-hover-bg, 20%);
+      }
+    }
+
+    >.cm-avatar {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 2em;
+      background-color: $module-hover-bg;
+
+      >a {
+        display: block;
+        border: .3em solid $module-bg;
+        width: 4em;
+        height: 4em;
+
+        >img {
+          width: 100%;
+          height: 100%;
+          transition: transform .5s ease-out;
+        }
+      }
+    }
+
+    >.cm-body {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: .6rem .6rem .6rem 3.2rem;
+      background-color: $module-hover-bg;
+
+      >.cm-header {
+        display: block;
+        position: relative;
+        height: 2rem;
+        line-height: 2rem;
+
+        >.user-name {
+          font-weight: bold;
+          margin-right: .8rem;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      >.cm-content {
+        font-size: .95rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .comment-item {
+      padding: .6em 0;
+      >.cm-avatar {
+        display: none;
+      }
+      >.cm-body {
+        padding: .6rem;
+      }
+    }
+  }
+}
+
+.link-container {
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsla(0, 0%, 100%, .6);
+  text-align: center;
+  &:hover {
+    background-color: darken($module-hover-bg, 20%);
+    a {
+      text-decoration: underline;
+    }
+  }
 }
 </style>

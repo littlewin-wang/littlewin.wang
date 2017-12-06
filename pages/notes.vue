@@ -2,6 +2,17 @@
   <div class="main">
     <div class="main-container">
       <div class="page-container">
+        <div class="repo">
+          <h5>
+            <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">Notes</a>
+            <span>
+              前端知识点汇总 + demo或分析
+            </span>
+          </h5>
+          <p>
+            本页内容从 github 对应的 repository 的 issues 中获取
+          </p>
+        </div>
         <ul>
           <li v-for="(note, index) in notes" :key="index">
             <div class="note">
@@ -63,13 +74,35 @@ export default {
   margin-bottom: 2rem;
   padding: 1rem;
   background-color: hsla(0, 0%, 100%, .6);
+  .repo {
+    padding: 1rem 2rem;
+    border-bottom: 1px dashed #eee;
+    h5 {
+      margin: 0 0 .2rem 0;
+      a {
+        color: #0366d6;
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+    p {
+      margin: 0;
+      line-height: 1.2rem;
+      color: #888;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+
   ul {
     li {
       .note {
         display: flex;
+        align-items:center;
         padding: .5rem;
-        height: calc(40px+1rem);
-        line-height: 40px;
         justify-content: space-between;
         &:hover {
           background-color: hsla(0, 0%, 77%, .4);
@@ -82,15 +115,11 @@ export default {
           flex: 1;
           h5 {
             margin: 0;
-            height: 24px;
-            line-height: 24px;
             &:hover {
               text-decoration: underline;
             }
           }
           div {
-            height: 16px;
-            line-height: 16px;
             font-size: 12px;
             a {
               text-decoration: underline;
