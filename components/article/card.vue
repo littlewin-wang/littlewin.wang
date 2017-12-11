@@ -142,7 +142,8 @@ export default {
         .before-left,
         .left,
         .right {
-          height: 2em;
+          white-space: nowrap;
+          height: 2rem;
           line-height: 2rem;
         }
         .tag {
