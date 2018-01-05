@@ -28,7 +28,6 @@ notes.interceptors.request.use(config => {
   return Promise.reject(error)
 })
 
-
 // http response 拦截器
 service.interceptors.response.use(response => {
   return response
