@@ -56,7 +56,7 @@
         </div>
         <div class="link-container">
           <a :href="note.html_url" target="_blank" rel="external nofollow">
-            >>> 前往Github Issues评论参与 <<<
+            >>> 前往Github Issues评论参与
           </a>
         </div>
       </div>

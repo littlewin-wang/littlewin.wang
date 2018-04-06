@@ -4,6 +4,7 @@
  */
 
 import { Service, Notes } from '~/plugins/axios'
+import global from '~/utils/global'
 
 export const actions = {
 
@@ -271,6 +272,23 @@ export const actions = {
         if (!success) commit('note/GET_NOTE_COMMENTS_FAILURE')
       }, err => {
         commit('note/GET_NOTE_COMMENTS_FAILURE', err)
+      })
+  },
+
+  // 获取歌曲列表
+  getPlayerList ({ commit }) {
+    global.requestMusicList()
+
+    return Service.get('/music/list/2174766006')
+      .then(res => {
+        const success = !!res.status && res.data
+        if (success) {
+          global.getMusicListSuccess(res.data)
+          global.initPlayer()
+        }
+        if (!success) global.getMusicListFailure()
+      }, err => {
+        global.getMusicListFailure(err)
       })
   }
 }

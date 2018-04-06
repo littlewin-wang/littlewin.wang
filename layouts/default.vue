@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import global from '~/utils/global'
 import Background from '~/components/layout/background'
 import LHeader from '~/components/layout/header'
 import LFooter from '~/components/layout/footer'
@@ -37,6 +38,12 @@ export default {
   },
   mounted () {
     this.isActive()
+
+    // 将全局变量组件注册到Vue
+    this.$root.$global = global
+
+    // 获取歌曲列表
+    this.$store.dispatch('getPlayerList')
   }
 }
 </script>

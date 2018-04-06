@@ -46,6 +46,7 @@ module.exports = {
     },
     vendor: [
       'axios',
+      'howler',
       'clipboard',
       'marked',
       'gravatar'
@@ -62,6 +63,7 @@ module.exports = {
   },
   plugins: [
     { src: '~plugins/axios.js' },
+    { src: '~plugins/howler.js' },
     { src: '~plugins/clipboard.js' },
     { src: '~plugins/copy-right.js', ssr: false },
     { src: '~plugins/image-popup.js', ssr: false },
