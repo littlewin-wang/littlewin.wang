@@ -33,6 +33,20 @@ export default state => {
     // 更新全局变量列表数据
     state.list.data.tracks = playerList
 
+    // 进度条的一帧帧更新
+    const playerStep = () => {
+      const play = playerList[state.playerState.index].howl
+
+      // 确定进度百分比
+      const seek = play.seek() || 0
+      state.playerState.progress = ((seek / play.duration()) * 100) || 0
+
+      // 音乐播放期间继续更新
+      if (play.playing()) {
+        requestAnimationFrame(playerStep)
+      }
+    }
+
     state.player = {
       // 播放
       play (index) {
@@ -50,6 +64,7 @@ export default state => {
               state.playerState.loading = false
               state.playerState.playing = true
               state.playerState.progress = 0
+              requestAnimationFrame(playerStep)
             },
             onload () {
               state.playerState.wave = true

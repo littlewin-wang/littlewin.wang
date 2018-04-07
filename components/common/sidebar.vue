@@ -13,6 +13,9 @@
               <i class="iconfont icon-next" @click="handleNext"></i>
               <i class="iconfont" :class="!playerState.muted ? 'icon-volume' : 'icon-mute'" @click="handleMute"></i>
             </div>
+            <div class="progress">
+              <div class="inner" :style="{width: `${currentSongProgress}%`}"></div>
+            </div>
             <div class="content">
               <a target="_blank" rel="external nofollow" :href="currentSong ? `http://music.163.com/#/song?id=${currentSong.id}` : ''">{{ currentSong ? currentSong.name : '' }}</a>
             </div>
@@ -124,6 +127,9 @@ export default {
       } else {
         return 'https://static.littlewin.wang/blog/music-bg.jpeg'
       }
+    },
+    currentSongProgress () {
+      return this.playerState.progress || 0
     }
   },
   methods: {
@@ -246,6 +252,15 @@ export default {
             &:hover {
               color: #777;
             }
+          }
+        }
+        .progress {
+          height: 2px;
+          margin: 0 1rem;
+          background: #eee;
+          .inner {
+            height: 100%;
+            background: #bbb;
           }
         }
         .content {
