@@ -84,8 +84,8 @@
                 </strong>
                 在
                 <strong>
-                  <nuxt-link :to="`/article/${comment.postID}`" v-if="comment.postID!==0">#{{ comment.postID }}</nuxt-link>
-                  <nuxt-link :to="`/guest`" v-else>#{{ comment.postID }}</nuxt-link>
+                  <nuxt-link :to="`/article/${comment.postID}`" v-if="comment.postTitle">{{ comment.postTitle }}</nuxt-link>
+                  <nuxt-link :to="`/guest`" v-else>留言</nuxt-link>
                 </strong>
               </div>
               <div class="comment-content">
@@ -123,7 +123,7 @@ export default {
     currentSongPic () {
       if (this.currentSong) {
         const picUrl = this.currentSong.album.picUrl
-        return picUrl || 'https://static.littlewin.wang/blog/music-bg.jpeg'
+        return picUrl ? picUrl + '?param=600y600' : 'https://static.littlewin.wang/blog/music-bg.jpeg'
       } else {
         return 'https://static.littlewin.wang/blog/music-bg.jpeg'
       }
@@ -214,16 +214,16 @@ export default {
       }
     }
     .comment {
-      padding: .5rem;
-      &:hover {
-        background-color: hsla(0, 0%, 77%, .4);
-      }
       .comment-title {
         height: 1.5rem;
         line-height: 1.5rem;
       }
       .comment-content {
+        padding: .2rem .5rem;
         color: #888;
+        &:hover {
+          background-color: hsla(0, 0%, 77%, .4);
+        }
       }
     }
     .player {
@@ -265,6 +265,7 @@ export default {
         }
         .content {
           a {
+            white-space: nowrap;
             color: #ccc;
             &:hover {
               color: #777;
