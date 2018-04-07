@@ -31,13 +31,22 @@ export default new Vue({
       }
     }
   },
+  computed: {
+    currentSong () {
+      if (this.music.list.data) {
+        return this.music.list.data.tracks[this.music.playerState.index]
+      } else {
+        return null
+      }
+    }
+  },
   methods: {
     initPlayer () {
       musicPlayer(this.music)
 
-      if (this.music.playerState.ready && this.music.player.play) {
-        this.music.player.play()
-      }
+      // if (this.music.playerState.ready && this.music.player.play) {
+      //   this.music.player.play()
+      // }
     },
 
     requestMusicList () {

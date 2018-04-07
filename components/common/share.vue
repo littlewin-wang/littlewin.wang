@@ -40,17 +40,19 @@ export default {
   },
   methods: {
     description () {
-      try { if (document) return document.getElementsByName('description')[0].getAttribute('content') }
-      catch (err) { return '' }
+      try {
+        if (document) return document.getElementsByName('description')[0].getAttribute('content')
+      } catch (err) { return '' }
     },
     title () {
-      try { if (document) return document.title }
-      catch (err) { return 'Littlewin.wang' }
+      try {
+        if (document) return document.title
+      } catch (err) { return 'Littlewin.wang' }
     },
     shareWindow (url) {
       url = url.includes('mailto') ? url.replace(/\s|\||Littlewin.wang/g, '') : encodeURI(url)
 
-      let winName = "newWin"
+      let winName = 'newWin'
       // screen.availWidth 获得屏幕宽度
       // screen.availHeight 获得屏幕高度
       // 居中的算法是：

@@ -1,6 +1,26 @@
 <template>
   <div class="article-sidebar">
     <div class="article-sidebar-box">
+      <div class="container">
+        <div class="player">
+          <div class="img">
+            <img :class="playerState.playing? 'active' : ''" :src="currentSongPic" :alt="currentSong ? currentSong.name : 'No current song'">
+          </div>
+          <div class="main">
+            <div class="ctrl">
+              <i class="iconfont icon-prev" @click="handlePrev"></i>
+              <i class="iconfont" :class="playerState.playing ? 'icon-pause' : 'icon-play'" @click="handlePlay"></i>
+              <i class="iconfont icon-next" @click="handleNext"></i>
+              <i class="iconfont" :class="!playerState.muted ? 'icon-volume' : 'icon-mute'" @click="handleMute"></i>
+            </div>
+            <div class="content">
+              <a target="_blank" rel="external nofollow" :href="currentSong ? `http://music.163.com/#/song?id=${currentSong.id}` : ''">{{ currentSong ? currentSong.name : '' }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="article-sidebar-box">
       <h5 class="title">
         <i class="iconfont icon-menu"></i>
         热门文章
@@ -39,7 +59,6 @@
               <span data-v-3a678449="">{{tag.name}}</span>
               <span data-v-3a678449="">({{tag.count}})</span>
             </nuxt-link>
-            </a>
           </li>
         </ul>
       </div>
@@ -79,6 +98,7 @@
 
 <script>
 import marked from '~/plugins/marked'
+import global from '~/utils/global'
 
 export default {
   name: 'Sidebar',
@@ -87,7 +107,42 @@ export default {
     tags: Object,
     comments: Object
   },
+  computed: {
+    player () {
+      return global.music.player
+    },
+    playerState () {
+      return global.music.playerState
+    },
+    currentSong () {
+      return global.currentSong
+    },
+    currentSongPic () {
+      if (this.currentSong) {
+        const picUrl = this.currentSong.album.picUrl
+        return picUrl || 'https://static.littlewin.wang/blog/music-bg.jpeg'
+      } else {
+        return 'https://static.littlewin.wang/blog/music-bg.jpeg'
+      }
+    }
+  },
   methods: {
+    // 上一曲
+    handlePrev () {
+      this.player.prev()
+    },
+    // 音乐播放控制
+    handlePlay () {
+      this.player.toggle()
+    },
+    // 下一曲
+    handleNext () {
+      this.player.next()
+    },
+    // mute控制
+    handleMute () {
+      this.player.mute()
+    },
     // markdown转义
     marked (content) {
       return marked(content, null, false)
@@ -163,6 +218,54 @@ export default {
       }
       .comment-content {
         color: #888;
+      }
+    }
+    .player {
+      display: flex;
+      height: 60px;
+      padding: .4rem 0;
+      .img {
+        flex: 0 0 calc(60px - 0.8rem);
+        img {
+          border-radius: 50%;
+          &.active {
+            animation: rotate 12s infinite linear;
+          }
+        }
+      }
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        color: #ccc;
+        .ctrl {
+          i {
+            padding: .4rem;
+            &:hover {
+              color: #777;
+            }
+          }
+        }
+        .content {
+          a {
+            color: #ccc;
+            &:hover {
+              color: #777;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
       }
     }
   }
