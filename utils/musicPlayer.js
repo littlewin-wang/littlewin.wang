@@ -58,7 +58,7 @@ export default state => {
             onend () {
               state.playerState.wave = false
               state.playerState.playing = true
-              // 播放下一首歌曲
+              state.player.next()
             },
             onpause () {
               state.playerState.wave = false
@@ -92,6 +92,28 @@ export default state => {
           // 更新当前活动歌曲的索引（在歌曲实例并播放成功的情况下才完成）
           state.playerState.index = index
           state.playerState.targetIndex = index
+        }
+
+        // 从播放列表移除无效歌曲
+        const errAndNext = song => {
+          // 当前歌曲退载
+          if (song.howl) {
+            song.howl.stop()
+            song.howl.unload()
+          }
+
+          song.howl = null
+          playerList.splice(playerList.findIndex(s => Object.is(s.id, song.id)), 1)
+          state.list.data.tracks.splice(state.list.data.tracks.findIndex(s => Object.is(s.name, song.name)), 1)
+
+          state.playerState.wave = false
+          state.playerState.playing = true
+          // 重新找下一首歌曲
+          const index = state.playerState.index - 1
+          state.playerState.index = (index < 0) ? 0 : index
+          // 播放下一首歌曲
+          state.player.next()
+          state.playerState.ready = true
         }
 
         // 规范输入index
@@ -144,12 +166,80 @@ export default state => {
                 buildHowl(song)
               }
             } else {
-              console.log('地址无效', res)
+              // console.log('地址无效', res)
+              errAndNext(song)
             }
           }, err => {
             console.log('请求失败', err)
+            errAndNext(song)
           })
         }
+      },
+
+      // 暂停
+      pause () {
+        const song = playerList[state.playerState.index]
+
+        if (song.howl && song.howl.playing()) {
+          song.howl.pause()
+        }
+
+        // pause all tracks
+        Howler._howls.forEach(h => h.pause())
+      },
+
+      // 播放切换
+      toggle () {
+        const play = playerList[state.playerState.index].howl
+
+        if (play && play.playing()) {
+          state.player.pause()
+        } else {
+          state.player.play()
+        }
+      },
+
+      // 音量控制
+      volume (val) {
+        Howler.volume(val)
+      },
+
+      // 静音控制
+      mute () {
+        Howler.mute(!state.playerState.muted)
+        state.playerState.muted = !state.playerState.muted
+      },
+
+      // 跳到某首歌播放
+      skipTo (index) {
+        // 停止当前播放
+        const current = playerList[state.playerState.index]
+        if (current && current.howl) {
+          current.howl.stop()
+        }
+
+        // 停止所有播放
+        Howler._howls.forEach(h => h.stop())
+
+        // 重置进度
+        state.playerState.progress = 0
+
+        // 播放
+        state.player.play(index)
+      },
+
+      // 上一首
+      prev () {
+        let index = state.playerState.targetIndex - 1
+        index = (index < 0) ? playerList.length - 1 : index
+        state.player.skipTo(index)
+      },
+
+      // 下一首
+      next () {
+        let index = state.playerState.targetIndex + 1
+        index = (index >= playerList.length) ? 0 : index
+        state.player.skipTo(index)
       }
     }
 
