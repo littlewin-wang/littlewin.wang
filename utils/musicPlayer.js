@@ -12,6 +12,7 @@ export default state => {
   // 播放器初始化
   if (!state.player) {
     const playList = state.list.data.tracks
+    const proxyPath = 'https://littlewin.wang/proxy/'
 
     // 播放列表为空，退出
     if (!playList.length) return
@@ -57,7 +58,7 @@ export default state => {
             html5: true,
             autoplay: false,
             volume: state.playerState.volume,
-            src: song.src,
+            src: [(song.src || ' ').replace(/(http:\/\/|https:\/\/)/ig, proxyPath)],
             onplay () {
               state.playerState.ready = true
               state.playerState.wave = true

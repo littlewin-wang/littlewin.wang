@@ -5,6 +5,7 @@
         <div class="player">
           <div class="img">
             <img :class="playerState.playing? 'active' : ''" :src="currentSongPic" :alt="currentSong ? currentSong.name : 'No current song'">
+            <div class="center"></div>
           </div>
           <div class="main">
             <div class="ctrl">
@@ -123,7 +124,7 @@ export default {
     currentSongPic () {
       if (this.currentSong) {
         const picUrl = this.currentSong.album.picUrl
-        return picUrl ? picUrl + '?param=600y600' : 'https://static.littlewin.wang/blog/music-bg.jpeg'
+        return picUrl ? picUrl.replace('http://', 'https://littlewin.wang/proxy/') + '?param=600y600' : 'https://static.littlewin.wang/blog/music-bg.jpeg'
       } else {
         return 'https://static.littlewin.wang/blog/music-bg.jpeg'
       }
@@ -231,12 +232,23 @@ export default {
       height: 60px;
       padding: .4rem 0;
       .img {
+        position: relative;
         flex: 0 0 calc(60px - 0.8rem);
         img {
           border-radius: 50%;
           &.active {
             animation: rotate 12s infinite linear;
           }
+        }
+        .center {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #fff;
         }
       }
       .main {
