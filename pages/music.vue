@@ -30,8 +30,11 @@ import global from '~/utils/global'
 export default {
   components: {
   },
-  head: {
-    title: '音乐'
+  head () {
+    const currentSong = this.currentSong
+    return {
+      title: currentSong ? currentSong.name : '音乐'
+    }
   },
   data () {
     return {
@@ -112,9 +115,6 @@ export default {
         border-radius: 50%;
         background: #eee;
       }
-    }
-    .artist {
-
     }
     .title {
       margin: .5rem 0;
