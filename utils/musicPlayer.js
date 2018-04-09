@@ -40,6 +40,8 @@ export default state => {
 
       // 确定进度百分比
       const seek = play.seek() || 0
+      state.playerState.seek = seek
+      state.playerState.duration = play.duration()
       state.playerState.progress = ((seek / play.duration()) * 100) || 0
 
       // 音乐播放期间继续更新

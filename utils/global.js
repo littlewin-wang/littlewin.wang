@@ -14,6 +14,7 @@ export default new Vue({
         player: null,
         playerState: {
           seek: 0,
+          duration: 0,
           index: 0,
           targetIndex: 0,
           volume: 0.4,
