@@ -18,7 +18,8 @@
               <div class="inner" :style="{width: `${currentSongProgress}%`}"></div>
             </div>
             <div class="content">
-              <a target="_blank" rel="external nofollow" :href="currentSong ? `http://music.163.com/#/song?id=${currentSong.id}` : ''">{{ currentSong ? currentSong.name : '' }}</a>
+              <!-- <a target="_blank" rel="external nofollow" :href="currentSong ? `http://music.163.com/#/song?id=${currentSong.id}` : ''">{{ currentSong ? currentSong.name : '' }}</a> -->
+              <nuxt-link to="/music">{{ currentSong ? currentSong.name : '' }}</nuxt-link>
             </div>
           </div>
         </div>
@@ -260,6 +261,7 @@ export default {
         color: #ccc;
         .ctrl {
           i {
+            cursor: pointer;
             padding: .4rem;
             &:hover {
               color: #777;
@@ -284,15 +286,6 @@ export default {
               text-decoration: underline;
             }
           }
-        }
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
         }
       }
     }

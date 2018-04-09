@@ -210,3 +210,20 @@ menu, ul, ol {
     }
   }
 }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wave{
+  0% { height: 4px; }
+  30% { height: 8px; }
+  50% { height: 18px; }
+  70% { height: 8px; }
+  100% { height: 4px; }
+}

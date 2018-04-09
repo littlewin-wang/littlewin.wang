@@ -2,29 +2,31 @@
   <div class="music">
     <div class="cd">
       <div class="img">
-        <img class="active" src="https://littlewin.wang/proxy/p1.music.126.net/piJxh4DzlpPowp1Csj6z7Q==/109951163219136146.jpg?param=600y600" alt="">
+        <img :class="playerState.playing ? 'active' : ''" :src="currentSongPic" :alt="currentSong ? currentSong.name : 'No current song'">
         <div class="inner"></div>
       </div>
-      <h3 class="artist">Daft Punk</h3>
-      <h5 class="title">Instant crush</h5>
+      <h3 class="artist">{{currentSong ? currentSong.artists[0].name : 'No current artist'}}</h3>
+      <h5 class="title">{{currentSong ? currentSong.name : 'No current song'}}</h5>
     </div>
     <div class="state">
-      <span>0:13</span>
+      <span>{{formatTime(playerState.seek)}}</span>
       <div class="wave">
-        <div class="line active" v-for="i in 40" :key="i" :style="{marginLeft: i !== 1 ? '2px' : '0', animationDelay: `${i * 0.2}s`}"></div>
+        <div class="line" :class="playerState.playing? 'active' : ''" v-for="i in 40" :key="i" :style="{marginLeft: i !== 1 ? '2px' : '0', animationDelay: `${i * 0.2}s`}"></div>
       </div>
-      <span>4:13</span>
+      <span>{{formatTime(playerState.duration)}}</span>
     </div>
 
     <div class="ctrl">
-      <i class="iconfont icon-prev"></i>
-      <i class="iconfont icon-play"></i>
-      <i class="iconfont icon-next"></i>
+      <i class="iconfont icon-prev" @click="handlePrev"></i>
+      <i class="iconfont" :class="playerState.playing ? 'icon-pause' : 'icon-play'" @click="handlePlay"></i>
+      <i class="iconfont icon-next" @click="handleNext"></i>
     </div>
   </div>
 </template>
 
 <script>
+import global from '~/utils/global'
+
 export default {
   components: {
   },
@@ -35,7 +37,53 @@ export default {
     return {
     }
   },
+  computed: {
+    player () {
+      return global.music.player
+    },
+    playerState () {
+      return global.music.playerState
+    },
+    currentSong () {
+      return global.currentSong
+    },
+    currentSongPic () {
+      if (this.currentSong) {
+        const picUrl = this.currentSong.album.picUrl
+        return picUrl ? picUrl.replace('http://', 'https://littlewin.wang/proxy/') + '?param=600y600' : 'https://static.littlewin.wang/blog/music-bg.jpeg'
+      } else {
+        return 'https://static.littlewin.wang/blog/music-bg.jpeg'
+      }
+    },
+    currentSongProgress () {
+      return this.playerState.progress || 0
+    }
+  },
   methods: {
+    // 上一曲
+    handlePrev () {
+      this.player.prev()
+    },
+    // 音乐播放控制
+    handlePlay () {
+      this.player.toggle()
+    },
+    // 下一曲
+    handleNext () {
+      this.player.next()
+    },
+    // mute控制
+    handleMute () {
+      this.player.mute()
+    },
+    formatTime (seconds) {
+      return [
+        parseInt(seconds / 60 % 60),
+        parseInt(seconds % 60)
+      ]
+        .join(':')
+        .replace(/\b(\d)\b/g, '0$1')
+    }
   }
 }
 </script>
@@ -107,6 +155,9 @@ export default {
     justify-content: center;
     height: 80px;
     line-height: 80px;
+    i {
+      cursor: pointer;
+    }
     .icon-play, .icon-pause {
       margin: 0 1rem;
       font-size: 60px;
@@ -115,15 +166,10 @@ export default {
     .icon-prev, .icon-next {
       font-size: 36px;
       color: #bbb;
+      &:hover {
+        color: #888;
+      }
     }
   }
-}
-
-@keyframes wave{
-  0% { height: 4px; }
-  30% { height: 8px; }
-  50% { height: 18px; }
-  70% { height: 8px; }
-  100% { height: 4px; }
 }
 </style>
