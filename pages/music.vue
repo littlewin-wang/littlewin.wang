@@ -5,8 +5,12 @@
         <img :class="playerState.playing ? 'active' : ''" :src="currentSongPic" :alt="currentSong ? currentSong.name : 'No current song'">
         <div class="inner"></div>
       </div>
-      <h3 class="artist">{{currentSong ? currentSong.artists[0].name : 'No current artist'}}</h3>
-      <h5 class="title">{{currentSong ? currentSong.name : 'No current song'}}</h5>
+      <h3 class="artist" v-if="currentSong && currentSong.artists && currentSong.artists.length">
+        <a v-for="(artist, index) in currentSong.artists" :key="artist.id" target="_blank" rel="external nofollow" :href="artist.id ? `http://music.163.com/#/artist?id=${artist.id}` : ''">{{ index ? ' / ' + artist.name : artist.name }}</a>
+      </h3>
+      <h5 class="title">
+        <a target="_blank" rel="external nofollow" :href="currentSong ? `http://music.163.com/#/song?id=${currentSong.id}` : ''">{{ currentSong ? currentSong.name : '' }}</a>
+      </h5>
     </div>
     <div class="state">
       <span>{{formatTime(playerState.seek)}}</span>
