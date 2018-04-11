@@ -4,6 +4,12 @@
       <div class="img">
         <img :class="playerState.playing ? 'active' : ''" :src="currentSongPic" :alt="currentSong ? currentSong.name : 'No current song'">
         <div class="inner"></div>
+        <div class="left">
+          <div class="left-circle" :style="{transform: `rotate(${currentSongProgress && currentSongProgress > 50 ? (-135 + currentSongProgress / 100 * 360 - 180) : -135}deg)`}"></div>
+        </div>
+        <div class="right">
+          <div class="right-circle" :style="{transform: `rotate(${currentSongProgress && currentSongProgress > 50 ? 225 : (45 + currentSongProgress / 100 * 360)}deg)`}"></div>
+        </div>
       </div>
       <h3 class="artist" v-if="currentSong && currentSong.artists && currentSong.artists.length">
         <a v-for="(artist, index) in currentSong.artists" :key="artist.id" target="_blank" rel="external nofollow" :href="artist.id ? `http://music.163.com/#/artist?id=${artist.id}` : ''">{{ index ? ' / ' + artist.name : artist.name }}</a>
@@ -102,9 +108,12 @@ export default {
   .cd {
     text-align: center;
     .img {
+      width: 100%;
+      height: 320px;
       position: relative;
       img {
         border-radius: 50%;
+        border: 6px solid rgba(187,187,187,.8);
         &.active {
           animation: rotate 12s infinite linear;
         }
@@ -118,6 +127,45 @@ export default {
         height: 20%;
         border-radius: 50%;
         background: #eee;
+      }
+      .left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        .left-circle {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 100%;
+          border-radius: 160px;
+          border: 6px solid transparent;
+          border-top: 6px solid #ddd;
+          border-right: 6px solid #ddd;
+          transform: rotate(-135deg)
+        }
+      }
+      .right {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        .right-circle {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 200%;
+          height: 100%;
+          border-radius: 160px;
+          border: 6px solid transparent;
+          border-top: 6px solid #ddd;
+          border-right: 6px solid #ddd;
+        }
       }
     }
     .title {
