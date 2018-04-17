@@ -33,10 +33,10 @@
       <div class="container" v-if="!articles.data.articles.length">
         <p>暂无热门文章</p>
       </div>
-      <div class="container" v-for="(article, index) in articles.data.articles" :key="index">
+      <div class="container">
         <ul>
           <li>
-            <div class="post">
+            <div class="post" v-for="(article, index) in articles.data.articles" :key="index">
               <div class="content">
                 <h5>
                   <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
@@ -183,7 +183,7 @@ export default {
     }
   }
   .container {
-    padding: .2rem 1rem;
+    padding: .8rem 1rem;
     .post {
       &:hover {
         background-color: hsla(0, 0%, 77%, .4);
