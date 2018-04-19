@@ -24,6 +24,9 @@
           </div>
         </div>
       </div>
+      <div class="full-screen">
+        <nuxt-link to="/music"><i class="iconfont icon-fullscreen"></i></nuxt-link>
+      </div>
     </div>
     <div class="article-sidebar-box">
       <h5 class="title">
@@ -166,8 +169,25 @@ export default {
 <style lang="scss" scoped>
 .article-sidebar {
   .article-sidebar-box {
+    position: relative;
     margin-bottom: 1rem;
     background-color: hsla(0, 0%, 100%, .6);
+    .full-screen {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      cursor: pointer;
+      i {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ccc;
+      }
+      &:hover {
+        i {
+          color: #48494d;
+        }
+      }
+    }
   }
   .title {
     margin: 0;

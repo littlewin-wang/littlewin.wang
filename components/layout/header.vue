@@ -24,9 +24,6 @@
               <nuxt-link to="/project">项目</nuxt-link>
             </li>
             <li @click="handleClick">
-              <nuxt-link to="/music">音乐</nuxt-link>
-            </li>
-            <li @click="handleClick">
               <nuxt-link to="/about">关于</nuxt-link>
             </li>
             <li @click="handleClick">
