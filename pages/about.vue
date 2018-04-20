@@ -2,16 +2,16 @@
   <div class="about">
     <div class="basic container">
       <div class="content">
-        <h5 class="title">个人基本</h5>
+        <!-- <h5 class="title">个人基本</h5> -->
         <p>Littlewin是一个
           <a target="_blank" rel="external nofollow" href="https://littlewin.wang">独立博客</a> 的Owner
+          <br> Littlewin目前是小厂前端开发师一枚，积极上进中
           <br> Littlewin目前热情集中在与
           <a target="_blank" rel="external nofollow" href="https://littlewin.wang/article/4">大目标</a> 携手并进和在
           <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang">Github
           </a> 上积极垒砖
-          <br>Littlewin目前是小厂前端开发师一枚，积极上进中
           <br>
-          <span>
+          <!-- <span>
             Find Me In
             <a rel="external nofollow" href="mailto:littlewin.wang@gmail.com">
               <i style="font-size: 14px; padding:0 .2rem" class="iconfont icon-mail"></i>
@@ -28,8 +28,36 @@
             <a target="_blank" rel="external nofollow" href="https://twitter.com/littlewin_wang">
               <i style="font-size: 14px; padding:0 .2rem" class="iconfont icon-twitter"></i>
             </a>
-          </span>
+          </span> -->
         </p>
+      </div>
+    </div>
+
+    <div class="container white">
+      <div class="content tips">
+        <div class="item">
+          <div class="icon">
+            <i class="iconfont icon-coding"></i>
+          </div>
+          <h5></h5>
+          <p></p>
+        </div>
+
+        <div class="item">
+          <div class="icon">
+            <i class="iconfont icon-app"></i>
+          </div>
+          <h5></h5>
+          <p></p>
+        </div>
+
+        <div class="item">
+          <div class="icon">
+            <i class="iconfont icon-think"></i>
+          </div>
+          <h5></h5>
+          <p></p>
+        </div>
       </div>
     </div>
 
@@ -85,18 +113,10 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  .grid-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
   .container {
     width: 100%;
     margin-bottom: 1rem;
-    background-color: hsla(0, 0%, 100%, .6);
+    // background-color: hsla(0, 0%, 100%, .6);
     .content {
       padding: 1rem 2rem;
       h5 {
@@ -110,8 +130,8 @@ export default {
         }
       }
       p {
-        padding-left: 2rem;
-        border-left: 4px solid #6cf;
+        // padding-left: 2rem;
+        // border-left: 4px solid #6cf;
         a {
           color: #6cf;
           &:hover {
@@ -127,6 +147,24 @@ export default {
         }
       }
     }
+
+    .tips {
+      display: flex;
+      justify-content: space-between;
+      .item {
+        flex: 0 30%;
+        text-align: center;
+        .icon {
+          i {
+            font-size: 36px;
+          }
+        }
+      }
+    }
+  }
+
+  .white {
+    background-color: hsla(0, 0%, 100%, .6);
   }
 }
 </style>
