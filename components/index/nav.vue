@@ -5,6 +5,9 @@
         <li v-for="(category, index) in categories.data.categories" :key="index">
           <nuxt-link :to="`/category/${category.name}`">{{category.name}}</nuxt-link>
         </li>
+        <li>
+          <nuxt-link :to="`/notes`">学记</nuxt-link>
+        </li>
       </ul>
     </nav>
   </div>

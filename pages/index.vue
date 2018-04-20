@@ -9,7 +9,7 @@
           <ArticleNav :categories="categories"></ArticleNav>
         </div>
         <div class="list">
-          <ArticleList :articles="articles" :user="user" @add="addArticles"></ArticleList>
+          <ArticleList :articles="combinedArticles" :user="user" @add="addArticles"></ArticleList>
         </div>
       </div>
       <div class="sidebar">
@@ -30,7 +30,8 @@ import Sidebar from '~/components/common/sidebar.vue'
 export default {
   fetch ({ store }) {
     return Promise.all([
-      store.dispatch('getArticles')
+      store.dispatch('getArticles'),
+      store.dispatch('getNotes', { per_page: 100 })
     ])
   },
   components: {
@@ -46,6 +47,25 @@ export default {
   computed: {
     articles () {
       return this.$store.state.article.list
+    },
+    notes () {
+      return this.$store.state.note.data
+    },
+    combinedArticles () {
+      let data = JSON.parse(JSON.stringify(this.articles))
+      const len = data.data.articles.length
+
+      this.notes.map(n => {
+        if (new Date(n.created_at) > new Date(data.data.articles[len - 1].createAt)) {
+          n.createAt = n.created_at
+          n.isIssue = true
+          n.description = n.body.split('\n')[0].replace(/[#>]/g, '')
+          data.data.articles.push(n)
+        }
+      })
+
+      data.data.articles.sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+      return data
     },
     hotArticles () {
       return this.$store.state.article.hot

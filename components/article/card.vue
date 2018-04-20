@@ -10,7 +10,8 @@
       </div>
       <div class="content">
         <h2 class="title">
-          <nuxt-link :to="`/article/${article.id}`">{{article.title}}</nuxt-link>
+          <nuxt-link :to="'/note/'.concat(article.number)" v-if="article.isIssue">{{article.title}}</nuxt-link>
+          <nuxt-link :to="`/article/${article.id}`" v-else>{{article.title}}</nuxt-link>
         </h2>
         <p class="excerpt">
           {{article.description}}
@@ -22,16 +23,21 @@
             </span>
           </div>
           <div class="left">
-            <span class="tag">
+            <span class="tag" v-if="!article.isIssue">
               <i class="iconfont" :class="[article.tag[0].extends.find(t => Object.is(t.name, 'icon')).value]"></i>
               <nuxt-link :to="`/tag/${article.tag[0].name}`">{{article.tag[0].name}}</nuxt-link>
             </span>
+            <span class="tag" v-else>
+              <i class="iconfont icon-github"></i>
+              <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">Note</a>
+            </span>
+
             <span class="author">
               <img :src="user.gravatar" :alt="user.slogan">
               <span>{{user.username}}</span>
             </span>
           </div>
-          <div class="right">
+          <div class="right" v-if="!article.isIssue">
             <span class="tag">
               <i class="iconfont icon-view"></i>
               <span>{{article.meta.views}}</span>
@@ -43,6 +49,11 @@
             <span class="tag">
               <i class="iconfont icon-comment"></i>
               <span>{{article.meta.comments}}</span>
+            </span>
+          </div>
+          <div class="right" style="border-radius: 4px; background: #3cf" v-else>
+            <span class="tag" style="margin: 0 .2rem">
+              <span style="color: #fff">IN GITHUB ISSUE</span>
             </span>
           </div>
         </div>
