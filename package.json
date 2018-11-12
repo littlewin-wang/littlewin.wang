@@ -21,16 +21,16 @@
     "howler": "^2.0.9",
     "js-cookie": "^2.2.0",
     "marked": "^0.3.9",
-    "nuxt": "^1.0.0-rc8",
+    "nuxt": "^2.2.0",
     "ua-parser-js": "^0.7.17",
     "uuid": "^3.1.0",
     "vue-awesome-swiper": "^2.6.7",
     "vuex": "^2.5.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^10.0.1",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^4.14.0",
+    "eslint": "^5.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-html": "^3.2.2",
@@ -38,7 +38,7 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.10.0",
     "sass-loader": "^6.0.6"
   }
 }
