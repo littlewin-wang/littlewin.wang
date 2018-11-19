@@ -82,19 +82,17 @@
       <div class="container">
         <ul>
           <li>
-            <div class="comment" v-for="(comment,index) in this.comments.comments" :key="index">
-              <div class="comment-title">
-                <strong>
-                  <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">{{ comment.author.name }}</a>
-                </strong>
-                在
-                <strong>
-                  <nuxt-link :to="`/article/${comment.postID}`" v-if="comment.postTitle">{{ comment.postTitle }}</nuxt-link>
-                  <nuxt-link :to="`/guest`" v-else>留言</nuxt-link>
-                </strong>
+            <div class="comment" :class="{'right': !comment.author.email || comment.author.email !== 'littlewin.wang@gmail.com'}" v-for="(comment,index) in this.comments.comments" :key="index">
+              <div class="comment-avatar">
+                <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)"><img :alt="comment.author.name || '匿名用户'" :src="gravatar(comment.author.email) || '/images/anonymous.jpg'"></a>
               </div>
               <div class="comment-content">
-                <div v-html="marked(comment.content)"></div>
+                <nuxt-link :to="`/article/${comment.postID}`" v-if="comment.postTitle">
+                  <div v-html="marked(comment.content)"></div>
+                </nuxt-link>
+                <nuxt-link :to="`/guest`" v-else>
+                  <div v-html="marked(comment.content)"></div>
+                </nuxt-link>
               </div>
             </div>
           </li>
@@ -107,6 +105,7 @@
 <script>
 import marked from '~/plugins/marked'
 import global from '~/utils/global'
+import gravatar from '~/plugins/gravatar'
 
 export default {
   name: 'Sidebar',
@@ -161,6 +160,16 @@ export default {
     // 点击用户
     clickUser (event, user) {
       if (!user.site) event.preventDefault()
+    },
+    // 头像服务
+    gravatar (email) {
+      if (!/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/.test(email)) {
+        return null
+      }
+      let gravatarUrl = gravatar.url(email, {
+        protocol: 'https'
+      })
+      return gravatarUrl
     }
   }
 }
@@ -236,16 +245,45 @@ export default {
       }
     }
     .comment {
-      .comment-title {
-        height: 1.5rem;
-        line-height: 1.5rem;
+      display: flex;
+      align-items: center;
+      .comment-avatar {
+        margin-right: .5rem;
+        width: 2rem;
+        height: 2rem;
+        a {
+          display: inline-block;
+          width: 2rem;
+          height: 2rem;
+          img {
+            border-radius: 50%;
+          }
+        }
       }
       .comment-content {
+        margin: 0;
         padding: .2rem .5rem;
-        color: #888;
+        border-radius: .4rem;
+        color: #555;
+        background-color: hsla(0, 0%, 77%,.4);
         &:hover {
-          background-color: hsla(0, 0%, 77%, .4);
+          background-color: rgba(95,95,95,.4);
         }
+        a {
+          text-decoration: none;
+        }
+      }
+
+      &.right {
+        justify-content: flex-end;
+        .comment-avatar {
+          order: 2;
+          margin-left: .5rem;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 1rem;
       }
     }
     .player {
