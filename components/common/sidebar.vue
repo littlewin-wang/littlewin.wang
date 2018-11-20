@@ -265,9 +265,9 @@ export default {
         padding: .2rem .5rem;
         border-radius: .4rem;
         color: #555;
-        background-color: hsla(0, 0%, 77%,.4);
+        background-color: rgba(102, 204, 255, .4);
         &:hover {
-          background-color: rgba(95,95,95,.4);
+          background-color: rgba(102, 153, 204, .4);
         }
         a {
           text-decoration: none;
@@ -279,6 +279,16 @@ export default {
         .comment-avatar {
           order: 2;
           margin-left: .5rem;
+        }
+        .comment-content {
+          color: #555;
+          background-color: hsla(0, 0%, 77%, .4);
+          &:hover {
+            background-color: rgba(95, 95, 95, .4);
+          }
+          a {
+            text-decoration: none;
+          }
         }
       }
 

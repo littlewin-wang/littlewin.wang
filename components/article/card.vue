@@ -29,7 +29,7 @@
             </span>
             <span class="tag" v-else>
               <i class="iconfont icon-github"></i>
-              <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">Note</a>
+              <nuxt-link :to="'/notes'">Note</nuxt-link>
             </span>
 
             <span class="author">
@@ -51,10 +51,8 @@
               <span>{{article.meta.comments}}</span>
             </span>
           </div>
-          <div class="right" style="border-radius: 4px; background: #3cf" v-else>
-            <span class="tag" style="margin: 0 .2rem">
-              <span style="color: #fff">IN GITHUB ISSUE</span>
-            </span>
+          <div class="right" v-else>
+            <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">View in Github</a>
           </div>
         </div>
       </div>
@@ -156,6 +154,12 @@ export default {
           white-space: nowrap;
           height: 2rem;
           line-height: 2rem;
+          a {
+            &:hover {
+              color: #222;
+              text-decoration: underline;
+            }
+          }
         }
         .tag {
           margin-left: 6px;
