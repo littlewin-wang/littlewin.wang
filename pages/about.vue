@@ -1,39 +1,76 @@
 <template>
   <div class="about">
-    <div class="basic container white">
-      <div class="content">
-        <h5 class="title">基本</h5>
-        <p>Littlewin是一个
-          <a target="_blank" rel="external nofollow" href="https://littlewin.wang">独立博客</a> 的Owner
-          <br> Littlewin目前是小厂前端开发师一枚，积极上进中
-          <br> Littlewin目前热情集中在与
-          <a target="_blank" rel="external nofollow" href="https://littlewin.wang/article/4">大目标</a> 携手并进和在
-          <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang">Github
-          </a> 上积极垒砖
-          <br>
-          <span>
-            Find Me In
-            <a rel="external nofollow" href="mailto:littlewin.wang@gmail.com">
+    <div class="wrapper basic">
+      <div class="left">
+        <div class="profile box" style="background-color: rgba(250,204,153,.2)">
+          <div class="content">
+            <div class="avatar">
+              <img :alt="'Me'" :src="'/images/avatar.jpeg'"></a>
+            </div>
+            <div class="title">
+              <h3>王 琪</h3>
+              <h5>Littlewin</h5>
+              <p>FrontEnd Engineer</p>
+              <p>@<a target="_blank" rel="external nofollow" href="http://www.sky-cloud.net/">Sky-cloud</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="contact box" style="background-color: rgba(102,204,255,.2)">
+          <div class="content">
+            <p style="text-align: left">
               <i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-mail"></i>
-            </a>
+              <a rel="external nofollow" href="mailto:littlewin.wang@gmail.com">
+                littlewin.wang@gmail.com
+              </a>
+            </p>
+            <p style="text-align: left"><i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-location"></i>中国深圳</p>
+          </div>
+        </div>
+        <div class="social box" style="background-color: rgba(247,153,4,.2)">
+          <div class="content">
             <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang">
-              <i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-github"></i>
+              <i style="font-size: 18px" class="iconfont icon-github"></i>
             </a>
             <a target="_blank" rel="external nofollow" href="https://weibo.com/fredinweibo">
-              <i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-weibo"></i>
+              <i style="font-size: 18px" class="iconfont icon-weibo"></i>
             </a>
             <a target="_blank" rel="external nofollow" href="https://www.v2ex.com/member/littlewin">
-              <i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-v2ex"></i>
+              <i style="font-size: 18px" class="iconfont icon-v2ex"></i>
             </a>
             <a target="_blank" rel="external nofollow" href="https://twitter.com/littlewin_wang">
-              <i style="font-size: 18px; padding:0 .2rem" class="iconfont icon-twitter"></i>
+              <i style="font-size: 18px" class="iconfont icon-twitter"></i>
             </a>
-          </span>
-        </p>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="education box" style="background-color: rgba(245,102,103,.2)">
+          <div class="content">
+            <div class="period">
+              <h5><a target="_blank" rel="external nofollow" href="http://www.scu.edu.cn/">四川大学</a></h5>
+              <p>检测技术与自动化装置 - 硕士 (2012-2015)</p>
+            </div>
+            <div class="period">
+              <h5><a target="_blank" rel="external nofollow" href="http://www.scu.edu.cn/">四川大学</a></h5>
+              <p>自动化 - 学士 (2008-2012)</p>
+            </div>
+          </div>
+        </div>
+        <div class="work box" style="background-color: rgba(102,102,153,.2)">
+          <div class="content">
+            <div class="period">
+              <h5><a target="_blank" rel="external nofollow" href="http://www.sky-cloud.net/">天元云科技</a></h5>
+              <p>前端工程师 && 产品工程师 (2017-目前)</p>
+            </div>
+            <div class="period">
+              <h5><a target="_blank" rel="external nofollow" href="http://www.ramaxel.com/">记忆科技</a></h5>
+              <p>固件开发工程师 (2015-2017)</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="container white">
+    <div class="container" style="background-color: rgba(204,204,255,.2)">
       <div class="content">
         <h5 class="title">追求</h5>
         <div class="content list">
@@ -75,8 +112,7 @@
         </div>
       </div>
     </div>
-
-    <div class="project container white">
+    <div class="project container" style="background-color: rgba(250,204,153,.2)">
       <div class="content">
         <h5 class="title">项目</h5>
         <div class="content list">
@@ -118,15 +154,7 @@
         </div>
       </div>
     </div>
-
-    <div class="hobby container white">
-      <div class="content">
-        <h5 class="title">爱好</h5>
-        <p>Littlewin是多特死忠，期待有日去威斯特法伦坐在南看台看球<br>Littlewin经常参加足球和篮球运动<br>Littlewin也喜欢玩游戏：FIFA18、NBA2K17</p>
-      </div>
-    </div>
-
-    <div class="statement container white">
+    <div class="statement container" style="margin-bottom: 1rem; background-color: rgba(245,102,103,.2)">
       <div class="content">
         <h5 class="title">声明</h5>
         <p>本站所有文章均为本人原创，仅代表个人在撰文时刻的观点和想法<br>内容转载请保留署名
@@ -134,7 +162,6 @@
           <a target="_blank" rel="external nofollow" href="https://littlewin.wang">https://littlewin.wang</a>)的链接，请勿用于商业用途</p>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -157,51 +184,86 @@ export default {
 
 <style lang="scss" scoped>
 .about {
+  .wrapper {
+    width: 100%;
+    display: flex;
+    .left, .right {
+      flex: 0 0 50%;
+      display: flex;
+      flex-direction: column;
+      .box {
+        padding: 1rem 0;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .content {
+      text-align: center;
+    }
+    h3 {
+      margin: .5rem 0;
+    }
+    h5 {
+      margin: .2rem 0;
+    }
+    p {
+      line-height: 1.6rem;
+    }
+
+    .profile {
+      .avatar {
+        img {
+          width: 8rem;
+          height: 8rem;
+          border-radius: 50%;
+        }
+      }
+    }
+    .social {
+      display: flex;
+
+      a {
+        margin: 1rem;
+        &:hover {
+          color: #09c;
+        }
+        .iconfont {
+          margin-right: .5rem;
+          color: #777;
+        }
+        .icon-mail:hover {
+          color: #6cf;
+        }
+        .icon-github:hover {
+          color: #555;
+        }
+        .icon-weibo:hover {
+          color: #f66;
+        }
+        .icon-v2ex:hover {
+          color: #9c6;
+        }
+        .icon-twitter:hover {
+          color: #9cf;
+        }
+      }
+    }
+    .education, .work {
+      padding: .6rem 0;
+      .period:not(:first-child) {
+        margin-top: .6rem;
+      }
+    }
+  }
+
   .container {
     width: 100%;
-    margin-bottom: 1rem;
     // background-color: hsla(0, 0%, 100%, .6);
     .content {
       padding: 1rem 2rem;
-      // h5 {
-      //   position: relative;
-      //   border-bottom: 1px solid #eee;
-      //   margin: 1rem;
-      //   &:after {
-      //     content: "#";
-      //     position: absolute;
-      //     right: 0;
-      //   }
-      // }
-      p {
-        // padding-left: 2rem;
-        // border-left: 4px solid #6cf;
-        a {
-          color: #6cf;
-          &:hover {
-            color: #09c;
-          }
-          .iconfont {
-            margin-right: .5rem;
-            color: #999;
-          }
-          .icon-mail:hover {
-            color: #6cf;
-          }
-          .icon-github:hover {
-            color: #666;
-          }
-          .icon-weibo:hover {
-            color: #f66;
-          }
-          .icon-v2ex:hover {
-            color: #666;
-          }
-          .icon-twitter:hover {
-            color: #9cf;
-          }
-        }
-      }
     }
 
     .list {
@@ -227,8 +289,18 @@ export default {
     }
   }
 
-  .white {
-    background-color: hsla(0, 0%, 100%, .6);
+  @media screen and (max-width: 600px) {
+    .wrapper {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .container {
+      .list {
+        display: block;
+      }
+    }
   }
 }
 </style>
