@@ -67,7 +67,7 @@ export const mutations = {
   POST_ITEM_SUCCESS (state, action) {
     state.posting = false
     state.data.total += 1
-    state.data.comments.push(action.data.result)
+    state.data.comments.unshift(action.data.result)
   },
   POST_ITEM_FAILURE (state) {
     state.posting = false
