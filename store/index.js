@@ -158,7 +158,7 @@ export const actions = {
     return Service.get('/comment', { params }).then(res => {
       const success = !!res.status && res.data && res.data.success === true
       if (success) {
-        if (Object.is(params.sort, -1)) res.data.data.comments.reverse()
+        // if (Object.is(params.sort, -1)) res.data.data.comments.reverse()
         commit('comment/GET_LIST_SUCCESS', res.data)
       }
       if (!success) commit('comment/GET_LIST_FAILURE')

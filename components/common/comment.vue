@@ -1,86 +1,7 @@
 <template>
   <div class="comment">
     <div class="comment-box">
-      <div class="toolbar">
-        <div class="left">
-          <span>{{ comment.data.total || 0 }}条评论</span>
-          <span style="cursor:pointer" :class="{ liked: pageLiked }" @click.stop.prevent="likePage">
-            <i class="iconfont icon-love"></i>
-            {{ likes || 0 }}人喜欢
-          </span>
-        </div>
-        <div class="right">
-          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, -1) }" @click.stop.prevent="sortComments(-1)">最新</a>
-          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, 2) }" @click.stop.prevent="sortComments(2)">最热</a>
-        </div>
-      </div>
-      <div class="empty-box" v-if="!comment.data.comments.length && !comment.fetching">
-        You're first, no one can replace you.
-      </div>
-      <div class="list">
-        <ul>
-          <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comment.data.comments">
-            <div class="cm-avatar">
-              <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
-                <img :alt="comment.author.name || '匿名用户'" :src="gravatar(comment.author.email) || '/images/anonymous.jpg'">
-              </a>
-            </div>
-            <div class="cm-body">
-              <div class="cm-header">
-                <a class="user-name" target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
-                  {{ comment.author.name }}
-                </a>
-                <span class="os" v-if="comment.agent">
-                  <i class="iconfont" :class="OSClass(comment.agent)"></i>
-                  <span>{{OSParse(comment.agent)}}</span>
-                </span>
-                <span class="ua" v-if="comment.agent">
-                  <i class="iconfont icon-internet"></i>
-                  <span>{{UAParse(comment.agent)}}</span>
-                </span>
-                <span class="location" v-if="comment.ip_location">
-                  <span>{{ comment.ip_location.country }}</span>
-                  <span v-if="comment.ip_location.country && comment.ip_location.city">&nbsp;-&nbsp;</span>
-                  <span>{{ comment.ip_location.city }}</span>
-                </span>
-                <span class="id">#{{ comment.id }}</span>
-              </div>
-              <div class="cm-content">
-                <p class="reply" v-if="!!comment.pid">
-                  <span>回复 </span>
-                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
-                    <span>#{{ comment.pid }}&nbsp;</span>
-                    <strong v-if="getReply(comment.pid)">@{{ getReply(comment.pid) }}</strong>
-                  </a>
-                  <span>：</span>
-                </p>
-                <div v-html="marked(comment.content)"></div>
-              </div>
-              <div class="cm-footer">
-                <span class="create_at">{{new Date(comment.createAt).toLocaleDateString()}}</span>
-                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
-                  <i class="iconfont icon-reply"></i>
-                  <span>回复</span>
-                </a>
-                <a href="" class="like" :class="{ liked: commentLiked(comment.id), actived: !!comment.likes }" @click.stop.prevent="likeComment(comment)">
-                  <i class="iconfont icon-zan"></i>
-                  <span>顶&nbsp;({{ comment.likes }})</span>
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="pagination" v-if="comment.data.pages > 1">
-        <ul class="list">
-          <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
-            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item) ? false : loadCommentList({ page: comment.data.pages + 1 - item})">
-              {{ item }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <form class="post" id="post" name="comment">
+       <form class="post" id="post" name="comment">
         <div class="user" v-if="!userCacheMode || userCacheEditing">
           <div class="name">
             <input required type="text" name="name" placeholder="name *" v-model="user.name">
@@ -193,6 +114,85 @@
           </div>
         </div>
       </form>
+      <div class="toolbar">
+        <div class="left">
+          <span>{{ comment.data.total || 0 }}条评论</span>
+          <span style="cursor:pointer" :class="{ liked: pageLiked }" @click.stop.prevent="likePage">
+            <i class="iconfont icon-love"></i>
+            {{ likes || 0 }}人喜欢
+          </span>
+        </div>
+        <div class="right">
+          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, -1) }" @click.stop.prevent="sortComments(-1)">最新</a>
+          <a href="" class="sort-btn" :class="{ actived: Object.is(sortMode, 2) }" @click.stop.prevent="sortComments(2)">最热</a>
+        </div>
+      </div>
+      <div class="empty-box" v-if="!comment.data.comments.length && !comment.fetching">
+        You're first, no one can replace you.
+      </div>
+      <div class="list">
+        <ul>
+          <li class="comment-item" :id="`comment-item-${comment.id}`" :key="index" v-for="(comment, index) in comment.data.comments">
+            <div class="cm-avatar">
+              <a target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
+                <img :alt="comment.author.name || '匿名用户'" :src="gravatar(comment.author.email) || '/images/anonymous.jpg'">
+              </a>
+            </div>
+            <div class="cm-body">
+              <div class="cm-header">
+                <a class="user-name" target="_blank" rel="external nofollow" :href="comment.author.site" @click.stop="clickUser($event, comment.author)">
+                  {{ comment.author.name }}
+                </a>
+                <span class="os" v-if="comment.agent">
+                  <i class="iconfont" :class="OSClass(comment.agent)"></i>
+                  <span>{{OSParse(comment.agent)}}</span>
+                </span>
+                <span class="ua" v-if="comment.agent">
+                  <i class="iconfont icon-internet"></i>
+                  <span>{{UAParse(comment.agent)}}</span>
+                </span>
+                <span class="location" v-if="comment.ip_location">
+                  <span>{{ comment.ip_location.country }}</span>
+                  <span v-if="comment.ip_location.country && comment.ip_location.city">&nbsp;-&nbsp;</span>
+                  <span>{{ comment.ip_location.city }}</span>
+                </span>
+                <span class="id">#{{ comment.id }}</span>
+              </div>
+              <div class="cm-content">
+                <p class="reply" v-if="!!comment.pid">
+                  <span>回复 </span>
+                  <a href="" @click.stop.prevent="toSomeAnchorById(`comment-item-${comment.pid}`)">
+                    <span>#{{ comment.pid }}&nbsp;</span>
+                    <strong v-if="getReply(comment.pid)">@{{ getReply(comment.pid) }}</strong>
+                  </a>
+                  <span>：</span>
+                </p>
+                <div v-html="marked(comment.content)"></div>
+              </div>
+              <div class="cm-footer">
+                <span class="create_at">{{new Date(comment.createAt).toLocaleDateString()}}</span>
+                <a href="" class="reply" @click.stop.prevent="replyComment(comment)">
+                  <i class="iconfont icon-reply"></i>
+                  <span>回复</span>
+                </a>
+                <a href="" class="like" :class="{ liked: commentLiked(comment.id), actived: !!comment.likes }" @click.stop.prevent="likeComment(comment)">
+                  <i class="iconfont icon-zan"></i>
+                  <span>顶&nbsp;({{ comment.likes }})</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="pagination" v-if="comment.data.pages > 1">
+        <ul class="list">
+          <li class="item" v-for="(item, index) in comment.data.pages" :key="index">
+            <a href="" class="pagination-btn" :class="{ 'actived disabled': paginationReverseActive(item) }" @click.stop.prevent="paginationReverseActive(item) ? false : loadCommentList({ page: comment.data.pages + 1 - item})">
+              {{ item }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -233,7 +233,7 @@ export default {
       // 邮箱和地址校验正则
       regexs: {
         email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
-        url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+        url: /^((https|http):\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[/=?%\-&_~`@[\]':+!]*([^<>""])*$/
       }
     }
   },
@@ -294,10 +294,10 @@ export default {
       if (!this.regexs.email.test(email)) {
         return null
       }
-      let gravatar_url = gravatar.url(email, {
+      let gravatarUrl = gravatar.url(email, {
         protocol: 'https'
       })
-      return gravatar_url
+      return gravatarUrl
     },
     // 更新头像
     updateGravatar () {
@@ -797,9 +797,9 @@ export default {
 
 .post {
   display: block;
-  border-top: 1px dashed darken($module-hover-bg, 30%);
-  margin-top: 1rem;
-  padding-top: 1rem;
+  border-bottom: 1px dashed darken($module-hover-bg, 30%);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 
   >.user {
     width: 100%;
