@@ -7,7 +7,8 @@ module.exports = {
     // First application
     {
       name: 'littlewin.wang',
-      script: 'node_modules/nuxt/bin/nuxt-start',
+      script: 'npm',
+      args: 'run start',
       env: {
         COMMON_VARIABLE: 'true'
       },
