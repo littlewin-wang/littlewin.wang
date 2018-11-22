@@ -61,7 +61,7 @@ export default {
   .container {
     flex: 1;
     position: relative;
-    padding-top: calc(70px+1rem);
+    padding-top: 80px;
 
     .content {
       max-width: 980px;

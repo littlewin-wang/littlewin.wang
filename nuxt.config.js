@@ -52,10 +52,10 @@ module.exports = {
       'gravatar'
     ],
     babel: {
-      presets: ['es2015', 'stage-2'],
+      presets: ['@nuxtjs/babel-preset-app'],
       plugins: [
-        'transform-async-to-generator',
-        'transform-runtime'
+        '@babel/plugin-transform-runtime',
+        '@babel/plugin-transform-async-to-generator'
       ],
       comments: true
     },
