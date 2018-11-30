@@ -50,6 +50,7 @@ $ npm run generate
  - [x] 增加Google Analytics
  - [x] 优化bundle
  - [x] 增加个人公告模块
+ - [x] 优化关于页
  
 ## Contact
 Email: [littlewin.wang@gmail.com](mailto:littlewin.wang@gmail.com)
