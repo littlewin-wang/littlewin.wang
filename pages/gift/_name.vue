@@ -53,7 +53,7 @@ export default {
     padding: 40px 0;
     height: 800px;
     margin-bottom: 10px;
-    background: no-repeat center/100% url('/images/background-wangnr.png');
+    background: no-repeat center/100% url('https://static.littlewin.wang/blog/background-wangnr.png');
     color: #fff;
     z-index: 1;
     .content {
