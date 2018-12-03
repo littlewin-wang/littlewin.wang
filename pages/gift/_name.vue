@@ -5,7 +5,7 @@
         <div class="item">
           <h2>2</h2>
         </div>
-        <div class="item">
+        <div class="item picture">
           <img :alt="'Me'" :src="'/images/atu.jpg'"></a>
         </div>
         <div class="item">
@@ -75,11 +75,15 @@ export default {
             font-weight: 100;
           }
           img {
+            display: inline-block;
             border-radius: 50%;
             border: 3px solid #999;
             width: 80px;
             height: 80px;
           }
+        }
+        .picture {
+          flex: 0 0 80px;
         }
       }
       .sentence {
@@ -107,6 +111,20 @@ export default {
           }
           75% {
             font-size: 25px
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .title {
+          .item {
+            margin: 0 4px;
+          }
+        }
+
+        .sentence {
+          span {
+            font-size: 14px;
           }
         }
       }
