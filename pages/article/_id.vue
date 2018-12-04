@@ -148,15 +148,12 @@ export default {
   }
   >.content {
     a {
+      text-decoration: underline;
       font-weight: bold;
       margin: 0 .1rem;
 
       &.image-link {
         margin: 0;
-      }
-
-      &:hover {
-        text-decoration: underline;
       }
     }
 
@@ -196,7 +193,7 @@ export default {
     h4,
     h5,
     h6 {
-      margin: 3rem 0 0 0;
+      margin: 3rem 0 .5rem 0;
       padding-bottom: 1rem;
       padding-left: 0;
       line-height: 1.8rem;

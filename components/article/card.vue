@@ -10,8 +10,8 @@
       </div>
       <div class="content">
         <h2 class="title">
-          <nuxt-link :to="'/note/'.concat(article.number)" v-if="article.isIssue">{{article.title}}</nuxt-link>
-          <nuxt-link :to="`/article/${article.id}`" v-else>{{article.title}}</nuxt-link>
+          <nuxt-link class="underline" :to="'/note/'.concat(article.number)" v-if="article.isIssue">{{article.title}}</nuxt-link>
+          <nuxt-link class="underline" :to="`/article/${article.id}`" v-else>{{article.title}}</nuxt-link>
         </h2>
         <p class="excerpt">
           {{article.description}}
@@ -25,11 +25,11 @@
           <div class="left">
             <span class="tag" v-if="!article.isIssue">
               <i class="iconfont" :class="[article.tag[0].extends.find(t => Object.is(t.name, 'icon')).value]"></i>
-              <nuxt-link :to="`/tag/${article.tag[0].name}`">{{article.tag[0].name}}</nuxt-link>
+              <nuxt-link class="underline" :to="`/tag/${article.tag[0].name}`">{{article.tag[0].name}}</nuxt-link>
             </span>
             <span class="tag" v-else>
               <i class="iconfont icon-github"></i>
-              <nuxt-link :to="'/notes'">Note</nuxt-link>
+              <nuxt-link class="underline" :to="'/notes'">Note</nuxt-link>
             </span>
 
             <span class="author">
@@ -52,7 +52,7 @@
             </span>
           </div>
           <div class="right" v-else>
-            <a target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">View in Github</a>
+            <a class="underline" target="_blank" rel="external nofollow" href="https://github.com/littlewin-wang/Notes">View in Github</a>
           </div>
         </div>
       </div>
