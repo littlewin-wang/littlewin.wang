@@ -196,11 +196,13 @@ export default {
     h4,
     h5,
     h6 {
-      margin: 2rem 0 1rem 0;
+      margin: 3rem 0 0 0;
+      padding-bottom: 1rem;
       padding-left: 0;
       line-height: 1.8rem;
       font-weight: 700;
       text-indent: 0;
+      border-bottom: 1px solid #ececec;
     }
 
     blockquote {
@@ -243,8 +245,9 @@ export default {
     }
 
     code {
+      font-size: 13px;
       color: #bd4147;
-      padding: .3rem .5rem;
+      padding: .3rem;
       margin: 0 .5rem;
       border-radius: 2px;
       background-color: rgba(197, 197, 197, 0.4);

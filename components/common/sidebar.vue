@@ -221,7 +221,6 @@ export default {
         padding: .5rem 1rem;
         h5 {
           margin: .2rem 0;
-          font-size: 13px;
           &:hover {
             text-decoration: underline;
           }
