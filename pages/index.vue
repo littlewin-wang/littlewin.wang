@@ -33,6 +33,9 @@ export default {
       store.dispatch('getNotes', { per_page: 100 })
     ]
 
+    console.log(store.state.article.list.data.articles.length)
+    console.log(store.state.article.list.data.page)
+
     if (!store.state.article.list.data.articles.length) {
       fetchList.push(store.dispatch('getArticles'))
     }
