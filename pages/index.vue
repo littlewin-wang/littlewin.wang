@@ -29,18 +29,10 @@ import Sidebar from '~/components/common/sidebar.vue'
 
 export default {
   fetch ({ store }) {
-    let fetchList = [
+    return Promise.all([
+      store.dispatch('getArticles'),
       store.dispatch('getNotes', { per_page: 100 })
-    ]
-
-    console.log(store.state.article.list.data.articles.length)
-    console.log(store.state.article.list.data.page)
-
-    if (!store.state.article.list.data.articles.length) {
-      fetchList.push(store.dispatch('getArticles'))
-    }
-
-    return Promise.all(fetchList)
+    ])
   },
   components: {
     MessageBox,
