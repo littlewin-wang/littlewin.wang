@@ -35,23 +35,7 @@ export const mutations = {
   },
   GET_LIST_SUCCESS (state, action) {
     state.list.fetching = false
-
-    // replace articles already in store and add those didn't
-    action.data.articles.forEach(a => {
-      let index = state.list.data.articles.findIndex(article => article._id === a._id)
-
-      if (index !== -1) {
-        state.list.data.articles[index] = a
-      } else {
-        state.list.data.articles.push(a)
-      }
-    })
-
-    // replace params already in store after init
-    state.list.data.total = state.list.data.total || action.data.total
-    state.list.data.limit = state.list.data.limit || action.data.limit
-    state.list.data.page = state.list.data.page || action.data.page
-    state.list.data.pages = state.list.data.pages || action.data.pages
+    state.list.data = action.data
   },
   ADD_LIST_SUCCESS (state, action) {
     state.list.fetching = false
