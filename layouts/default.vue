@@ -4,7 +4,7 @@
     <LHeader></LHeader>
     <div class="container">
       <div class="content">
-        <nuxt/>
+        <nuxt keep-alive/>
       </div>
     </div>
     <LFooter></LFooter>
